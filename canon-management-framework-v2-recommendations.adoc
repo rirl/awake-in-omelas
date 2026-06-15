@@ -1,0 +1,37 @@
+
+= Canon Management Framework v2 Recommendations
+
+== Additions
+
+* Provenance IDs and parent provenance relationships
+* Canonical checkpoints
+* Canonical status lifecycle
+* Narrative dependency tracking
+* Symbol canon
+* Revelation graph
+* Source fragments
+* Confidence model
+* Canon integrity audits
+* Prompt infrastructure
+
+== Recommended Repository Layout
+
+----
+canon/
+├── checkpoints/
+├── characters/
+├── timeline/
+├── artifacts/
+├── symbols/
+├── themes/
+├── mysteries/
+├── revelation/
+├── worldbuilding/
+├── narrative-architecture/
+├── provenance/
+├── source-fragments/
+├── audits/
+├── infrastructure/
+│   └── prompts/
+└── indexes/
+----
