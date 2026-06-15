@@ -1,0 +1,20 @@
+= Awake in Omelas Canon Repository
+
+Status: Infrastructure Bootstrap
+
+This repository is the authoritative source of truth for all canonical
+story information related to Awake in Omelas.
+
+The repository preserves:
+
+* Canonical facts
+* Narrative decisions
+* Provenance
+* Symbolism
+* Revelation order
+* Character knowledge states
+* Timeline information
+* Historical checkpoints
+
+The repository is designed to allow reconstruction of project state
+independent of chat history.
