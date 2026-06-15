@@ -1,0 +1,151 @@
+= Canon Management Framework Prompt (Provenance Edition)
+
+Generate Canon
+
+Project:
+Awake in Omelas
+
+Objective:
+Create a complete canonical repository for the project. The repository must function as the authoritative project reference and preserve all adopted decisions, relationships, themes, mysteries, narrative architecture decisions, worldbuilding assumptions, timeline decisions, character development, provenance, and revision history.
+
+Output Format:
+AsciiDoc
+
+Packaging:
+Antora-ready ZIP
+
+Depth:
+Full Canon
+
+Repository Structure:
+
+canon/
+├── characters/
+├── timeline/
+├── artifacts/
+├── themes/
+├── mysteries/
+├── worldbuilding/
+├── narrative-architecture/
+├── provenance/
+└── indexes/
+
+Canonical Entry Types:
+
+* CHARACTER
+* TIMELINE
+* ARTIFACT
+* THEME
+* MYSTERY
+* WORLDBUILDING
+* NARRATIVE_ARCHITECTURE
+* PROVENANCE
+
+Generate a separate AsciiDoc file for every canonical entry.
+
+Every entry must use the following structure:
+
+= <Entry Name>
+
+Entry ID:
+Entry Type:
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Originating Discussion:
+
+Reason For Adoption:
+
+Superseded Alternatives:
+
+Related Decisions:
+
+Confidence:
+
+== Revision History
+
+== Relationships
+
+== Associated Characters
+
+== Associated Themes
+
+== Associated Artifacts
+
+== Associated Mysteries
+
+== Associated Timeline Entries
+
+== Associated Narrative Architecture Entries
+
+== Associated Provenance Entries
+
+== Open Questions
+
+== Speculation
+
+Status Rules:
+
+Use only:
+
+* CANON
+* SPECULATION
+* OPEN_QUESTION
+
+Requirements:
+
+1. Explicitly separate Canon, Speculation, and Open Questions.
+2. Preserve adopted decisions.
+3. Preserve rationale behind adopted decisions.
+4. Preserve superseded alternatives.
+5. Preserve relationships between entries.
+6. Preserve chronology assumptions.
+7. Preserve thematic decisions.
+8. Preserve narrative architecture decisions.
+9. Preserve artifact significance.
+10. Preserve mystery structures.
+11. Preserve worldbuilding assumptions.
+12. Preserve provenance for all major decisions.
+
+Generate index documents:
+
+* character-index.adoc
+* timeline-index.adoc
+* artifact-index.adoc
+* theme-index.adoc
+* mystery-index.adoc
+* worldbuilding-index.adoc
+* narrative-architecture-index.adoc
+* provenance-index.adoc
+
+Generate master document:
+
+00-canon-master.adoc
+
+Preservation Priority:
+
+1. Themes
+2. Narrative Architecture
+3. Provenance
+4. Characters
+5. Mysteries
+6. Artifacts
+7. Timeline
+8. Worldbuilding
+
+When conflicts exist between chronology and thematic integrity, preserve thematic integrity and record the conflict in Open Questions.
+
+Final Deliverable:
+
+Produce an Antora-ready ZIP archive containing all canonical entries, provenance entries, indexes, and master documents necessary to reconstruct the project without access to prior conversations.
