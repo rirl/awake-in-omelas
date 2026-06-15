@@ -1,0 +1,51 @@
+= Checkpoint 0000: Canon Infrastructure Established
+
+Status: Stable
+
+Date: 2026-06-15
+
+== Purpose
+
+Establish the foundational infrastructure required to manage,
+preserve, and evolve the Awake in Omelas canon independently of
+chat history.
+
+== Repository State
+
+Version: 0.2
+
+Name: Canon Infrastructure Established
+
+Ready For:
+
+* Canon Schema Development
+* Canon Entry Templates
+* Canon Indexes
+* Canon Content Migration
+
+== Commits Included
+
+* afade01 - feat: bootstrap canon management framework v2
+* 7cd1902 - fix: normalize canon infrastructure artifacts
+* fa59cfc - feat: establish canon repository structure
+
+== Artifacts Introduced
+
+* Canon repository structure
+* Bootstrap automation script
+* Governance documentation
+* Infrastructure artifact storage
+
+== Outstanding Work
+
+* Canon entry templates
+* Canon indexes
+* First canonical checkpoint
+* Initial character entries
+* Initial timeline entries
+* Provenance entry schema
+
+== Notes
+
+This checkpoint marks the transition from framework design to
+operational canon management infrastructure.
