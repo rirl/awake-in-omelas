@@ -1,0 +1,15 @@
+= <Checkpoint>
+
+Version:
+
+Status:
+
+Phase:
+
+Completed Milestones:
+
+Next Milestone:
+
+Repository State:
+
+Notes:

@@ -1,0 +1,15 @@
+= Provenance Record
+
+Origin:
+
+Adoption Date:
+
+Originating Discussion:
+
+Reason For Adoption:
+
+Superseded Alternatives:
+
+Confidence:
+
+Revision History:
