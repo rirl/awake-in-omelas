@@ -1,0 +1,66 @@
+= Provenance: prov-0005-tziphora-discovery-checkpoint
+:entry-type: PROVENANCE
+:status: CANON
+:created: 2026-06-18
+:updated: 2026-06-18
+:checkpoint: checkpoint-0001
+
+== Decision
+
+Create checkpoint-0001 to preserve the Tziphora discovery state before completing the remaining opening-thread entries.
+
+== Origin
+
+The repository had reached a coherent intermediate state: Tziphora, the book "Night", and the discovery event were populated.
+
+== Parent Provenance IDs
+
+* prov-0001-tziphora-opening-thread
+* prov-0002-tziphora-character-entry
+* prov-0003-book-night-artifact
+* prov-0004-tziphora-discovery-timeline
+
+== Source Fragments
+
+* The first canon slice was established.
+* Tziphora was populated.
+* The book "Night" was populated.
+* The discovery timeline entry was populated.
+* The remaining Tziphora opening-thread elements were intentionally deferred.
+
+== Decision Type
+
+CHECKPOINT_ESTABLISHMENT
+
+== Reason Adopted
+
+The checkpoint allows the project to move into a fresh thread or continue later without losing the reasoning behind the first populated entries.
+
+== Alternatives Considered
+
+* Continue directly into show-and-tell entries without checkpointing.
+* Wait to checkpoint until the entire Tziphora opening thread was complete.
+
+== Supersedes
+
+None.
+
+== Superseded By
+
+None.
+
+== Related Entries
+
+* checkpoint-0001
+* character-tziphora-cohen
+* artifact-book-night
+* timeline-tziphora-discovers-night
+* timeline-show-and-tell
+* character-teacher
+* symbol-red-coat
+* mystery-girl-in-red-coat
+
+== Notes
+
+This provenance entry is intended to help bootstrap the next conversation thread.
+

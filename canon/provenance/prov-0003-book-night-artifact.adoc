@@ -1,0 +1,59 @@
+= Provenance: prov-0003-book-night-artifact
+:entry-type: PROVENANCE
+:status: CANON
+:created: 2026-06-18
+:updated: 2026-06-18
+:checkpoint: checkpoint-0001
+
+== Decision
+
+Canonize the book "Night" as the first artifact touched by Tziphora.
+
+== Origin
+
+The book "Night" was identified as the physical object through which Tziphora first encounters the suppressed historical mystery.
+
+== Parent Provenance IDs
+
+* prov-0001-tziphora-opening-thread
+* prov-0002-tziphora-character-entry
+
+== Source Fragments
+
+* Tziphora discovers the book in the attic.
+* The book is narratively significant but not fully understood by Tziphora.
+* The discovery precedes the operational deployment of PURGE.
+
+== Decision Type
+
+ARTIFACT_CANONIZATION
+
+== Reason Adopted
+
+The book provides a concrete artifact linking Tziphora to memory, historical rupture, and the opening mystery.
+
+== Alternatives Considered
+
+* Treat the book only as a symbol.
+* Treat the book only as a source fragment.
+* Delay artifact canonization until broader story entries were created.
+
+== Supersedes
+
+None.
+
+== Superseded By
+
+None.
+
+== Related Entries
+
+* artifact-book-night
+* character-tziphora-cohen
+* timeline-tziphora-discovers-night
+* timeline-show-and-tell
+
+== Notes
+
+The artifact may later also participate in symbolic and source-fragment relationships.
+

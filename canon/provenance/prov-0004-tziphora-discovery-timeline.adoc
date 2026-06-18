@@ -1,0 +1,61 @@
+= Provenance: prov-0004-tziphora-discovery-timeline
+:entry-type: PROVENANCE
+:status: CANON
+:created: 2026-06-18
+:updated: 2026-06-18
+:checkpoint: checkpoint-0001
+
+== Decision
+
+Canonize Tziphora discovering "Night" as the first populated timeline entry.
+
+== Origin
+
+After Tziphora and the book were populated, the next logical canon element was the event connecting them.
+
+== Parent Provenance IDs
+
+* prov-0001-tziphora-opening-thread
+* prov-0002-tziphora-character-entry
+* prov-0003-book-night-artifact
+
+== Source Fragments
+
+* Tziphora discovers "Night" in the attic.
+* The discovery is the narrative opening.
+* The discovery occurs before the operational deployment of PURGE.
+* The discovery precedes the show-and-tell sequence.
+
+== Decision Type
+
+TIMELINE_CANONIZATION
+
+== Reason Adopted
+
+The discovery event anchors the opening thread in sequence and distinguishes narrative placement from later chronological and operational events.
+
+== Alternatives Considered
+
+* Begin timeline population with PURGE deployment.
+* Begin timeline population with Shmuel Abramson in 1939.
+* Begin timeline population with the show-and-tell event.
+
+== Supersedes
+
+None.
+
+== Superseded By
+
+None.
+
+== Related Entries
+
+* timeline-tziphora-discovers-night
+* character-tziphora-cohen
+* artifact-book-night
+* timeline-show-and-tell
+
+== Notes
+
+This entry should preserve the distinction between narrative opening and broader chronology.
+

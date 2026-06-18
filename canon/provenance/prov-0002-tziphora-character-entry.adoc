@@ -1,0 +1,59 @@
+= Provenance: prov-0002-tziphora-character-entry
+:entry-type: PROVENANCE
+:status: CANON
+:created: 2026-06-18
+:updated: 2026-06-18
+:checkpoint: checkpoint-0001
+
+== Decision
+
+Populate Tziphora Cohen as the first character entry in the canon repository.
+
+== Origin
+
+Tziphora was selected because her discovery of the book "Night" functions as the narrative opening of the story.
+
+== Parent Provenance IDs
+
+* prov-0001-tziphora-opening-thread
+
+== Source Fragments
+
+* Tziphora is a young girl in Omelas.
+* Tziphora discovers "Night" in the attic.
+* Tziphora does not initially understand the full significance of what she has found.
+* Tziphora later participates in a show-and-tell sequence.
+
+== Decision Type
+
+CHARACTER_CANONIZATION
+
+== Reason Adopted
+
+Tziphora provides the reader-facing entry into the mystery. Her limited understanding allows the narrative to begin with curiosity rather than explanation.
+
+== Alternatives Considered
+
+* Begin canon population with Professor Shlomo Abramson.
+* Begin canon population with Eliezer Abramson.
+* Begin canon population with ATON-V8.
+
+== Supersedes
+
+None.
+
+== Superseded By
+
+None.
+
+== Related Entries
+
+* character-tziphora-cohen
+* artifact-book-night
+* timeline-tziphora-discovers-night
+* timeline-show-and-tell
+
+== Notes
+
+Tziphora should remain narratively important but epistemically limited at the opening.
+
