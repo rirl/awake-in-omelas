@@ -1,0 +1,41 @@
+= <Timeline Event>
+
+Entry ID:
+Entry Type: TIMELINE
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Relative Ordering
+
+Before:
+
+After:
+
+Concurrent With:
+
+== Participants
+
+== Associated Mysteries
+
+== Associated Artifacts
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation

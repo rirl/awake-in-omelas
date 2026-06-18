@@ -1,0 +1,35 @@
+= <Artifact>
+
+Entry ID:
+Entry Type: ARTIFACT
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Physical Description
+
+== Ownership History
+
+== Associated Characters
+
+== Associated Mysteries
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation

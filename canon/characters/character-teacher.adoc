@@ -1,0 +1,47 @@
+= <Character Name>
+
+Entry ID:
+Entry Type: CHARACTER
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Character Arc
+
+== Relationships
+
+== Associated Themes
+
+== Associated Artifacts
+
+== Associated Mysteries
+
+== Associated Timeline Entries
+
+== Knowledge State
+
+What does this character currently know?
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Originating Discussion:
+
+Reason For Adoption:
+
+Superseded Alternatives:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation
