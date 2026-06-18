@@ -1,0 +1,33 @@
+= <Narrative Structure>
+
+Entry ID:
+Entry Type: NARRATIVE_ARCHITECTURE
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Function
+
+== Dependencies
+
+== Associated Characters
+
+== Associated Mysteries
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation

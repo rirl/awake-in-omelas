@@ -1,0 +1,33 @@
+= <Theme>
+
+Entry ID:
+Entry Type: THEME
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Associated Characters
+
+== Associated Events
+
+== Associated Artifacts
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation

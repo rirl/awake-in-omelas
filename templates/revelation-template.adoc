@@ -1,0 +1,39 @@
+= <Revelation Event>
+
+Entry ID:
+Entry Type: REVELATION
+Status:
+
+== Summary
+
+== Revealed Information
+
+== Who Learns It
+
+== Who Already Knew
+
+== Narrative Purpose
+
+== Emotional Effect
+
+== Dependencies
+
+Requires:
+
+== Future Consequences
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation

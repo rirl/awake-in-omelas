@@ -1,0 +1,20 @@
+= Source Fragment: <Fragment ID>
+:entry-type: SOURCE_FRAGMENT
+:status: RAW
+:created:
+:updated:
+:checkpoint:
+
+== Source
+
+== Original Fragment
+
+== Context
+
+== Interpretation
+
+== Related Provenance
+
+== Related Entries
+
+== Notes

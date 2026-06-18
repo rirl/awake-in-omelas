@@ -1,0 +1,31 @@
+= <Worldbuilding Element>
+
+Entry ID:
+Entry Type: WORLDBUILDING
+Status:
+
+== Summary
+
+== Canonical Content
+
+== Narrative Purpose
+
+== Constraints
+
+== Related Elements
+
+== Provenance
+
+Origin:
+
+Adoption Date:
+
+Reason For Adoption:
+
+Confidence:
+
+== Revision History
+
+== Open Questions
+
+== Speculation
