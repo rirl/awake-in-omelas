@@ -1,41 +1,49 @@
-= <Timeline Event>
-
-Entry ID:
-Entry Type: TIMELINE
-Status:
+= Timeline Entry: Tziphora Discovers Night
+:entry-type: TIMELINE
+:status: CANON
+:created: 2026-06-18
+:checkpoint: v0.5
+:provenance-id: prov-0001-tziphora-opening-thread
 
 == Summary
 
-== Canonical Content
+Tziphora discovers a copy of "Night" in the attic.
 
-== Narrative Purpose
+== Event
 
-== Relative Ordering
+While exploring the attic, Tziphora finds an old copy of "Night".
+The discovery becomes the narrative opening of the story.
 
-Before:
+== Timeframe
 
-After:
+Before the operational deployment of PURGE.
 
-Concurrent With:
+== Sequence Relationship
 
-== Participants
+Precedes Show and Tell.
 
-== Associated Mysteries
+== Characters Present
 
-== Associated Artifacts
+* Tziphora
+
+== Narrative Placement
+
+Narrative opening.
+
+== Chronological Placement
+
+Occurs shortly before PURGE deployment.
+
+== Related Entries
+
+* character-tziphora-cohen
+* artifact-book-night
+* timeline-show-and-tell
 
 == Provenance
 
-Origin:
+See prov-0001-tziphora-opening-thread.
 
-Adoption Date:
+== Notes
 
-Reason For Adoption:
-
-Confidence:
-
-== Revision History
-
-== Open Questions
-
-== Speculation
+The discovery serves as an invitation into the mystery rather than an explanation.
