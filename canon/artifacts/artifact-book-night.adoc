@@ -1,35 +1,45 @@
-= <Artifact>
-
-Entry ID:
-Entry Type: ARTIFACT
-Status:
+= Artifact: Book "Night"
+:entry-type: ARTIFACT
+:status: CANON
+:created: 2026-06-18
+:checkpoint: v0.5
+:provenance-id: prov-0001-tziphora-opening-thread
 
 == Summary
 
-== Canonical Content
+A physical copy of "Night" discovered by Tziphora in the attic.
 
-== Narrative Purpose
+== Description
 
-== Physical Description
+The book is old and unexpected. Tziphora does not initially understand its significance, but the discovery becomes the narrative opening of the story.
 
-== Ownership History
+== Artifact Type
 
-== Associated Characters
+Book
 
-== Associated Mysteries
+== Location
+
+Attic storage
+
+== Related Entries
+
+* character-tziphora-cohen
+* timeline-tziphora-discovers-night
+* timeline-show-and-tell
+* character-teacher
+
+== Canonical Status
+
+Canonical
 
 == Provenance
 
-Origin:
+See prov-0001-tziphora-opening-thread.
 
-Adoption Date:
+== Notes
 
-Reason For Adoption:
+The narrative intentionally refers to the book as "Night" because of its historical significance.
 
-Confidence:
+Tziphora's discovery occurs before the operational deployment of PURGE.
 
-== Revision History
-
-== Open Questions
-
-== Speculation
+The discovery itself serves as the opening invitation into the story.
