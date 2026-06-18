@@ -1,47 +1,49 @@
-= <Character Name>
-
-Entry ID:
-Entry Type: CHARACTER
-Status:
+= Character: Tziphora Cohen
+:entry-type: CHARACTER
+:status: CANON
+:created: 2026-06-18
+:checkpoint: v0.5
+:provenance-id: prov-0001-tziphora-opening-thread
 
 == Summary
 
-== Canonical Content
+Young girl whose discovery of the book "Night" initiates the narrative opening of the story.
 
-== Narrative Purpose
+== Canonical Facts
 
-== Character Arc
+* Tziphora lives in Omelas.
+* She discovers a copy of "Night" in the attic.
+* The discovery precedes the operational deployment of PURGE.
+* She later presents the book during a show-and-tell exercise.
+
+== Narrative Function
+
+Narrative opening character whose curiosity becomes the reader's invitation into the mystery.
 
 == Relationships
 
-== Associated Themes
+* Teacher
+* Girl in Red Coat (indirect)
+* Book "Night"
 
-== Associated Artifacts
+== Timeline Notes
 
-== Associated Mysteries
-
-== Associated Timeline Entries
+Discovery of the book serves as the narrative opening.
+Show and tell occurs before PURGE deployment.
 
 == Knowledge State
 
-What does this character currently know?
-
-== Provenance
-
-Origin:
-
-Adoption Date:
-
-Originating Discussion:
-
-Reason For Adoption:
-
-Superseded Alternatives:
-
-Confidence:
-
-== Revision History
+Tziphora does not understand the significance of what she has found.
 
 == Open Questions
 
-== Speculation
+* Why does the girl in the photograph resemble the girl in the book?
+* Why does the image disturb her?
+
+== Provenance
+
+See prov-0001-tziphora-opening-thread.
+
+== Notes
+
+Additional details remain to be discovered.
