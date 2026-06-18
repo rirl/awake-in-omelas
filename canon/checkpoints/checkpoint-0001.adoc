@@ -1,0 +1,110 @@
+= Checkpoint 0001: Tziphora Discovery Established
+:entry-type: CHECKPOINT
+:status: STABLE
+:created: 2026-06-18
+:updated: 2026-06-18
+:version: v0.5-candidate
+:previous-checkpoint: v0.4
+:next-checkpoint:
+
+== Purpose
+
+Establish the first populated narrative canon entries by following
+Tziphora Cohen's opening thread through the discovery of the book
+"Night". This checkpoint marks the transition from framework
+construction to canon population.
+
+== Repository State
+
+Branch::
+
+* feature/initial-canon-entries
+
+Base Version::
+
+* v0.4
+
+Working Tree::
+
+* Clean
+
+Remote Status::
+
+* Synchronized with origin/feature/initial-canon-entries
+
+== Commits Included
+
+* daab4a9 - feat: establish Tziphora opening canon slice
+* 81f878d - feat: populate Tziphora character entry
+* b4f5b2b - feat: populate Book Night artifact entry
+* 0726ce0 - feat: populate Tziphora discovery timeline entry
+
+== Canon Changes
+
+New Entries::
+
+* character-tziphora-cohen
+* artifact-book-night
+* timeline-tziphora-discovers-night
+
+Structural Entries::
+
+* character-teacher
+* timeline-show-and-tell
+* symbol-red-coat
+* mystery-girl-in-red-coat
+* prov-0001-tziphora-opening-thread
+
+== Artifacts Introduced
+
+No new visualization artifacts were introduced during this checkpoint.
+
+== Decisions Adopted
+
+* Populate canon by following narrative threads rather than directory structure.
+* Begin with Tziphora's opening thread.
+* Populate entries incrementally.
+* Preserve provenance through small commits.
+* Use one feature branch for the initial canon population.
+
+== Decisions Deferred
+
+* Population of the remaining Tziphora thread entries.
+* Introduction of Professor Shlomo Abramson.
+* Introduction of Eliezer Abramson.
+* Introduction of ATON-V8.
+* Population of symbols beyond the red coat.
+* Population of additional themes and mysteries.
+
+== Risks
+
+* Schema refinements may become necessary as additional entries are populated.
+* Relationships between entry types may require extension.
+* Additional templates may emerge from practical usage.
+
+== Next Milestone
+
+Complete the remaining Tziphora opening thread:
+
+* timeline-show-and-tell
+* character-teacher
+* symbol-red-coat
+* mystery-girl-in-red-coat
+* prov-0001-tziphora-opening-thread
+
+Candidate Version::
+
+* v0.5
+
+Proposed Name::
+
+* Tziphora Opening Established
+
+== Notes
+
+This checkpoint marks the first time the repository contains populated
+story elements rather than only infrastructure. The repository now
+begins to preserve the narrative itself.
+
+The discovery of "Night" serves as the narrative opening and as the
+first exercised thread through the canon ontology.
