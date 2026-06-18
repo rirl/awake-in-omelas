@@ -1,0 +1,38 @@
+= Script Conventions
+
+Repository automation scripts reside under:
+
+----
+scripts/
+----
+
+== Naming Conventions
+
+Bootstrap scripts:
+
+----
+canon-bootstrap-*.bash
+----
+
+Examples:
+
+* canon-bootstrap.bash
+* canon-bootstrap-templates.bash
+* canon-bootstrap-indexes.bash
+
+Operational scripts:
+
+----
+canon-*.bash
+----
+
+Examples:
+
+* canon-status.bash
+* canon-validate.bash
+* canon-checkpoint.bash
+* canon-report.bash
+
+Bootstrap scripts create repository structures.
+
+Operational scripts inspect and maintain repository state.
