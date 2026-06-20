@@ -1,0 +1,338 @@
+= ChatGPT MCP Tunnel Setup for Docker under WSL
+:toc:
+:sectnums:
+:source-highlighter: rouge
+
+== Purpose
+
+This document captures the current setup for connecting ChatGPT to a local MCP
+server running inside Docker under WSL Ubuntu using the OpenAI Secure MCP
+Tunnel.
+
+The current design separates two concerns:
+
+* Docker container launch is handled by `scripts/mcp/run-mcp.bash`.
+* ChatGPT connectivity is handled by the tunnel client and ChatGPT connector
+  configuration.
+
+The Docker launch design is fail-closed and requires explicit access mode
+selection: `readonly` or `readwrite`.
+
+== Architecture
+
+[source,text]
+----
+ChatGPT
+  -> OpenAI Secure MCP Tunnel
+  -> tunnel client in WSL Ubuntu
+  -> localhost-bound Docker port
+  -> Docker MCP container
+  -> /workspace/omelas
+  -> awake-in-omelas repository
+----
+
+== Required Shell Environment
+
+This setup assumes required variables are already defined in `.bashrc`,
+`.profile`, or another sourced shell file before any scripts are run.
+
+The OpenAI credential is also assumed to already be available in the shell
+environment.
+
+[source,bash]
+----
+export MCP="mcp/filesystem:latest"
+export MCP_CONTAINER_NAME="Omelas-MCP-"
+
+export MCP_HOST_PORT="8765"
+export MCP_CONTAINER_PORT="8000"
+
+export MCP_PROJECT_PATH="/home/landonr/projects/awake-in-omelas"
+export MCP_CONTAINER_WORKSPACE="/workspace/omelas"
+
+export MCP_PROFILE="omelas-local"
+export MCP_TUNNEL_ID="your-openai-tunnel-id"
+
+export MCP_PATH="/mcp"
+export MCP_SSE_PATH="/sse"
+
+export MCP_URL="http://127.0.0.1:${MCP_HOST_PORT}${MCP_PATH}"
+export MCP_SSE_URL="http://127.0.0.1:${MCP_HOST_PORT}${MCP_SSE_PATH}"
+
+export MCP_HEALTH_HOST="127.0.0.1"
+export MCP_HEALTH_PORT="60123"
+----
+
+Confirm values:
+
+[source,bash]
+----
+echo "${MCP}"
+echo "${MCP_CONTAINER_NAME}"
+echo "${MCP_PROJECT_PATH}"
+echo "${MCP_CONTAINER_WORKSPACE}"
+echo "${MCP_URL}"
+echo "${MCP_SSE_URL}"
+----
+
+== Step 1: Start the MCP Server Read-Only
+
+[source,bash]
+----
+scripts/mcp/run-readonly.bash
+----
+
+This invokes:
+
+[source,bash]
+----
+scripts/mcp/run-mcp.bash readonly
+----
+
+Expected derived values:
+
+[cols="1,1"]
+|===
+|Derived Value |Result
+
+|MCP_ACCESS_SUFFIX
+|RO
+
+|MCP_ACCESS_VOLUME
+|ro
+
+|MCP_CONTAINER_OPTIONS
+|--read-only
+
+|MCP_EFFECTIVE_CONTAINER_NAME
+|Omelas-MCP-RO
+|===
+
+== Step 2: Verify the Local MCP Server
+
+For Streamable HTTP:
+
+[source,bash]
+----
+curl -i "${MCP_URL}"
+----
+
+For SSE, if applicable:
+
+[source,bash]
+----
+curl -i "${MCP_SSE_URL}"
+----
+
+If needed:
+
+[source,bash]
+----
+docker logs Omelas-MCP-RO
+----
+
+== Step 3: Configure the Tunnel Client
+
+Initialize the tunnel profile against the local MCP server.
+
+[source,bash]
+----
+tunnel-client init \
+  --profile "${MCP_PROFILE}" \
+  --tunnel-id "${MCP_TUNNEL_ID}" \
+  --mcp-server-url "${MCP_URL}"
+----
+
+For SSE:
+
+[source,bash]
+----
+tunnel-client init \
+  --profile "${MCP_PROFILE}" \
+  --tunnel-id "${MCP_TUNNEL_ID}" \
+  --mcp-server-url "${MCP_SSE_URL}"
+----
+
+== Step 4: Validate Tunnel Configuration
+
+[source,bash]
+----
+tunnel-client doctor \
+  --profile "${MCP_PROFILE}" \
+  --explain
+----
+
+Expected result:
+
+* The tunnel client can reach the local MCP server.
+* No configuration errors are reported.
+
+== Step 5: Run the Tunnel Client
+
+[source,bash]
+----
+tunnel-client run \
+  --profile "${MCP_PROFILE}" \
+  --health.listen-addr "${MCP_HEALTH_HOST}:${MCP_HEALTH_PORT}"
+----
+
+Verify health:
+
+[source,bash]
+----
+curl "http://${MCP_HEALTH_HOST}:${MCP_HEALTH_PORT}/healthz"
+curl "http://${MCP_HEALTH_HOST}:${MCP_HEALTH_PORT}/readyz"
+----
+
+== Step 6: Configure ChatGPT
+
+. Open ChatGPT settings.
+. Open Connectors.
+. Enable Developer Mode if required.
+. Add the custom MCP connector.
+. Associate it with the OpenAI tunnel endpoint for `MCP_TUNNEL_ID`.
+. Connect the MCP app.
+. Begin with read-only operations.
+
+Suggested first prompt:
+
+[source,text]
+----
+List the available MCP tools from the Omelas server.
+Do not modify files.
+----
+
+== Step 7: End-to-End Verification
+
+[source,bash]
+----
+docker ps
+
+curl -i "${MCP_URL}"
+
+tunnel-client doctor \
+  --profile "${MCP_PROFILE}" \
+  --explain
+
+curl "http://${MCP_HEALTH_HOST}:${MCP_HEALTH_PORT}/readyz"
+----
+
+Then test from ChatGPT with a read-only request.
+
+== Optional Read-Write Access
+
+Read-write access must be explicit.
+
+The wrapper is intentionally not marked executable. Invoke it with `bash`:
+
+[source,bash]
+----
+bash scripts/mcp/run-readwrite.bash
+----
+
+This invokes:
+
+[source,bash]
+----
+scripts/mcp/run-mcp.bash readwrite
+----
+
+Expected derived values:
+
+[cols="1,1"]
+|===
+|Derived Value |Result
+
+|MCP_ACCESS_SUFFIX
+|RW
+
+|MCP_ACCESS_VOLUME
+|rw
+
+|MCP_CONTAINER_OPTIONS
+|empty
+
+|MCP_EFFECTIVE_CONTAINER_NAME
+|Omelas-MCP-RW
+|===
+
+Docker defaults container filesystems to writable when `--read-only` is omitted.
+The script still requires the explicit `readwrite` mode argument so writable
+access cannot happen by accident.
+
+Before read-write mode:
+
+[source,bash]
+----
+cd "${MCP_PROJECT_PATH}"
+git status
+git branch --show-current
+----
+
+Prefer using an isolated feature branch.
+
+== Troubleshooting
+
+=== Verify Container
+
+[source,bash]
+----
+docker ps -a
+docker logs Omelas-MCP-RO
+docker logs Omelas-MCP-RW
+----
+
+=== Verify Port Usage
+
+[source,bash]
+----
+ss -ltnp | grep "${MCP_HOST_PORT}"
+----
+
+=== Verify Endpoint
+
+[source,bash]
+----
+curl -i "${MCP_URL}"
+curl -i "${MCP_SSE_URL}"
+----
+
+=== Revalidate Tunnel
+
+[source,bash]
+----
+tunnel-client doctor \
+  --profile "${MCP_PROFILE}" \
+  --explain
+----
+
+== Security Principles
+
+[cols="1,3"]
+|===
+|✓ |Read-only by default
+|✓ |Read-write requires explicit opt-in
+|✓ |Localhost-only port binding
+|✓ |No new privileges
+|✓ |Repository mounted read-only in normal operation
+|✓ |Checkpoint before enabling writes
+|✓ |Use feature branches for write-enabled work
+|✓ |Fail closed on missing arguments, invalid modes, and empty variables
+|===
+
+== Final Working Shape
+
+[source,text]
+----
+scripts/mcp/run-readonly.bash
+  -> run-mcp.bash readonly
+  -> Omelas-MCP-RO
+  -> --read-only
+  -> volume :ro
+
+bash scripts/mcp/run-readwrite.bash
+  -> run-mcp.bash readwrite
+  -> Omelas-MCP-RW
+  -> no --read-only option
+  -> volume :rw
+----

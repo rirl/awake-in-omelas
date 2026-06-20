@@ -1,0 +1,58 @@
+= MCP Launch Scripts Checklist
+:toc:
+:sectnums:
+:source-highlighter: rouge
+
+== Checklist
+
+[cols="1,4"]
+|===
+|Done |Item
+
+|☐ |Confirm environment variables are sourced.
+|☐ |Confirm `MCP="mcp/filesystem:latest"`.
+|☐ |Confirm `MCP_CONTAINER_NAME="Omelas-MCP-"`.
+|☐ |Confirm project path points to the local repository.
+|☐ |Confirm container workspace is `/workspace/omelas`.
+|☐ |Install scripts under `scripts/mcp/`.
+|☐ |Mark `run-mcp.bash` executable.
+|☐ |Mark `run-readonly.bash` executable.
+|☐ |Ensure `run-readwrite.bash` is not executable.
+|☐ |Run read-only mode first.
+|☐ |Verify local MCP endpoint with `curl`.
+|☐ |Configure tunnel client.
+|☐ |Validate tunnel client.
+|☐ |Connect ChatGPT.
+|☐ |Test read-only end-to-end.
+|☐ |Use read-write mode only after checkpointing git.
+|===
+
+== Common Implementation
+
+[source,text]
+----
+run-readonly.bash
+  -> run-mcp.bash readonly
+
+run-readwrite.bash
+  -> run-mcp.bash readwrite
+----
+
+== Required Access Modes
+
+[cols="1,1,1,1"]
+|===
+|Argument |Suffix |Volume |Container Options
+
+|readonly
+|RO
+|ro
+|--read-only
+
+|readwrite
+|RW
+|rw
+|empty
+|===
+
+Any missing or invalid mode fails.

@@ -1,0 +1,146 @@
+= MCP Docker Run Scripts
+:toc:
+:sectnums:
+:source-highlighter: rouge
+
+== Purpose
+
+These scripts start the Omelas MCP filesystem server using `docker run`.
+
+The implementation is intentionally fail-closed:
+
+* `run-mcp.bash` requires an explicit access mode.
+* Valid access modes are exactly `readonly` and `readwrite`.
+* Missing, null, or empty required variables fail before Docker is invoked.
+* Read-write access must be requested explicitly.
+* The read-write wrapper should not be marked executable.
+
+== Required Environment
+
+The scripts assume these variables are already defined in `.bashrc`, `.profile`,
+or another sourced shell file before the scripts are run.
+
+[source,bash]
+----
+export MCP="mcp/filesystem:latest"
+export MCP_CONTAINER_NAME="Omelas-MCP-"
+export MCP_HOST_PORT="8765"
+export MCP_CONTAINER_PORT="8000"
+export MCP_PROJECT_PATH="/home/landonr/projects/awake-in-omelas"
+export MCP_CONTAINER_WORKSPACE="/workspace/omelas"
+----
+
+== Script Layout
+
+[source,text]
+----
+scripts/mcp/
+├── README.adoc
+├── run-mcp.bash
+├── run-readonly.bash
+└── run-readwrite.bash
+----
+
+== Access Modes
+
+[cols="1,1,1,1"]
+|===
+|Argument |Container Name |Container Options |Volume Access
+
+|readonly
+|Omelas-MCP-RO
+|--read-only
+|ro
+
+|readwrite
+|Omelas-MCP-RW
+|none
+|rw
+|===
+
+Docker defaults container filesystems and volumes to writable. This script does
+not rely on that behavior for user intent. The caller must still explicitly pass
+`readwrite` to request writable access.
+
+== Common Script
+
+`run-mcp.bash` is the only script that calls Docker directly.
+
+It derives these values from the access mode:
+
+[source,text]
+----
+MCP_ACCESS_SUFFIX
+MCP_ACCESS_VOLUME
+MCP_CONTAINER_OPTIONS
+MCP_EFFECTIVE_CONTAINER_NAME
+----
+
+== Wrapper Scripts
+
+`run-readonly.bash` invokes:
+
+[source,bash]
+----
+run-mcp.bash readonly
+----
+
+`run-readwrite.bash` invokes:
+
+[source,bash]
+----
+run-mcp.bash readwrite
+----
+
+== Permissions
+
+Mark only the common script and read-only wrapper executable.
+
+[source,bash]
+----
+chmod +x scripts/mcp/run-mcp.bash
+chmod +x scripts/mcp/run-readonly.bash
+chmod -x scripts/mcp/run-readwrite.bash
+----
+
+== Usage
+
+Read-only mode:
+
+[source,bash]
+----
+scripts/mcp/run-readonly.bash
+----
+
+Read-write mode:
+
+[source,bash]
+----
+bash scripts/mcp/run-readwrite.bash
+----
+
+Direct invocation is also allowed, but the mode must be explicit:
+
+[source,bash]
+----
+scripts/mcp/run-mcp.bash readonly
+bash scripts/mcp/run-mcp.bash readwrite
+----
+
+== Safety Notes
+
+Read-only mode is the default operational posture.
+
+Read-write mode remains available, but intentionally requires a more explicit
+command path when `run-readwrite.bash` is not executable.
+
+Before read-write mode, consider:
+
+[source,bash]
+----
+cd "${MCP_PROJECT_PATH}"
+git status
+git branch --show-current
+----
+
+Prefer running read-write mode only on an isolated feature branch.

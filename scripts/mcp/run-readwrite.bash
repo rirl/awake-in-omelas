@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-docker run -i --rm   --mount type=bind,src="$(pwd)",dst=/workspace/awake-in-omelas   mcp/filesystem   /workspace/awake-in-omelas
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+"${SCRIPT_DIR}/run-mcp.bash" readwrite

@@ -1,0 +1,35 @@
+= Bundle Manifest
+:toc:
+
+== Bundle
+
+Name: chatgpt-mcp-tunnel-bundle-v1
+
+== Contents
+
+[source,text]
+----
+docs/
+  chatgpt-mcp-tunnel-setup.adoc
+  mcp-launch-scripts-checklist.adoc
+
+artifacts/
+  chatgpt-mcp-tunnel-setup.png
+  mcp-launch-scripts-checklist.png
+  chatgpt-mcp-older-checklist.png
+
+scripts/mcp/
+  README.adoc
+  run-mcp.bash
+  run-readonly.bash
+  run-readwrite.bash
+----
+
+== Permission Intent
+
+[source,text]
+----
+scripts/mcp/run-mcp.bash        executable
+scripts/mcp/run-readonly.bash   executable
+scripts/mcp/run-readwrite.bash  not executable
+----
