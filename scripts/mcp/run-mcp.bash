@@ -1,64 +1,116 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-require_arg() {
-    local name="${1:?missing name}"
-    local value="${2:-}"
-
-    if [[ -z "${value}" ]]; then
-        echo "missing, null, or empty argument: ${name}" >&2
-        exit 1
-    fi
-}
-
-require_variable() {
-    local name="${1:?missing variable name}"
-    local value="${!name:-}"
-
-    if [[ -z "${value}" ]]; then
-        echo "missing, null, or empty environment variable: ${name}" >&2
-        exit 1
-    fi
-}
+declare -ra REQUIRED_VARIABLES=(
+    MCP
+    MCP_CONTAINER_NAME
+    MCP_CONTAINER_PORT
+    MCP_CONTAINER_WORKSPACE
+    MCP_HOST_PORT
+    MCP_PROJECT_PATH
+)
 
 ACCESS_MODE="${1:-}"
 
-require_arg ACCESS_MODE "${ACCESS_MODE}"
-
-require_variable MCP
-require_variable MCP_CONTAINER_NAME
-require_variable MCP_HOST_PORT
-require_variable MCP_CONTAINER_PORT
-require_variable MCP_PROJECT_PATH
-require_variable MCP_CONTAINER_WORKSPACE
-
-case "${ACCESS_MODE}" in
-    readonly)
-        MCP_ACCESS_SUFFIX="RO"
-        MCP_ACCESS_VOLUME="ro"
-        MCP_CONTAINER_OPTIONS=(--read-only)
-        ;;
-    readwrite)
-        MCP_ACCESS_SUFFIX="RW"
-        MCP_ACCESS_VOLUME="rw"
-        MCP_CONTAINER_OPTIONS=()
-        ;;
-    *)
-        echo "invalid ACCESS_MODE: ${ACCESS_MODE}" >&2
+validate_access_mode() {
+    if [[ -z "${ACCESS_MODE}" ]]; then
+        echo "missing, null, or empty argument: ACCESS_MODE" >&2
         echo "expected exactly one of: readonly, readwrite" >&2
         exit 1
-        ;;
-esac
+    fi
 
-require_arg MCP_ACCESS_SUFFIX "${MCP_ACCESS_SUFFIX}"
-require_arg MCP_ACCESS_VOLUME "${MCP_ACCESS_VOLUME}"
+    case "${ACCESS_MODE}" in
+        readonly)
+            declare -gr MCP_ACCESS_SUFFIX="RO"
+            declare -gr MCP_ACCESS_VOLUME="ro"
+            declare -gra MCP_CONTAINER_OPTIONS=(--read-only)
+            ;;
+        readwrite)
+            declare -gr MCP_ACCESS_SUFFIX="RW"
+            declare -gr MCP_ACCESS_VOLUME="rw"
+            declare -ga MCP_CONTAINER_OPTIONS=()
+            ;;
+        *)
+            echo "invalid ACCESS_MODE: ${ACCESS_MODE}" >&2
+            echo "expected exactly one of: readonly, readwrite" >&2
+            exit 1
+            ;;
+    esac
+}
 
-MCP_EFFECTIVE_CONTAINER_NAME="${MCP_CONTAINER_NAME}${MCP_ACCESS_SUFFIX}"
+validate_required_variables() {
+    local missing_count=0
+    local variable_name
+    local variable_value
+    local -a required_variables
 
-docker run --rm \
-    --name "${MCP_EFFECTIVE_CONTAINER_NAME}" \
-    "${MCP_CONTAINER_OPTIONS[@]}" \
-    --security-opt no-new-privileges:true \
-    -p "127.0.0.1:${MCP_HOST_PORT}:${MCP_CONTAINER_PORT}" \
-    -v "${MCP_PROJECT_PATH}:${MCP_CONTAINER_WORKSPACE}:${MCP_ACCESS_VOLUME}" \
-    "${MCP}"
+    mapfile -t required_variables < <(
+        printf '%s\n' "${REQUIRED_VARIABLES[@]}" | sort
+    )
+
+    echo
+    echo "Required environment variables"
+    echo "=============================="
+    echo
+
+    for variable_name in "${required_variables[@]}"; do
+        variable_value="${!variable_name:-}"
+
+        if [[ -z "${variable_value}" ]]; then
+            printf '%-32s : MISSING\n' "${variable_name}"
+            missing_count=$((missing_count + 1))
+        else
+            printf '%-32s : %s\n' "${variable_name}" "${variable_value}"
+        fi
+    done
+
+    echo
+
+    if (( missing_count > 0 )); then
+        echo "ERROR: ${missing_count} required environment variable(s) are missing." >&2
+        exit 1
+    fi
+}
+
+set_derived_values() {
+    declare -gr MCP_EFFECTIVE_CONTAINER_NAME="${MCP_CONTAINER_NAME}${MCP_ACCESS_SUFFIX}"
+}
+
+print_derived_values() {
+    echo
+    echo "Derived values"
+    echo "=============="
+    echo
+
+    printf '%-32s : %s\n' "ACCESS_MODE" "${ACCESS_MODE}"
+    printf '%-32s : %s\n' "MCP_ACCESS_SUFFIX" "${MCP_ACCESS_SUFFIX}"
+    printf '%-32s : %s\n' "MCP_ACCESS_VOLUME" "${MCP_ACCESS_VOLUME}"
+
+    if ((${#MCP_CONTAINER_OPTIONS[@]} == 0)); then
+        printf '%-32s : %s\n' "MCP_CONTAINER_OPTIONS" "none"
+    else
+        printf '%-32s : %s\n' "MCP_CONTAINER_OPTIONS" "${MCP_CONTAINER_OPTIONS[*]}"
+    fi
+
+    printf '%-32s : %s\n' "MCP_EFFECTIVE_CONTAINER_NAME" "${MCP_EFFECTIVE_CONTAINER_NAME}"
+    echo
+}
+
+run_container() {
+    set -x
+    docker run --rm -it \
+        --name "${MCP_EFFECTIVE_CONTAINER_NAME}" \
+        "${MCP_CONTAINER_OPTIONS[@]}" \
+        --security-opt no-new-privileges:true \
+        -p "127.0.0.1:${MCP_HOST_PORT}:${MCP_CONTAINER_PORT}" \
+        -v "${MCP_PROJECT_PATH}:${MCP_CONTAINER_WORKSPACE}:${MCP_ACCESS_VOLUME}" \
+        "${MCP}" \
+        ${MCP_CONTAINER_WORKSPACE}
+    set +x
+}
+
+validate_access_mode
+validate_required_variables
+set_derived_values
+print_derived_values
+run_container

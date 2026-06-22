@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="MCP Server Protocol Validation">
+  <testsuite name="mcp_server_filesystem_suite" tests="3" failures="3" errors="0">
+    <testcase classname="mcp.server.init" name="test_initialization">
+      <failure message="Missing expected 'protocolVersion' signature text"></failure>
+    </testcase>
+    <testcase classname="mcp.server.tools" name="test_list_directory">
+      <failure message="String evaluation indicates failure or unexpected structural properties"></failure>
+    </testcase>
+    <testcase classname="mcp.server.mutations" name="test_write_file">
+              <failure message="Target mutation missing. File 'mcp-write-test.txt' not generated inside workspace">Target mutation missing. File 'mcp-write-test.txt' not generated inside workspace. Output: </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
