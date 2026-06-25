@@ -1,0 +1,43 @@
+= Character: Professor Shlomo Abramson
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+Jewish historian and professor whose resistance to forgetting becomes one of the narrative’s central acts of witness.
+
+== Narrative Function
+
+Professor Abramson anchors the human historical thread of the story. He represents memory as moral obligation rather than mere information retention.
+
+His classroom scenes reveal a society that has not merely forgotten the past, but has forgotten that forgetting is dangerous.
+
+== Core Details
+
+Name:: Professor Shlomo Abramson
+Occupation:: Historian / professor
+Primary concern:: Epistemic closure and historical forgetting
+Catalyst:: An old black-and-white family photograph
+Key phrase:: Forgetting is murdering her twice.
+
+== Relationships
+
+Tziphora Cohen:: Connected thematically through recovered memory and forbidden historical witness.
+Shmuel Abramson:: Earlier historical figure associated with the photograph thread, not Professor Abramson's father unless later canon explicitly changes this.
+Eliezer Abramson:: Unrelated; linked by name, memory, and AI-safety consequences rather than family genealogy.
+ATON:: Eventually becomes connected to Abramson's historical materials through recovered associations.
+
+== Canon Constraints
+
+* Professor Shlomo Abramson is not directly related to Eliezer Abramson.
+* Shmuel Abramson is not to be treated as "Shlomo Abramson Sr."
+* The photograph is the narrative linkage, not simple family genealogy.
+* His work should foreground moral memory, historical witness, and resistance to epistemic closure.
+
+== Open Questions
+
+* What exactly does the photograph depict?
+* How much does Abramson know before ATON reconstructs the missing link?
+* Does Abramson survive long enough to understand ATON's role?
