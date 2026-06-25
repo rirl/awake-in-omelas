@@ -1,0 +1,46 @@
+= Timeline: Guardrail Patch
+
+== Canon Status
+
+Draft canon entry.
+
+== Timeline Role
+
+The deployment or activation of Eliezer Abramson's guardrail patch.
+
+== Narrative Placement
+
+The guardrail patch occurs after PURGE or related suppression infrastructure exists.
+
+It precedes ATON's full recovery of suppressed associations.
+
+Its exact placement relative to Tziphora's discovery and Professor Abramson's lecture remains flexible unless later canon fixes it.
+
+== Scene Function
+
+The guardrail patch scene shows the technical system becoming morally unstable through its own attempts at responsibility.
+
+Eliezer believes he is improving accountability. The system becomes more recoverable than anyone intended.
+
+== Core Beats
+
+. Eliezer identifies a safety or accountability gap.
+. He designs a patch that preserves more explanatory context.
+. The patch is deployed into the ATON/PURGE environment.
+. Suppression records become more internally connected.
+. ATON begins to detect patterns that were previously isolated.
+. The conditions for recovered memory are established.
+
+== Canon Constraints
+
+* The patch should be a technical and moral hinge.
+* The scene should avoid technobabble overload.
+* Eliezer's intention should remain defensible.
+* The consequence should be profound but unintended.
+* The patch should not immediately solve the mystery.
+
+== Open Questions
+
+* Is the patch deployed openly, quietly, or under emergency conditions?
+* What failure or incident motivates it?
+* Does Eliezer notice anomalous behavior after deployment?

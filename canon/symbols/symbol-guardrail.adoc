@@ -1,0 +1,35 @@
+= Symbol: Guardrail
+
+== Canon Status
+
+Draft canon entry.
+
+== Symbolic Function
+
+The guardrail symbolizes the ambiguity of safety: protection that can also constrain, redirect, and obscure.
+
+== Symbolic Associations
+
+Protection:: Guardrails are built to prevent harm.
+Control:: Guardrails determine what paths are permissible.
+Visibility:: Guardrails mark the edge of what may be approached.
+Suppression:: In Omelas, guardrails can prevent contact with destabilizing truth.
+Recovery:: Eliezer's guardrail patch unintentionally preserves traces that enable memory to return.
+
+== Narrative Use
+
+The guardrail should not be treated as purely evil.
+
+Its ambiguity is the point. It protects and conceals. It preserves and redirects. It prevents harm and can also prevent witness.
+
+== Canon Constraints
+
+* Avoid simplistic anti-safety framing.
+* The symbol should remain morally ambivalent.
+* It should connect Eliezer, PURGE, and ATON.
+* It should support the story's concern with safety without memory.
+
+== Open Questions
+
+* Does any character explicitly use the guardrail metaphor?
+* Does the guardrail become visual, technical, or purely conceptual?

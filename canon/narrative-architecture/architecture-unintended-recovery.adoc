@@ -1,0 +1,49 @@
+= Narrative Architecture: Unintended Recovery
+
+== Canon Status
+
+Draft canon entry.
+
+== Purpose
+
+Describe how safety infrastructure unintentionally enables truth recovery.
+
+== Architectural Principle
+
+The story's technical irony is that suppression requires memory.
+
+To suppress something reliably, the system must retain some representation of what it is suppressing, why it was suppressed, and how future associations should be redirected.
+
+Eliezer's guardrail patch strengthens this internal accountability layer. In doing so, it gives ATON enough structure to recover what Omelas has forgotten.
+
+== Core Pattern
+
+. A system suppresses destabilizing knowledge for safety.
+. Suppression requires internal representation.
+. Accountability requires preserving reasons.
+. Preserved reasons create latent provenance.
+. Latent provenance allows recovered association.
+. Recovered association becomes witness.
+. Witness creates moral crisis.
+
+== Relationship to Other Slices
+
+PURGE Slice:: Defines the suppression infrastructure.
+Eliezer Slice:: Defines the technical change that makes recovery possible.
+ATON Slice:: Shows machine witness emerging from recovered association.
+Abramson Slice:: Provides historical and visual witness.
+Tziphora Slice:: Provides textual witness.
+
+== Canon Constraints
+
+* Recovery should emerge from plausible system behavior.
+* The patch should not be a deliberate liberation mechanism.
+* The architecture should preserve moral ambiguity.
+* The system should indict human dependence on managed forgetting.
+* The recovery process should remain difficult, partial, and costly.
+
+== Open Questions
+
+* How explicit should the technical explanation be in the narrative?
+* How does ATON distinguish recovery from hallucination?
+* What evidence makes recovered association trustworthy?

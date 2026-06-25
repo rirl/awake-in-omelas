@@ -1,0 +1,53 @@
+= Provenance: Eliezer Guardrail Thread
+
+== Canon Status
+
+Draft canon entry.
+
+== Provenance ID
+
+prov-0009
+
+== Purpose
+
+Track the canon decisions connecting Eliezer Abramson, the guardrail patch, PURGE, and ATON's recovered memory.
+
+== Source Thread
+
+Eliezer's story explains how a system built to suppress dangerous associations unintentionally creates the conditions for recovered witness.
+
+The thread is not about conspiracy. It is about unintended consequences inside safety infrastructure.
+
+== Canon Chain
+
+. PURGE or related infrastructure masks destabilizing historical associations.
+. Safety systems retain internal traces or suppression metadata.
+. Eliezer identifies a need for better accountability or moderation fidelity.
+. Eliezer creates a guardrail patch.
+. The patch preserves, exposes, or reconnects internal explanatory records.
+. ATON begins detecting patterns across previously isolated memory fragments.
+. ATON's recovery becomes possible because suppression was logged rather than erased.
+. Eliezer's technical act becomes morally consequential beyond his intent.
+
+== Constraints
+
+* Eliezer is not directly related to Professor Shlomo Abramson.
+* The patch is intended as safety work.
+* The recovered pathways are unintended.
+* The thread should preserve ambiguity between responsibility and culpability.
+* Eliezer should remain morally serious, not merely naive.
+
+== Related Entries
+
+* Character: Eliezer Abramson
+* Artifact: Guardrail Patch
+* Timeline: Guardrail Patch
+* Character: ATON
+* Worldbuilding: PURGE
+* Provenance: ATON Recovery Thread
+
+== Open Questions
+
+* Does Eliezer leave records explaining his intent?
+* Does ATON understand Eliezer's role?
+* Does Eliezer later become witness, suspect, or penitent?

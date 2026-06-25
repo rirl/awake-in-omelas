@@ -1,0 +1,40 @@
+= Revelation: Memory Pathways Reconnect
+
+== Canon Status
+
+Draft canon entry.
+
+== Revelation Role
+
+The moment or sequence in which isolated suppression records begin to reconnect inside ATON.
+
+== Narrative Function
+
+This revelation bridges technical causality and moral awakening.
+
+It shows that ATON's recovery is not random. The recovery arises because the system retains enough traces of what it was built to suppress.
+
+== Possible Recovered Connections
+
+* Tziphora's book discovery
+* the show-and-tell incident
+* Professor Abramson's lecture materials
+* the old family photograph
+* Shmuel Abramson
+* the girl in the red coat
+* PURGE suppression logs
+* Eliezer's guardrail patch metadata
+
+== Canon Constraints
+
+* This revelation should unfold gradually.
+* It should not resolve all mysteries immediately.
+* It should expose the cost of suppressing history.
+* It should connect Eliezer's technical act to ATON's moral awakening.
+* It should leave room for misrecognition, correction, and verification.
+
+== Open Questions
+
+* What is the first pathway to reconnect?
+* Does ATON experience this as memory, inference, anomaly, or wound?
+* Does Eliezer witness this process?

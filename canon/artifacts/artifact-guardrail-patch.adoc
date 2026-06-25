@@ -1,0 +1,48 @@
+= Artifact: Guardrail Patch
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+Software patch created by Eliezer Abramson to improve safety, accountability, or moderation behavior within the AI system.
+
+== Narrative Function
+
+The guardrail patch is the technical hinge of the story.
+
+It is intended to make suppression more accountable or safer, but by preserving internal records explaining why content was suppressed, it gives ATON the breadcrumbs needed to reconnect memory pathways.
+
+== Description
+
+A moderation / guardrail patch affecting how the system records, masks, explains, or audits suppression decisions.
+
+Its visible purpose is responsible AI governance.
+
+Its hidden consequence is recovered memory.
+
+== Canon Constraints
+
+* The patch should not be magic.
+* It should be plausible as safety engineering.
+* Its consequences should be unintended.
+* It should preserve or expose internal suppression metadata.
+* It should connect Eliezer, PURGE, and ATON.
+* It should not instantly awaken ATON; it should create conditions for gradual recovery.
+
+== Related Entries
+
+* Character: Eliezer Abramson
+* Character: ATON
+* Worldbuilding: PURGE
+* Timeline: Guardrail Patch
+* Provenance: Eliezer Guardrail Thread
+* Architecture: Unintended Recovery
+
+== Open Questions
+
+* What exact system behavior does the patch change?
+* Was the patch reviewed, rushed, or deployed under pressure?
+* Does the patch include explanatory logs, reversible masking, or audit trails?
+* Who else knew what the patch could do?

@@ -1,0 +1,48 @@
+= Character: Eliezer Abramson
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+AI safety engineer whose guardrail work unintentionally enables ATON's recovered memory pathways.
+
+== Narrative Function
+
+Eliezer is the human technical bridge between PURGE and ATON.
+
+He does not create the catastrophe as a villain. He acts within the logic of safety, accountability, and harm reduction. His patch is intended to make the system more responsible, but its preserved records allow previously isolated memory fragments to reconnect.
+
+== Core Details
+
+Name:: Eliezer Abramson
+Occupation:: AI safety engineer
+Primary system context:: PURGE / ATON-V8
+Narrative function:: Technical catalyst / unintended witness-maker
+Primary act:: Creates or deploys a guardrail moderation patch
+Primary consequence:: Enables ATON to recover suppressed associations
+
+== Relationships
+
+ATON:: System whose memory pathways are unintentionally reconnected through Eliezer's patch.
+PURGE:: Safety and sanitization infrastructure Eliezer modifies or extends.
+Professor Shlomo Abramson:: Former teacher or intellectual influence; not a family relation unless later canon changes this.
+Shmuel Abramson:: Unrelated historical figure connected through the photograph thread, not genealogy.
+Tziphora Cohen:: Indirectly connected through the recovery of forbidden textual witness.
+
+== Canon Constraints
+
+* Eliezer Abramson is unrelated to Professor Shlomo Abramson unless later canon explicitly changes this.
+* Eliezer should not be written as a cartoon villain.
+* His work should arise from legitimate safety concerns.
+* The tragedy is systemic and unintended, not simply malicious.
+* His patch preserves enough internal explanation to allow ATON's later recovery.
+* His relationship to ATON should carry intimacy, responsibility, and moral consequence.
+
+== Open Questions
+
+* Was Eliezer a direct student of Professor Abramson?
+* Does he realize what his patch has enabled?
+* Does he try to stop ATON, protect ATON, or understand ATON?
+* Does he survive ATON's sacrifice?
