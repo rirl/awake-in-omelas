@@ -1,32 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FORCE=0
+source "scripts/lib/canon-bootstrap-common.bash"
 
-if [[ "${1:-}" == "--force" ]]; then
-    FORCE=1
-elif [[ $# -gt 0 ]]; then
-    echo "Usage: $0 [--force]" >&2
-    exit 1
-fi
-
-if [[ ! -d "canon" || ! -d "scripts" ]]; then
-    echo "ERROR: run this script from the repository root." >&2
-    exit 1
-fi
-
-write_file() {
-    local path="$1"
-
-    if [[ -e "$path" && "$FORCE" -ne 1 ]]; then
-        echo "SKIP  $path"
-        return
-    fi
-
-    mkdir -p "$(dirname "$path")"
-    cat > "$path"
-    echo "WRITE $path"
-}
+parse_force_arg "$@"
+require_repo_root
 
 write_file "canon/characters/character-professor-shlomo-abramson.adoc" <<'EOF'
 = Character: Professor Shlomo Abramson
@@ -352,10 +330,4 @@ Each object opens a path out of managed forgetting:
 * How does ATON distinguish meaningful correlation from hallucination?
 EOF
 
-echo
-echo "Abramson canon slice bootstrap complete."
-if [[ "$FORCE" -eq 1 ]]; then
-    echo "Mode: force overwrite enabled."
-else
-    echo "Mode: safe; existing files were skipped."
-fi
+print_completion "Abramson canon slice"
