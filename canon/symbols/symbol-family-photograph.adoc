@@ -1,0 +1,38 @@
+= Symbol: Family Photograph
+
+== Canon Status
+
+Draft canon entry.
+
+== Symbolic Function
+
+The family photograph symbolizes memory made material.
+
+It is a witness-object: fragile, ordinary, and resistant to the flattening effects of sanitized information.
+
+== Symbolic Associations
+
+Memory:: The photograph preserves a trace that outlives official interpretive systems.
+Witness:: It testifies silently before anyone knows how to read it.
+Embodiment:: It reminds the story that history happened to bodies, families, and faces.
+Provenance:: It anchors a chain of recovery.
+Resistance:: It resists the reduction of persons to acceptable abstractions.
+
+== Narrative Use
+
+The photograph should appear simple before it appears significant.
+
+Its power should emerge through repetition, correlation, and reinterpretation rather than exposition.
+
+== Canon Constraints
+
+* Do not make the photograph a magical object.
+* Its power comes from witness, not supernatural mechanics.
+* Its meaning should depend on context and recovered relationships.
+* It should remain connected to Professor Abramson, Shmuel Abramson, and ATON's later reconstruction.
+
+== Related Entries
+
+* Artifact: Old Family Photograph
+* Provenance: Abramson Photograph Thread
+* Architecture: Memory Through Image

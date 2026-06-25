@@ -1,0 +1,42 @@
+= Timeline: Professor Abramson Lecture
+
+== Canon Status
+
+Draft canon entry.
+
+== Timeline Role
+
+A teaching scene in which Professor Shlomo Abramson attempts to preserve historical memory in a culture increasingly unable or unwilling to receive it.
+
+== Narrative Placement
+
+The lecture belongs to the human historical thread and may occur before the full implications of PURGE are visible.
+
+Its exact placement relative to Tziphora's discovery and ATON's later reconstruction remains flexible unless later canon fixes it.
+
+== Scene Function
+
+The lecture dramatizes epistemic closure at the human level.
+
+Professor Abramson speaks as though facts still matter, but the classroom atmosphere reveals that the society's ability to respond morally to history has been damaged.
+
+== Core Elements
+
+Subject:: Eastern Front / 1944 / historical atrocity and forgetting
+Speaker:: Professor Shlomo Abramson
+Audience:: Students formed by a sanitized informational environment
+Key tension:: Memory as witness versus history as inert content
+Possible refrain:: "And so it goes."
+
+== Canon Constraints
+
+* The scene should not over-explain PURGE.
+* The students' failure should feel ordinary rather than villainous.
+* The lecture should reveal a culture of forgetting without requiring conspiracy.
+* Professor Abramson should not be portrayed as omniscient; he is resisting a system he does not fully understand.
+
+== Open Questions
+
+* What exact historical event is being discussed?
+* Which student or listener becomes important later, if any?
+* Does Eliezer Abramson have a past connection to this lecture or professor?

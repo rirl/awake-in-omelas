@@ -1,0 +1,49 @@
+= Provenance: Abramson Photograph Thread
+
+== Canon Status
+
+Draft canon entry.
+
+== Provenance ID
+
+prov-0002
+
+== Purpose
+
+Track the chain of narrative knowledge centered on the old family photograph associated with Professor Shlomo Abramson and Shmuel Abramson.
+
+== Source Thread
+
+This provenance thread captures the movement from physical artifact to historical inquiry to AI-assisted recovery.
+
+The photograph is not merely evidence. It is a memory-bearing object whose meaning changes as more suppressed or forgotten context becomes available.
+
+== Canon Chain
+
+. Professor Shlomo Abramson possesses or studies the old photograph.
+. The photograph points backward to a pre-war historical layer.
+. Shmuel Abramson is connected to this older layer.
+. The photograph becomes part of a wider web of historical witness.
+. ATON eventually correlates visual, textual, and archival fragments.
+. The recovered associations challenge Omelas's sanitized historical model.
+
+== Constraints
+
+* Do not collapse this thread into simple family genealogy.
+* Do not treat Shmuel as Professor Abramson's father unless later canon explicitly changes this.
+* Preserve the photograph as a provenance anchor.
+* Preserve uncertainty where the canon has not yet resolved exact relationships.
+
+== Related Entries
+
+* Artifact: Old Family Photograph
+* Character: Professor Shlomo Abramson
+* Character: Shmuel Abramson
+* Symbol: Family Photograph
+* Architecture: Memory Through Image
+
+== Open Questions
+
+* What is the first point at which ATON encounters this photograph or a derivative reference?
+* What other records does ATON use to interpret it?
+* Does the photograph survive physically, digitally, or both?

@@ -1,0 +1,52 @@
+= Narrative Architecture: Memory Through Image
+
+== Canon Status
+
+Draft canon entry.
+
+== Purpose
+
+Describe how images function as memory-bearing structures within the story.
+
+== Architectural Principle
+
+In Awake in Omelas, images are not merely illustrations. They are sites of provenance.
+
+A photograph can preserve relationships that language, metadata, and institutional memory have failed to protect.
+
+== Core Pattern
+
+. A visual artifact appears ordinary.
+. Its context is partial or misunderstood.
+. Later evidence reframes the image.
+. The image becomes a bridge between separated historical layers.
+. The recovered meaning destabilizes the sanitized narrative order.
+
+== Abramson Application
+
+The old family photograph links Professor Shlomo Abramson's moral concern with the pre-war historical layer represented by Shmuel Abramson.
+
+The photograph may later become part of ATON's associative reconstruction, allowing the AI to connect faces, names, fragments, and suppressed histories that human systems have failed to preserve.
+
+== Relationship to Tziphora Slice
+
+Tziphora's discovery of the forbidden book and Abramson's photograph both function as material interruptions.
+
+Each object opens a path out of managed forgetting:
+
+* Tziphora encounters textual witness.
+* Abramson preserves visual witness.
+* ATON later correlates fragmentary witness across systems.
+
+== Canon Constraints
+
+* Images should not function as easy answers.
+* Interpretation must remain historically and morally difficult.
+* Recovered meaning should increase responsibility, not merely solve a puzzle.
+* The architecture should support the larger themes of memory, witness, epistemic closure, and sacrifice.
+
+== Open Questions
+
+* How many image-based artifacts should the canon include?
+* Does the girl in the red coat connect visually to the Abramson photograph?
+* How does ATON distinguish meaningful correlation from hallucination?

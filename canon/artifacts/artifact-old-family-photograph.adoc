@@ -1,0 +1,43 @@
+= Artifact: Old Family Photograph
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+A black-and-white photograph that becomes a material anchor for memory, witness, and historical recovery.
+
+== Narrative Function
+
+The photograph functions as a stubborn remnant: a physical object that resists total abstraction into sanitized data.
+
+It links Professor Shlomo Abramson's historical concern to the older pre-war world represented by Shmuel Abramson. Later, it becomes part of the associative chain through which ATON begins reconstructing suppressed or forgotten historical relationships.
+
+== Description
+
+A worn black-and-white family photograph kept among Professor Abramson's materials.
+
+Its exact contents remain partially unresolved, but it should feel ordinary at first: the kind of photograph that survives because someone could not bear to throw it away.
+
+== Canon Constraints
+
+* The photograph is the linkage between Professor Abramson and Shmuel Abramson.
+* The linkage is not currently defined as direct father-son genealogy.
+* The photograph should remain narratively powerful because it is concrete, fragile, and interpretable.
+* The photograph should connect to memory, witness, provenance, and recovered historical identity.
+
+== Related Entries
+
+* Character: Professor Shlomo Abramson
+* Character: Shmuel Abramson
+* Symbol: Family Photograph
+* Provenance: Abramson Photograph Thread
+* Architecture: Memory Through Image
+
+== Open Questions
+
+* Who appears in the photograph?
+* Where was it taken?
+* How does ATON correlate the photograph with later recovered images or records?
+* Is the girl in the red coat connected visually, historically, or thematically?
