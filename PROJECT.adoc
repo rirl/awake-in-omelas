@@ -1,0 +1,161 @@
+= KIOS
+:toc:
+:sectnums:
+:imagesdir: artifacts/visualizations/2026
+
+image::kios-system-light-theme.png[KIOS System Overview,align="center"]
+
+[quote]
+____
+*Knowledge • Integrity • Order • Story*
+
+"We do not merely tell stories. We build the structure that keeps them true."
+____
+
+== What is KIOS?
+
+KIOS (Knowledge • Integrity • Order • Story) is a provenance-first,
+Git-native framework for organizing knowledge into a living canonical
+repository.
+
+Originally developed to support complex narrative fiction, KIOS has
+evolved into a general-purpose architecture for preserving knowledge
+across multiple domains while maintaining traceability, integrity,
+and historical context.
+
+Rather than treating knowledge as isolated documents, KIOS models
+relationships between people, ideas, events, evidence, insights,
+and provenance as first-class canonical entities.
+
+== Why?
+
+Traditional repositories preserve files.
+
+KIOS preserves knowledge.
+
+Every canonical element has:
+
+* a unique identity
+* explicit relationships
+* complete provenance
+* immutable history
+* human-readable representation
+* AI-friendly structure
+
+The result is a repository where knowledge remains connected,
+auditable, and discoverable over time.
+
+== Core Principles
+
+* **Provenance over Assumption** — Every assertion has an origin.
+* **Canon over Convenience** — One authoritative representation.
+* **Integrity over Immediacy** — Verification before publication.
+* **Structure over Sprawl** — Relationships are explicit.
+* **Story over All** — Preserve meaning, not merely information.
+
+== Architecture
+
+image::fiction-nonfiction-mapping.png[Domain Mapping]
+
+KIOS separates *domain vocabulary* from *canonical structure*.
+
+Whether managing:
+
+* narrative fiction
+* history
+* theology
+* philosophy
+* scientific research
+* software documentation
+* personal knowledge
+
+the underlying canonical architecture remains the same.
+
+== Canonical Data Model
+
+image::kios-data-model.png[Canonical Data Model]
+
+Knowledge is represented through interconnected canonical entities rather
+than isolated files.
+
+This enables humans, automation, and AI to reason over the same
+structured corpus while preserving complete provenance.
+
+== AI Integration
+
+image::ai-data-model-relationships.png[AI Relationship Model]
+
+AI is treated as an augmentation layer rather than the source of truth.
+
+The canonical repository remains authoritative while AI assists with:
+
+* relationship discovery
+* semantic analysis
+* consistency checking
+* timeline inference
+* insight generation
+* knowledge curation
+
+== Git-Native by Design
+
+image::api-git-native-architecture.png[Git Native Architecture]
+
+KIOS intentionally stores canonical knowledge directly in Git.
+
+Git provides:
+
+* version history
+* auditability
+* collaboration
+* checkpointing
+* provenance
+* long-term durability
+
+No specialized database is required.
+
+== Documentation
+
+Additional documentation is located under:
+
+----
+docs/
+----
+
+including architecture, design philosophy, schemas,
+domain models, and implementation details.
+
+== Project Status
+
+KIOS is currently under active development.
+
+Current areas of focus include:
+
+* Canon infrastructure
+* Provenance model
+* Domain convergence
+* Git-native architecture
+* AI-assisted knowledge management
+* Cross-domain canonical modeling
+
+== Vision
+
+KIOS is an attempt to build a canonical operating system for knowledge.
+
+Different domains.
+
+Different vocabularies.
+
+One underlying structure.
+
+One canonical truth.
+
+'''
+
+[quote]
+____
+Nothing is assumed.
+
+Everything is connected.
+
+Truth worth preserving.
+____

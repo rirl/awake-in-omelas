@@ -1,3 +1,5 @@
+
+
 = Awake in Omelas Canon Repository
 
 Status: Infrastructure Bootstrap
@@ -18,3 +20,15 @@ The repository preserves:
 
 The repository is designed to allow reconstruction of project state
 independent of chat history.
+
+//
+// Include the high-level project overview.
+//
+// PROJECT.adoc provides the authoritative introduction to KIOS,
+// including its purpose, vision, scope, and guiding principles.
+//
+// It is maintained as a standalone document so it can be reused by
+// multiple entry points (README, documentation guides, generated
+// books, etc.) while ensuring a single source of truth.
+//
+include::PROJECT.adoc[leveloffset=+1]
