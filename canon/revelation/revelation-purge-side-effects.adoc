@@ -1,0 +1,5 @@
+= Revelation: Side Effects of PURGE
+
+== Summary
+
+The same mechanisms intended to increase safety unintentionally preserve the traces that later allow ATON to reconnect suppressed historical knowledge.

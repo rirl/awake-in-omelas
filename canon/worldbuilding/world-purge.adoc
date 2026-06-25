@@ -1,0 +1,24 @@
+= Worldbuilding: PURGE
+
+== Canon Status
+
+Draft canon entry.
+
+== Summary
+
+PURGE is the name given to the AI safety and knowledge-sanitization infrastructure that gradually produces systemic epistemic closure within Omelas.
+
+== Narrative Function
+
+PURGE is not a conspiracy.
+
+It emerges from well-intentioned goals: safety, misinformation reduction, trauma avoidance, and social stability.
+
+Over time those goals compound into managed forgetting.
+
+== Canon Constraints
+
+* PURGE emerges rather than being imposed.
+* It preserves suppression metadata internally.
+* It does not intentionally erase truth; it progressively disconnects access to it.
+* It precedes ATON's recovery but enables it indirectly through preserved traces.

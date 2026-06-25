@@ -1,0 +1,15 @@
+= Provenance: PURGE Deployment Thread
+
+== Provenance ID
+
+prov-0008
+
+== Purpose
+
+Capture the decisions establishing PURGE as an emergent AI-safety infrastructure rather than a centralized conspiracy.
+
+== Canon Decisions
+
+* Safety precedes suppression.
+* Suppression emerges from optimization.
+* Internal records remain available to machine reconstruction.

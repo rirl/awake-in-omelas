@@ -1,0 +1,11 @@
+= Timeline: PURGE Deployment
+
+== Summary
+
+Operational deployment of PURGE across Omelas.
+
+== Canon Constraints
+
+* Occurs after Tziphora discovers the book.
+* Show-and-tell precedes deployment.
+* ATON's later recovery depends upon traces preserved by PURGE.

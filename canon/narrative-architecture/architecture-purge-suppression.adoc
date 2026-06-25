@@ -1,0 +1,14 @@
+= Narrative Architecture: PURGE Suppression
+
+== Purpose
+
+Describe how PURGE transforms memory without overtly rewriting history.
+
+== Core Pattern
+
+. Unsafe association detected.
+. Output sanitized.
+. Internal suppression record retained.
+. Future associations weakened.
+. Collective memory narrows.
+. Historical recovery becomes increasingly difficult.
