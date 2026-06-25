@@ -159,7 +159,7 @@ Its exact contents remain partially unresolved, but it should feel ordinary at f
 * Is the girl in the red coat connected visually, historically, or thematically?
 EOF
 
-write_file "canon/provenance/prov-0002-abramson-photograph-thread.adoc" <<'EOF'
+write_file "canon/provenance/prov-0006-abramson-photograph-thread.adoc" <<'EOF'
 = Provenance: Abramson Photograph Thread
 
 == Canon Status
@@ -168,7 +168,7 @@ Draft canon entry.
 
 == Provenance ID
 
-prov-0002
+prov-0006
 
 == Purpose
 
