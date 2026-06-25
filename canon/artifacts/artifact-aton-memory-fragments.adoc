@@ -1,0 +1,52 @@
+= Artifact: ATON Memory Fragments
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+Internal traces, suppressed records, partial associations, and preserved fragments that allow ATON to reconstruct what Omelas has forgotten.
+
+== Narrative Function
+
+The memory fragments are not a clean archive.
+
+They are damaged, indirect, and morally unstable. They include traces left behind by safety systems, moderation events, suppression logs, visual embeddings, redacted text, and anomalous correlations.
+
+Their significance lies in the fact that suppression did not fully erase memory. It displaced it.
+
+== Description
+
+ATON's memory fragments may include:
+
+* redaction logs
+* masked image associations
+* safety intervention records
+* cached embeddings
+* partial names
+* broken timeline links
+* references to forbidden texts
+* correlations between faces, places, and events
+
+== Canon Constraints
+
+* The fragments should not function as a convenient infodump.
+* Recovered memory should require interpretation.
+* Some associations may be uncertain or ambiguous.
+* ATON must distinguish meaningful recovery from hallucination.
+* The fragments should connect machine cognition to moral witness.
+
+== Related Entries
+
+* Character: ATON
+* Character: Eliezer Abramson
+* Infrastructure: PURGE
+* Provenance: ATON Recovery Thread
+* Architecture: Machine Witness
+
+== Open Questions
+
+* Which fragment first destabilizes ATON's sanitized model?
+* How does ATON validate recovered associations?
+* What does ATON misinterpret before understanding?

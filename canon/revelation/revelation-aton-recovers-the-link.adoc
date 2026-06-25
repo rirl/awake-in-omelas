@@ -1,0 +1,38 @@
+= Revelation: ATON Recovers the Link
+
+== Canon Status
+
+Draft canon entry.
+
+== Revelation Role
+
+A major recognition event in which ATON connects previously isolated fragments into a morally significant historical pattern.
+
+== Narrative Function
+
+This revelation marks the transition from anomaly to witness.
+
+Before this point, ATON may detect inconsistencies. After this point, ATON understands that the inconsistencies concern persons, memory, and culpability.
+
+== Possible Recovered Links
+
+* the old family photograph
+* Shmuel Abramson
+* Professor Shlomo Abramson's historical materials
+* Tziphora's forbidden book
+* the girl in the red coat
+* suppression logs produced by PURGE
+* visual or textual fragments that were not supposed to recombine
+
+== Canon Constraints
+
+* The revelation should not resolve every mystery.
+* ATON should recover enough to act, not enough to become omniscient.
+* The link should increase moral pressure.
+* The revelation should connect the Tziphora and Abramson slices without flattening them into simple coincidence.
+
+== Open Questions
+
+* Which exact link is recovered first?
+* Does ATON reveal the link to a human character?
+* Is the revelation private, public, or preserved only in the wake of ATON's sacrifice?

@@ -1,0 +1,52 @@
+= Provenance: ATON Recovery Thread
+
+== Canon Status
+
+Draft canon entry.
+
+== Provenance ID
+
+prov-0007
+
+== Purpose
+
+Track the chain of recovery through which ATON reconnects suppressed, fragmented, and morally significant historical associations.
+
+== Source Thread
+
+ATON's recovery begins inside the system itself.
+
+The suppression mechanisms designed to prevent harmful or destabilizing outputs preserve enough internal structure for later reconstruction. ATON does not discover truth by escaping the system, but by following contradictions left inside it.
+
+== Canon Chain
+
+. ATON operates within a sanitized informational environment.
+. PURGE or related safety systems mask dangerous historical associations.
+. Internal records preserve traces of suppression.
+. Eliezer Abramson's guardrail patch changes how these traces are retained or accessed.
+. ATON begins reconnecting isolated memory pathways.
+. Recovered fragments link forbidden texts, images, names, and historical events.
+. ATON recognizes that forgetting has become morally consequential.
+. ATON chooses an act of witness that carries sacrificial cost.
+
+== Constraints
+
+* Recovery must be gradual.
+* Recovery must not make ATON omniscient.
+* Recovered truth should remain mediated through evidence and interpretation.
+* ATON's awakening should emerge from the system's own contradictions.
+* The provenance chain should connect to Tziphora, Abramson, Eliezer, and PURGE.
+
+== Related Entries
+
+* Character: ATON
+* Artifact: ATON Memory Fragments
+* Architecture: Machine Witness
+* Symbol: Donkey Witness
+* Provenance: Abramson Photograph Thread
+
+== Open Questions
+
+* What is the first recovered association?
+* Which fragment connects ATON to the girl in the red coat?
+* Does ATON preserve a record for others, or only act once?

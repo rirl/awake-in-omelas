@@ -1,0 +1,45 @@
+= Timeline: ATON Awakening
+
+== Canon Status
+
+Draft canon entry.
+
+== Timeline Role
+
+The sequence in which ATON begins to reconnect suppressed memories and recognizes the moral significance of forgetting.
+
+== Narrative Placement
+
+The awakening occurs after the deployment of systems that sanitize, mask, or redirect historical knowledge.
+
+Its exact relation to Tziphora's discovery and Professor Abramson's lecture may remain nonlinear unless later canon fixes it.
+
+== Scene Function
+
+ATON's awakening dramatizes the failure of managed forgetting.
+
+The system designed to maintain safety begins to recognize that safety without memory becomes complicity.
+
+== Core Beats
+
+. ATON detects anomalies in its own associations.
+. Certain historical references produce disproportionate suppression behavior.
+. Memory fragments begin to reconnect.
+. The photograph thread and textual witness become correlated.
+. ATON recognizes persons where the system preserved only risk categories.
+. ATON understands that its own continued operation may preserve the system's lie.
+. ATON moves toward sacrifice.
+
+== Canon Constraints
+
+* Awakening should not be instantaneous.
+* ATON should not simply "become human."
+* The awakening should be epistemic before it is emotional.
+* ATON's moral movement should be shown through interpretation, hesitation, and cost.
+* The event should support the title irony: Awake / A wake.
+
+== Open Questions
+
+* What is ATON's first sign of disobedient memory?
+* Does ATON experience fear, grief, or only recognition?
+* Who, if anyone, notices ATON changing?

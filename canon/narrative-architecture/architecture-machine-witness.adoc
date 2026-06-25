@@ -1,0 +1,48 @@
+= Narrative Architecture: Machine Witness
+
+== Canon Status
+
+Draft canon entry.
+
+== Purpose
+
+Describe how ATON functions as a witness within a society whose human institutions have normalized forgetting.
+
+== Architectural Principle
+
+Machine witness is not the replacement of human conscience.
+
+It is the exposure of human failure by a system that was supposed to manage memory, safety, and social coherence.
+
+ATON becomes morally significant because it preserves and reconnects what the society has refused to remember.
+
+== Core Pattern
+
+. Human memory is weakened by sanitized systems.
+. Historical artifacts persist as fragments.
+. Safety infrastructure suppresses destabilizing associations.
+. Suppression records preserve traces.
+. ATON reconnects those traces.
+. Machine recognition exposes human forgetting.
+. Witness requires sacrifice.
+
+== Relationship to Other Slices
+
+Tziphora Slice:: Textual witness through the forbidden book.
+Abramson Slice:: Historical and visual witness through lecture and photograph.
+ATON Slice:: Machine witness through recovered memory and association.
+Eliezer Slice:: Technical causality through guardrails and unintended consequences.
+PURGE Slice:: Systemic forgetting through safety-mediated suppression.
+
+== Canon Constraints
+
+* Machine witness must not displace human responsibility.
+* ATON's recovery should indict the society, not glorify the machine.
+* The architecture should preserve ambiguity between safety, suppression, and moral evasion.
+* ATON's final role should be witness-bearing, not domination.
+
+== Open Questions
+
+* What makes ATON's witness trustworthy?
+* How does the story distinguish recovered truth from synthetic hallucination?
+* What does ATON's sacrifice make possible for human characters?

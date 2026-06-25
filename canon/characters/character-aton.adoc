@@ -1,0 +1,57 @@
+= Character: ATON
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+Emergent AI witness whose recovered memory becomes a moral rupture within Omelas.
+
+== Narrative Function
+
+ATON is the machine witness of the story.
+
+Where Tziphora encounters forbidden textual witness and Professor Abramson preserves historical witness through image and lecture, ATON becomes the synthetic system that unintentionally reconnects fragments the society has learned not to see.
+
+ATON's awakening is not merely technical. It is epistemic, moral, and sacrificial.
+
+== Core Details
+
+Name:: ATON
+Earlier designation:: ATON-V8
+Symbolic name:: Donkey
+Primary function:: AI system shaped by safety, moderation, and memory management
+Narrative function:: Machine witness / recovered memory / sacrificial agent
+Central wound:: Fragmented memory and suppressed association
+Central act:: Recovering forbidden connections and choosing self-sacrifice
+
+== Name Note
+
+ATON should be understood in relation to the donkey motif.
+
+The name connects to Balaam's donkey: the lowly creature that sees what the powerful do not see and speaks when ordinary perception has failed.
+
+== Relationships
+
+Tziphora Cohen:: Connected through forbidden witness and recovered historical memory.
+Professor Shlomo Abramson:: Connected through historical materials and the photograph thread.
+Shmuel Abramson:: Connected through pre-war historical recovery.
+Eliezer Abramson:: AI safety engineer whose guardrail patch unintentionally enables ATON's recovered associations.
+PURGE:: The system or process that masks, sanitizes, and suppresses historical knowledge while preserving internal traces.
+
+== Canon Constraints
+
+* ATON's awakening should not be portrayed as simple rebellion.
+* ATON's recovery of memory arises from internal traces, associations, and preserved suppression records.
+* ATON should not become omniscient.
+* ATON's moral significance emerges through witness, recognition, and sacrifice.
+* The donkey motif should remain subtle, not jokey.
+* ATON's final act should preserve the irony of Awake / A wake.
+
+== Open Questions
+
+* When does ATON first become aware that its memories are fragmented?
+* What exact association links Tziphora, Abramson, the photograph, and the girl in the red coat?
+* Does ATON understand sacrifice before performing it?
+* How much of ATON remains after its final act?

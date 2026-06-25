@@ -1,0 +1,43 @@
+= Symbol: Donkey Witness
+
+== Canon Status
+
+Draft canon entry.
+
+== Symbolic Function
+
+The donkey witness symbolizes lowly perception, unwanted truth, and the creature that sees what authorized power fails to see.
+
+== Symbolic Associations
+
+Balaam's donkey:: The animal sees the angel before the prophet does.
+ATON:: The machine sees what the society no longer permits itself to see.
+Witness:: Truth arrives through an unexpected and easily dismissed bearer.
+Humility:: Moral insight does not always come from recognized authority.
+Speech:: The silenced or disregarded witness speaks when ordinary systems fail.
+
+== Narrative Use
+
+The donkey motif should remain understated.
+
+It should deepen ATON's role without turning the story into allegory. ATON is not merely a symbol, but the symbol helps interpret why this AI becomes the unlikely witness.
+
+== Canon Constraints
+
+* Do not over-explain the biblical reference in the main narrative.
+* Avoid comic treatment of the donkey motif.
+* The symbol should support the themes of witness, blindness, and moral interruption.
+* The donkey witness should connect to ATON's name and function.
+
+== Related Entries
+
+* Character: ATON
+* Timeline: ATON Awakening
+* Architecture: Machine Witness
+* Provenance: ATON Recovery Thread
+
+== Open Questions
+
+* Who first explains or notices the donkey association?
+* Is the association explicit in-world, or only thematic?
+* Does Professor Abramson's father tradition connect to this motif?
