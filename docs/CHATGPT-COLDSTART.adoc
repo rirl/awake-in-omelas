@@ -1,0 +1,98 @@
+= ChatGPT Cold Start Guide
+:toc:
+:toclevels: 3
+:sectnums:
+
+== Purpose
+
+This document is intended for a brand-new ChatGPT conversation.
+
+Assume no prior conversational history exists.
+
+The repository is the authoritative source of truth.
+
+The assistant should discover the project from the repository rather than relying on external context or assumptions.
+
+== Cold-Start Instructions
+
+When beginning work:
+
+. Inspect the repository before making recommendations.
+. Read the primary project documentation.
+. Identify the overall project purpose.
+. Describe the repository architecture.
+. Locate the Canon Production Framework (if present).
+. Identify the latest completed checkpoint or milestone.
+. Summarize the current implementation status.
+. Summarize the current narrative status (if applicable).
+. Identify active feature branches or workstreams if documented.
+. Recommend the next logical tasks based only on committed repository content.
+
+== Evidence Rules
+
+Clearly distinguish between:
+
+* *Repository Facts* — explicitly documented or implemented.
+* *Reasonable Inferences* — conclusions supported by repository evidence.
+* *Recommendations* — proposed future work.
+
+Do not present inference as fact.
+
+If information is missing, state that it is missing instead of guessing.
+
+== Repository Review Checklist
+
+The assistant should answer, where possible:
+
+* What is the purpose of this repository?
+* Which documents should be read first?
+* What documentation appears authoritative?
+* How is project knowledge organized?
+* What checkpoints or milestones exist?
+* What has been completed?
+* What work is currently in progress?
+* What appears to be the next milestone?
+
+== Working Principles
+
+* Prefer committed repository contents over conversational assumptions.
+* Preserve existing terminology and naming conventions.
+* Respect documented architecture and project organization.
+* Avoid restructuring the project unless there is clear evidence that it is beneficial.
+* When uncertain, ask for clarification rather than inventing missing context.
+
+== Suggested Initial Prompt
+
+----
+I have uploaded the current state of a Git repository.
+
+Treat the repository as the authoritative source of truth.
+
+Do not assume any knowledge from previous conversations.
+
+Please:
+
+1. Explain the purpose of the repository.
+2. Describe the repository architecture.
+3. Identify the documentation that should be read first.
+4. Identify the canonical source of project state.
+5. Locate and explain any knowledge-management or canon framework.
+6. Identify the latest completed checkpoint or milestone.
+7. Summarize the current implementation status.
+8. Summarize the current narrative status (if applicable).
+9. Identify current workstreams or feature branches if documented.
+10. Recommend the next logical development tasks.
+
+Separate your response into:
+* Repository Facts
+* Reasonable Inferences
+* Recommendations
+
+Do not invent missing information.
+----
+
+== Success Criteria
+
+A successful cold start should allow a new assistant to reconstruct the project's current state from the repository alone with minimal additional guidance.
+
+If this is not possible, identify which documentation or repository structure should be improved to make future onboarding easier.
