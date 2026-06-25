@@ -1,0 +1,36 @@
+= Character: Shmuel Abramson
+
+== Canon Status
+
+Draft canon entry.
+
+== Role
+
+Pre-war Jewish historical figure connected to the photograph thread.
+
+== Narrative Function
+
+Shmuel anchors the story before Omelas, PURGE, and ATON. His existence predates the society's later systems of managed forgetting.
+
+He is evidence that some truths are not lost because they never existed, but because later systems no longer know how to receive them.
+
+== Core Details
+
+Name:: Shmuel Abramson
+Era:: Pre-WW2, circa 1939
+Location:: Outside Omelas
+Primary linkage:: Old photograph
+Narrative status:: Historical witness / recovered person
+
+== Canon Constraints
+
+* Shmuel Abramson is not Professor Shlomo Abramson's father unless later canon explicitly changes this.
+* Shmuel is not "Shlomo Abramson Sr."
+* Shmuel predates PURGE and ATON.
+* Records of Shmuel are not lost because of PURGE; his life belongs to an earlier historical layer.
+
+== Open Questions
+
+* What is Shmuel's exact relationship to the old photograph?
+* Does the photograph show Shmuel directly, or someone connected to him?
+* How does ATON eventually recover or correlate this thread?
