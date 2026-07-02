@@ -1,0 +1,47 @@
+= TODO: Federated AI Platform Architecture
+:toc:
+:sectnums:
+
+== Status
+Research checkpoint.
+
+== Phase 0 — MCP Foundation (Completed)
+
+Branch:
+----
+feature/mcp
+----
+
+* Local Docker-based filesystem MCP framework.
+* Fail-closed read-only/read-write scripts.
+* Documentation and tests.
+* Read-only filesystem MCP validated.
+
+== Phase 1 — Open WebUI Bootstrap (Current)
+
+Branch:
+----
+feature/openwebui-bootstrap
+----
+
+* Deploy Open WebUI.
+* Verify UI.
+* Configure OpenAI Platform API.
+* Verify pay-as-you-go chat.
+* Capture installation notes.
+* Create checkpoint tag.
+
+== Phase 2 — Read-only MCP Integration
+
+Proposed branch:
+----
+feature/openwebui-mcp-filesystem
+----
+
+* Connect Open WebUI to the filesystem MCP server.
+* Validate repository browsing.
+* Confirm writes are unavailable.
+
+== Future Work
+
+Expand into dedicated architecture documents when warranted.
