@@ -1,0 +1,77 @@
+= Operations Documentation
+:toc:
+:sectnums:
+
+== Purpose
+
+This directory contains the operational knowledge required to reproduce,
+maintain, troubleshoot, and evolve the KIOS AI Platform development
+environment.
+
+Unlike the architectural documentation, which records design intent and
+long-term direction, the documents in this directory describe *how* the
+platform is actually deployed, configured, operated, and validated.
+
+Operational documentation is considered a first-class artifact of the
+platform and should be maintained with the same discipline as source code,
+architectural documentation, and canonical knowledge.
+
+== Scope
+
+Operational documentation includes topics such as:
+
+* Development environment configuration
+* Docker containers and runtime configuration
+* Open WebUI deployment
+* MCP server configuration and operation
+* API provider configuration
+* Local model deployment
+* Networking
+* Security procedures
+* Backup and recovery
+* Troubleshooting
+* Operational validation procedures
+
+== Principles
+
+Operational documentation should:
+
+* Be reproducible.
+* Record actual commands that were executed.
+* Capture assumptions and prerequisites.
+* Record observed behavior, not expectations.
+* Clearly distinguish validated procedures from future work.
+* Never contain secrets, passwords, or API keys.
+
+Whenever operational knowledge is discovered during development, it should
+be captured here before it is forgotten.
+
+== Relationship to Other Documentation
+
+This repository intentionally separates different kinds of knowledge.
+
+[cols="1,3"]
+|===
+
+|Architecture
+|Why the platform is designed the way it is.
+
+|Operations
+|How the platform is deployed, configured, and maintained.
+
+|Canon
+|The authoritative knowledge managed by the platform.
+
+|Provenance
+|When, why, and how knowledge evolved.
+
+|===
+
+Together these documents form the operational and architectural memory of
+the KIOS AI Platform.
+
+== Current Documents
+
+* openwebui-bootstrap-notes.adoc
+
+Additional operational guides should be added as the platform evolves.

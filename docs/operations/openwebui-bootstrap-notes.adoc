@@ -1,0 +1,99 @@
+= Open WebUI Bootstrap Operations Notes
+:toc:
+:sectnums:
+
+== Environment
+
+* Host OS: Windows
+* Runtime: WSL2
+* Container runtime: Docker Desktop
+* Repository: /home/landonr/projects/awake-in-omelas
+* Open WebUI data path: /home/landonr/projects/openwebui/data
+* Open WebUI URL: http://localhost:3000
+
+== Docker Containers
+
+=== Open WebUI
+
+[source,bash]
+----
+docker run -d \
+  --name open-webui \
+  --restart unless-stopped \
+  -p 3000:8080 \
+  -v /home/landonr/projects/openwebui/data:/app/backend/data \
+  ghcr.io/open-webui/open-webui:main
+----
+
+Start:
+
+[source,bash]
+----
+docker start open-webui
+----
+
+Stop:
+
+[source,bash]
+----
+docker stop open-webui
+----
+
+Logs:
+
+[source,bash]
+----
+docker logs --tail 100 open-webui
+----
+
+== OpenAI API Configuration
+
+* Provider: OpenAI
+* Base URL: https://api.openai.com/v1
+* Auth: Bearer API key
+* Primary model: gpt-5.5-2026-04-23
+
+Do not commit API keys.
+
+== MCP Filesystem Server
+
+Read-only test command:
+
+[source,bash]
+----
+docker run --rm -it \
+  --name Omelas-MCP-RO \
+  --read-only \
+  --security-opt no-new-privileges:true \
+  -p 127.0.0.1:8765:8000 \
+  -v /home/landonr/projects/awake-in-omelas:/workspace/omelas:ro \
+  mcp/filesystem:latest \
+  /workspace/omelas
+----
+
+Observed output:
+
+[source,text]
+----
+Secure MCP Filesystem Server running on stdio
+Allowed directories: [ '/workspace/omelas' ]
+----
+
+Important: this MCP server uses stdio. Open WebUI cannot use it directly as an HTTP endpoint.
+
+== Next Operational Step
+
+Use MCPO to bridge stdio MCP to an HTTP/OpenAPI-compatible endpoint for Open WebUI.
+
+Important Docker flag change:
+
+* Manual terminal test may use `-it`.
+* MCPO bridge should use `-i`, not `-it`.
+
+== Safety Rules
+
+* Read-only first.
+* Expose only one repository.
+* Do not enable read-write MCP until an isolated feature branch exists.
+* Do not commit secrets.
+* Review Git diffs before committing AI-assisted changes.
