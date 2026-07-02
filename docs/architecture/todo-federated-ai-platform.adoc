@@ -3,45 +3,334 @@
 :sectnums:
 
 == Status
-Research checkpoint.
 
-== Phase 0 — MCP Foundation (Completed)
+*Status:* Active Development (Bootstrap Phase)
+
+This document is the authoritative architectural TODO for the Federated AI Platform implementation.
+
+Its purpose is to record architectural intent, implementation milestones, validation checkpoints, and future work while preserving the provenance of design decisions within Git.
+
+== Objective
+
+Develop a vendor-neutral AI workbench that:
+
+* Uses Open WebUI as the permanent user interface.
+* Uses the OpenAI Platform API with pay-as-you-go billing.
+* Supports multiple commercial AI vendors through API keys.
+* Supports local/private inference using Ollama, vLLM, and future GPU infrastructure.
+* Integrates Model Context Protocol (MCP) servers for secure access to repositories, databases, and project tooling.
+* Allows AI to reason directly over Git-managed project knowledge.
+
+== Reference Architecture
+
+image::../../artifacts/architecture/open-webui-federated-ai-platform.png[Open WebUI Federated AI Platform,width=100%]
+
+== Current Repository Structure
+
+[source,text]
+----
+awake-in-omelas/
+├── docs/
+│   └── architecture/
+│       └── todo-federated-ai-platform.adoc
+│
+├── artifacts/
+│   └── architecture/
+│       └── open-webui-federated-ai-platform.png
+│
+└── scripts/
+    └── mcp/
+        ├── README.adoc
+        ├── run-mcp.bash
+        ├── run-readonly.bash
+        └── run-readwrite.bash
+----
+
+== High-Level Architecture
+
+[source,text]
+----
+                 Browser
+                    │
+                    ▼
+               Open WebUI
+          (Universal AI Workbench)
+                    │
+      ┌─────────────┼──────────────┐
+      │             │              │
+      ▼             ▼              ▼
+ OpenAI API   Other Vendor APIs   Local Models
+ (Pay-as-you-go) (Claude, etc.) (Ollama/vLLM)
+                    │
+                    ▼
+              MCP Tool Layer
+                    │
+      ┌─────────────┼─────────────┐
+      │             │             │
+ Filesystem       Databases    Custom Tools
+----
+
+== Architectural Principles
+
+=== Stable User Interface
+
+Open WebUI becomes the permanent AI workbench.
+
+Model providers become interchangeable implementation details.
+
+=== Vendor Independence
+
+The platform should support multiple AI providers simultaneously.
+
+Current provider:
+
+* OpenAI Platform API
+
+Planned providers:
+
+* Anthropic
+* DeepSeek
+* Google
+* Mistral
+* Groq
+* OpenAI-compatible endpoints
+
+=== API Billing
+
+Primary model access uses:
+
+* OpenAI Platform account
+* OpenAI API key
+* Pay-as-you-go billing
+
+A ChatGPT subscription remains valuable for research, experimentation, and ChatGPT-specific capabilities, but it is not required to operate Open WebUI.
+
+=== MCP Boundary
+
+MCP servers provide controlled access to project resources.
+
+Initial servers include:
+
+* Filesystem
+* Git
+* Databases
+* Project-specific tooling
+
+Filesystem access defaults to read-only.
+
+Read-write access is enabled only on isolated feature branches during controlled editing sessions.
+
+=== Repository as Memory
+
+The long-term objective is for the Git repository—not conversational history—to become the authoritative project memory.
+
+AI should reason over:
+
+* Canon entries
+* Provenance
+* Architecture documents
+* Git history
+* TODO documents
+* Project artifacts
+
+rather than relying upon conversational recall.
+
+== Implementation Roadmap
+
+=== Phase 0 — MCP Foundation (Completed)
 
 Branch:
+
 ----
 feature/mcp
 ----
 
-* Local Docker-based filesystem MCP framework.
-* Fail-closed read-only/read-write scripts.
-* Documentation and tests.
-* Read-only filesystem MCP validated.
+Validated:
 
-== Phase 1 — Open WebUI Bootstrap (Current)
+* [x] Local Docker-based filesystem MCP framework.
+* [x] Fail-closed read-only and read-write launch scripts.
+* [x] Automated unit tests.
+* [x] Documentation.
+* [x] Read-only filesystem MCP successfully validated.
+
+Checkpoint:
+
+----
+checkpoint-openwebui-bootstrap-planning
+----
+
+=== Phase 1 — Open WebUI Bootstrap (Completed)
 
 Branch:
+
 ----
 feature/openwebui-bootstrap
 ----
 
-* Deploy Open WebUI.
-* Verify UI.
-* Configure OpenAI Platform API.
-* Verify pay-as-you-go chat.
-* Capture installation notes.
-* Create checkpoint tag.
+Validated:
 
-== Phase 2 — Read-only MCP Integration
+* [x] Deploy Open WebUI using Docker.
+* [x] Store persistent application state within the WSL filesystem.
+* [x] Verify Open WebUI web interface.
+* [x] Create administrator account.
+* [x] Configure OpenAI Platform API connection.
+* [x] Create and configure OpenAI Platform API key.
+* [x] Verify OpenAI model discovery.
+* [x] Select GPT-5.5-2026-04-23 as the primary engineering model.
+* [x] Verify successful chat completion using the OpenAI Platform API.
+* [x] Validate end-to-end Open WebUI → OpenAI Platform integration.
+
+NOTE: Completion of this phase establishes Open WebUI as the primary AI workbench for subsequent platform development.
+
+==== Follow-up Tasks
+
+These items do not affect the technical validation of Phase 1.
+
+* [ ] Record installation notes.
+* [ ] Record operational notes.
+* [ ] Create completion checkpoint tag.
+
+=== Phase 2 — Read-Only Filesystem MCP Integration
 
 Proposed branch:
+
 ----
 feature/openwebui-mcp-filesystem
 ----
 
-* Connect Open WebUI to the filesystem MCP server.
-* Validate repository browsing.
-* Confirm writes are unavailable.
+Objective:
 
-== Future Work
+Connect Open WebUI to the existing read-only filesystem MCP server and validate repository-backed AI reasoning.
 
-Expand into dedicated architecture documents when warranted.
+Validated objectives:
+
+* [ ] Evaluate native MCP capabilities in the current Open WebUI release.
+* [ ] Install and configure MCPO if required.
+* [ ] Connect Open WebUI to the existing filesystem MCP server.
+* [ ] Expose only the Awake in Omelas repository.
+* [ ] Validate repository browsing.
+* [ ] Validate repository search.
+* [ ] Validate document retrieval.
+* [ ] Confirm write operations remain unavailable.
+* [ ] Create validation checkpoint.
+
+=== Phase 3 — Controlled Read/Write Repository Access
+
+Objective:
+
+Enable controlled repository editing through MCP while preserving Git provenance.
+
+Validated objectives:
+
+* [ ] Create isolated Git feature branch.
+* [ ] Enable read-write filesystem MCP.
+* [ ] Modify repository documentation through MCP.
+* [ ] Review Git diff manually.
+* [ ] Commit only after explicit human approval.
+* [ ] Disable read-write MCP after testing.
+
+=== Phase 4 — Multi-Provider Federation
+
+Objective:
+
+Transform Open WebUI into a federated AI workbench.
+
+Validated objectives:
+
+* [ ] Add Anthropic API.
+* [ ] Add DeepSeek API.
+* [ ] Add Ollama.
+* [ ] Add vLLM.
+* [ ] Compare quality.
+* [ ] Compare latency.
+* [ ] Compare operational cost.
+* [ ] Establish model routing strategy.
+
+=== Phase 5 — Platform Hardening
+
+Objective:
+
+Prepare the platform for long-term operational use.
+
+Validated objectives:
+
+* [ ] API gateway / model proxy.
+* [ ] Centralized API key management.
+* [ ] Budget controls.
+* [ ] Audit logging.
+* [ ] Trust-boundary documentation.
+* [ ] Per-project MCP isolation.
+* [ ] Backup and recovery procedures.
+
+== Architectural Provenance
+
+The platform architecture is intentionally developed through incremental, validated milestones.
+
+Each milestone should leave behind:
+
+* Git commits
+* Git checkpoint tags
+* Updated architectural documentation
+* Implementation artifacts
+* Validation evidence
+
+Together these form the architectural provenance of the platform, recording not only *what* was implemented, but *why*, *how*, and *when*.
+
+== Long-Term Vision
+
+Open WebUI becomes the permanent AI workbench.
+
+Repositories become the permanent project memory.
+
+MCP servers become reusable infrastructure.
+
+AI providers become interchangeable computational resources.
+
+The platform should continue functioning even as AI vendors, pricing models, subscription models, and deployment mechanisms evolve.
+
+== Future Refactoring
+
+When the implementation becomes sufficiently mature, split this document into dedicated documents:
+
+* ARCHITECTURE.adoc
+* DEPLOYMENT.adoc
+* SECURITY.adoc
+* MCP.adoc
+* MODEL-ROUTING.adoc
+* COST-MODEL.adoc
+* OPERATIONS.adoc
+
+Until then, this document remains the authoritative architectural TODO and implementation roadmap.
+
+== Current Platform Status
+
+[source,text]
+----
+✓ Git-based canon framework
+✓ Provenance framework
+✓ Docker MCP infrastructure
+✓ Open WebUI deployment
+✓ OpenAI Platform integration
+✓ GPT-5.5 operational
+
+□ Read-only MCP integration
+□ Repository-backed AI reasoning
+□ Controlled repository editing
+□ Multi-provider federation
+□ Local/private inference
+□ Platform hardening
+----
+
+== Next Milestone
+
+Branch:
+
+----
+feature/openwebui-mcp-filesystem
+----
+
+Mission:
+
+Connect Open WebUI to the existing read-only filesystem MCP server so that the AI can reason directly over the `awake-in-omelas` Git repository rather than relying solely upon conversational context.
+
+This milestone marks the transition from an AI chat application to a repository-backed AI engineering workbench.
