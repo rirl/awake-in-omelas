@@ -2,18 +2,31 @@
 :toc:
 :sectnums:
 
+== Purpose
+
+This document records the operational procedures used to bootstrap the KIOS AI
+Platform development environment.
+
+Unlike architectural documentation, which explains *why* the platform is
+designed a particular way, this document records *how* the platform was
+deployed, configured, validated, and operated.
+
+Only validated procedures should be recorded here.
+
 == Environment
 
 * Host OS: Windows
 * Runtime: WSL2
 * Container runtime: Docker Desktop
-* Repository: /home/landonr/projects/awake-in-omelas
-* Open WebUI data path: /home/landonr/projects/openwebui/data
-* Open WebUI URL: http://localhost:3000
+* Repository: `/home/landonr/projects/awake-in-omelas`
+* Open WebUI data path: `/home/landonr/projects/openwebui/data`
+* Open WebUI URL: `http://localhost:3000`
 
 == Docker Containers
 
 === Open WebUI
+
+Deployment:
 
 [source,bash]
 ----
@@ -39,25 +52,44 @@ Stop:
 docker stop open-webui
 ----
 
-Logs:
+View logs:
 
 [source,bash]
 ----
 docker logs --tail 100 open-webui
 ----
 
-== OpenAI API Configuration
+Verify running:
+
+[source,bash]
+----
+docker ps
+----
+
+Expected browser URL:
+
+----
+http://localhost:3000
+----
+
+== OpenAI Platform Configuration
+
+Validated configuration:
 
 * Provider: OpenAI
-* Base URL: https://api.openai.com/v1
-* Auth: Bearer API key
-* Primary model: gpt-5.5-2026-04-23
+* Base URL: `https://api.openai.com/v1`
+* Authentication: Bearer API Key
+* Primary engineering model: `gpt-5.5-2026-04-23`
 
-Do not commit API keys.
+IMPORTANT:
 
-== MCP Filesystem Server
+Never commit API keys into Git.
 
-Read-only test command:
+== Filesystem MCP Server
+
+=== Standalone Validation
+
+Read-only validation command:
 
 [source,bash]
 ----
@@ -76,24 +108,233 @@ Observed output:
 [source,text]
 ----
 Secure MCP Filesystem Server running on stdio
-Allowed directories: [ '/workspace/omelas' ]
+Allowed directories:
+    /workspace/omelas
 ----
 
-Important: this MCP server uses stdio. Open WebUI cannot use it directly as an HTTP endpoint.
+Observation:
 
-== Next Operational Step
+The filesystem MCP server communicates over stdio and therefore cannot be
+consumed directly by Open WebUI.
 
-Use MCPO to bridge stdio MCP to an HTTP/OpenAPI-compatible endpoint for Open WebUI.
+== MCPO Bridge
 
-Important Docker flag change:
+=== Purpose
 
-* Manual terminal test may use `-it`.
-* MCPO bridge should use `-i`, not `-it`.
+MCPO bridges the stdio-based filesystem MCP server to an HTTP/OpenAPI endpoint
+that can be consumed by Open WebUI.
+
+=== Validated Launch Command
+
+[source,bash]
+----
+uvx mcpo \
+  --port 8765 \
+  -- \
+  docker run --rm -i \
+    --name Omelas-MCP-RO \
+    --read-only \
+    --security-opt no-new-privileges:true \
+    -v /home/landonr/projects/awake-in-omelas:/workspace/omelas:ro \
+    mcp/filesystem:latest \
+    /workspace/omelas
+----
+
+NOTE:
+
+The Docker container is launched with `-i`, not `-it`, when executed under
+MCPO.
+
+=== Validation
+
+Status::
+
+Validated.
+
+Observed startup:
+
+[source,text]
+----
+Starting MCP OpenAPI Proxy...
+Configuring for a single Stdio MCP Server...
+Secure MCP Filesystem Server running on stdio
+Allowed directories:
+    /workspace/omelas
+Uvicorn running on http://0.0.0.0:8765
+----
+
+Validated endpoints:
+
+* Swagger UI
+* OpenAPI specification
+* Filesystem tools exposed
+
+Observed filesystem operations included:
+
+* read_file
+* read_multiple_files
+* list_directory
+* directory_tree
+* search_files
+* get_file_info
+* list_allowed_directories
+
+Swagger UI successfully displayed at:
+
+----
+http://localhost:8765/docs
+----
+
+Conclusion::
+
+The stdio → HTTP/OpenAPI bridge has been successfully validated.
+
+== Operational Startup Procedure
+
+=== Step 1
+
+Start Docker Desktop.
+
+=== Step 2
+
+Start Open WebUI.
+
+[source,bash]
+----
+docker start open-webui
+----
+
+Verify:
+
+[source,bash]
+----
+docker ps
+----
+
+Verify browser:
+
+----
+http://localhost:3000
+----
+
+=== Step 3
+
+Start MCPO.
+
+[source,bash]
+----
+uvx mcpo \
+  --port 8765 \
+  -- \
+  docker run --rm -i \
+    --name Omelas-MCP-RO \
+    --read-only \
+    --security-opt no-new-privileges:true \
+    -v /home/landonr/projects/awake-in-omelas:/workspace/omelas:ro \
+    mcp/filesystem:latest \
+    /workspace/omelas
+----
+
+=== Step 4
+
+Verify MCPO.
+
+Open:
+
+----
+http://localhost:8765/docs
+----
+
+Expected result:
+
+Swagger/OpenAPI documentation appears.
+
+=== Step 5
+
+Open WebUI.
+
+Open:
+
+----
+http://localhost:3000
+----
+
+Login using the administrator account.
+
+Verify:
+
+* OpenAI provider configured.
+* GPT-5.5 available.
+* Open WebUI operational.
+
+== Operational Shutdown Procedure
+
+=== Stop MCPO
+
+Press:
+
+----
+Ctrl+C
+----
+
+The child Docker container exits automatically because it was started using
+`--rm`.
+
+=== Stop Open WebUI
+
+[source,bash]
+----
+docker stop open-webui
+----
+
+=== Verify shutdown
+
+[source,bash]
+----
+docker ps
+----
+
+Expected:
+
+No running containers.
+
+== Current Status
+
+Validated:
+
+* Open WebUI deployment
+* OpenAI Platform integration
+* GPT-5.5 model selection
+* Docker filesystem MCP
+* MCPO bridge
+* Swagger/OpenAPI generation
+* Clean startup procedure
+* Clean shutdown procedure
+
+Next milestone:
+
+Configure Open WebUI to consume the validated MCPO endpoint and perform the
+first repository-backed reasoning over the `awake-in-omelas` Git repository.
 
 == Safety Rules
 
-* Read-only first.
-* Expose only one repository.
-* Do not enable read-write MCP until an isolated feature branch exists.
-* Do not commit secrets.
+* Default to read-only repository access.
+* Expose only the required repository.
+* Enable read-write access only on isolated feature branches.
+* Never commit secrets or API keys.
 * Review Git diffs before committing AI-assisted changes.
+* Validate operational procedures before automating them.
+
+== Future Work
+
+Once the Open WebUI integration has been fully validated:
+
+* Refactor the existing MCP launch scripts to support MCPO.
+* Capture automated operational procedures.
+* Investigate Docker Compose as an intermediate orchestration layer.
+* Investigate Kubernetes/k3s and GitOps once the platform architecture has
+  stabilized.
+
+Operational Principle::
+
+Automation should follow understanding—not replace it.
