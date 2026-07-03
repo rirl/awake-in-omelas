@@ -338,3 +338,151 @@ Once the Open WebUI integration has been fully validated:
 Operational Principle::
 
 Automation should follow understanding—not replace it.
+
+== Validation Evidence
+
+The following evidence records successful validation of the local Open WebUI,
+MCPO, and Filesystem MCP bootstrap environment.
+
+This section captures observed behavior rather than intended behavior and
+establishes the validated operational state immediately prior to integrating
+Open WebUI with the MCPO endpoint.
+
+=== Validation Objective
+
+Demonstrate successful operation of the following platform components:
+
+* Docker Desktop
+* Open WebUI
+* OpenAI Platform connectivity
+* MCPO
+* Filesystem MCP Server
+* HTTP/OpenAPI bridge
+
+=== Validation Commands
+
+[source,bash]
+----
+docker ps
+
+curl http://localhost:3000
+
+curl -s http://localhost:3000 | tr -d '\n\r'
+
+curl -s http://localhost:8765/docs | tr -d '\n\r'
+
+pgrep -af mcpo
+----
+
+=== Observed Results
+
+Docker::
+
+The Open WebUI container was running successfully.
+
+Open WebUI::
+
+The application responded successfully on:
+
+----
+http://localhost:3000
+----
+
+The returned HTML identified the application as:
+
+----
+<title>Open WebUI</title>
+----
+
+MCPO::
+
+Two MCPO-related processes were observed:
+
+* the `uvx mcpo` launcher
+* the Python `mcpo` runtime
+
+This confirms that the HTTP/OpenAPI bridge is active.
+
+Filesystem MCP::
+
+The Filesystem MCP server was successfully launched by MCPO.
+
+OpenAPI::
+
+Swagger documentation was successfully generated and available at:
+
+----
+http://localhost:8765/docs
+----
+
+The generated OpenAPI specification exposed the Filesystem MCP toolset.
+
+=== Validation Summary
+
+The following platform components have been successfully validated:
+
+* Docker Desktop runtime
+* Open WebUI deployment
+* OpenAI Platform connectivity
+* MCPO bridge
+* Filesystem MCP server
+* HTTP/OpenAPI endpoint generation
+
+The validated operational topology is:
+
+[source,text]
+----
+Browser
+    │
+    ▼
+Open WebUI
+
+    │
+    │ (HTTP integration pending)
+    ▼
+
+MCPO
+
+    │
+    ▼
+
+Filesystem MCP
+
+    │
+    ▼
+
+awake-in-omelas repository
+----
+
+=== Architectural Observation
+
+An important architectural observation emerged during validation.
+
+The existing Filesystem MCP launch scripts required no modification to support
+Open WebUI.
+
+Instead, MCPO functions as an adapter between the stdio-based Filesystem MCP
+server and HTTP/OpenAPI clients.
+
+This preserves the Filesystem MCP server as the canonical implementation while
+allowing multiple client technologies to consume the same service through
+protocol-specific adapters.
+
+This architectural separation reinforces the principle that stable platform
+capabilities should remain protocol-independent wherever practical.
+
+=== Remaining Work
+
+Infrastructure validation is complete.
+
+The remaining implementation task is to configure Open WebUI to consume the
+validated MCPO endpoint and perform the first repository-backed reasoning over
+the `awake-in-omelas` repository.
+
+=== Status
+
+Validated.
+
+This section records the operational evidence supporting completion of the
+Open WebUI / MCPO bootstrap phase and establishes the baseline state prior to
+Open WebUI MCP integration.
