@@ -486,3 +486,90 @@ Validated.
 This section records the operational evidence supporting completion of the
 Open WebUI / MCPO bootstrap phase and establishes the baseline state prior to
 Open WebUI MCP integration.
+
+== Repository-Grounded Reasoning Validation
+
+Following successful MCPO validation, Open WebUI was configured to consume the
+MCPO endpoint as an external OpenAPI Tool Server.
+
+=== Configuration
+
+Tool Server Name::
+
+Omelas Filesystem
+
+Endpoint::
+
+----
+http://localhost:8765
+----
+
+Authentication::
+
+None
+
+Auto Refresh::
+
+Enabled
+
+=== Validation
+
+Open WebUI successfully:
+
+* Discovered the MCPO Tool Server.
+* Loaded the generated OpenAPI specification.
+* Discovered the secure-filesystem-server tool.
+* Enabled the tool for a chat session.
+
+The following repository-backed operations were successfully executed:
+
+* List allowed directories.
+* List repository contents.
+* Read repository documents.
+* Summarize repository documents.
+* Search the repository.
+* Perform repository-backed architectural analysis.
+
+These operations were executed through the following architecture:
+
+[source,text]
+----
+Open WebUI
+        │
+        ▼
+OpenAPI Tool Server
+        │
+        ▼
+MCPO
+        │
+        ▼
+Filesystem MCP
+        │
+        ▼
+awake-in-omelas Git repository
+----
+
+=== Architectural Result
+
+This validation demonstrates successful end-to-end repository-backed reasoning.
+
+The AI did not rely solely upon conversational context or model knowledge.
+
+Instead, repository artifacts were retrieved dynamically through the
+Filesystem MCP server and incorporated into generated responses.
+
+This establishes the Git repository as the authoritative external project
+knowledge base consulted by the AI during reasoning.
+
+Rather than relying solely upon conversational context or model parameters,
+the AI retrieves governed repository artifacts on demand and incorporates those
+artifacts into its reasoning process.
+
+This capability forms the operational foundation of the KIOS architecture.
+
+=== Status
+
+Validated.
+
+Repository-backed retrieval, interpretation, and architectural analysis have
+been successfully demonstrated using Open WebUI and the Filesystem MCP server.
