@@ -1,0 +1,361 @@
+= KIOS Architecture Research Methodology
+:toc:
+:sectnums:
+
+== Purpose
+
+This document records the research methodology guiding the evolution of the
+KIOS AI Platform.
+
+Unlike the implementation roadmap, which describes *what* the platform should
+implement, this document records *how* architectural knowledge is discovered,
+evaluated, validated, and promoted into reusable platform capabilities.
+
+The methodology is intentionally evidence-driven rather than theory-driven.
+
+== Bootstrap Philosophy
+
+The KIOS AI Platform is intentionally being developed alongside real,
+independently evolving knowledge domains.
+
+Current bootstrap domains include:
+
+* Awake in Omelas
+* The God Field
+
+Future domains may include:
+
+* Personal Historical Realism
+* Compliance Assessment
+* Scientific Research
+* Additional knowledge systems
+
+These domains exist to exercise the platform under realistic conditions.
+
+They are not demonstrations of the platform.
+
+They are the evidence from which the platform itself is discovered.
+
+== Bootstrap Knowledge Domains
+
+During development an important architectural realization emerged.
+
+Initially, the platform infrastructure existed to support the *Awake in
+Omelas* project.
+
+As implementation progressed that relationship inverted.
+
+The platform became the primary architectural objective.
+
+Awake in Omelas naturally became the first operational knowledge domain used to
+exercise and validate the platform.
+
+Future domains should be added for the same reason.
+
+The architecture should be shaped by multiple independent domains rather than
+by any single domain.
+
+== Evidence-Guided Discovery
+
+Architectural abstractions should emerge from repeated observation rather than
+from speculative design.
+
+The desired process is:
+
+[source,text]
+----
+Real Domain
+      │
+      ▼
+Operational Experience
+      │
+      ▼
+Repeated Patterns
+      │
+      ▼
+Candidate Abstraction
+      │
+      ▼
+Validation
+      │
+      ├────────────► Reject
+      │
+      ▼
+Platform Capability
+----
+
+Architectural Principle::
+
+Follow the evidence before generalizing the architecture.
+
+== Premature Universality
+
+One of the principal risks for KIOS is premature over-generalization.
+
+The objective is not to discover a universal solution applicable to every
+problem.
+
+Instead, the objective is to discover reusable architectural capabilities whose
+applicability is supported by evidence gathered across multiple independent
+domains.
+
+Every abstraction remains provisional until sufficient evidence supports its
+promotion.
+
+Research Principle::
+
+Every abstraction carries an obligation of evidence.
+
+== Domain Primacy
+
+Knowledge domains are the primary reality.
+
+The platform exists to serve domains.
+
+Domains should not be distorted merely to simplify platform implementation.
+
+When tension exists between a domain and a proposed abstraction, the burden of
+proof rests upon the abstraction.
+
+Platform capabilities should adapt to faithfully represent domains rather than
+requiring domains to conform to premature platform assumptions.
+
+== Architectural Trilemma
+
+Whenever recurring patterns appear across multiple domains, three competing
+explanations should be considered.
+
+=== Hypothesis 1 — Genuine Reusable Capability
+
+A genuine reusable architectural capability has been discovered.
+
+=== Hypothesis 2 — Apparent Similarity
+
+The domains only appear similar because insufficient evidence has been
+collected.
+
+Future domains may expose important structural differences.
+
+=== Hypothesis 3 — Incorrect Abstraction
+
+The proposed abstraction is incorrect.
+
+It may be:
+
+* too broad,
+* too narrow,
+* incorrectly decomposed,
+* or hiding multiple distinct capabilities.
+
+The architecture should remain open to all three explanations until evidence
+distinguishes between them.
+
+== Evidence Supporting Generalization
+
+Evidence supporting promotion of an abstraction includes:
+
+* repeated successful reuse
+* minimal domain-specific customization
+* reduction in conceptual complexity
+* elimination of duplicated reasoning
+* predictive capability for new domains
+
+Evidence against promotion includes:
+
+* increasing special cases
+* growing configuration complexity
+* domain-specific exceptions
+* fragmentation into multiple unrelated patterns
+
+Architectural hypotheses should evolve through validation rather than debate.
+
+== Compression
+
+A successful abstraction should compress architectural complexity.
+
+Compression means:
+
+* fewer concepts
+* fewer exceptions
+* simpler reasoning
+* reduced duplication
+
+Compression is measured conceptually rather than by lines of code.
+
+== Predictive Power
+
+Strong abstractions should predict characteristics of previously unseen domains.
+
+Examples include predicting:
+
+* entities
+* relationships
+* workflows
+* lifecycle stages
+* provenance requirements
+
+Prediction provides stronger evidence than retrospective explanation.
+
+== The Architecture Laboratory
+
+The KIOS AI Platform should be viewed as an architecture laboratory.
+
+Each proposed platform capability follows a lifecycle:
+
+[source,text]
+----
+Observation
+      │
+      ▼
+Hypothesis
+      │
+      ▼
+Prototype
+      │
+      ▼
+Operational Experience
+      │
+      ▼
+Evidence Collection
+      │
+      ├────────────► Reject
+      │
+      ▼
+Promote
+----
+
+The platform should evolve under the same epistemic discipline that it is
+designed to support.
+
+== Repository as Evidence
+
+The Git repository records more than source code.
+
+It records evidence.
+
+Current knowledge categories include:
+
+* Architecture
+* Operations
+* Canon
+* Provenance
+
+A fifth category appears to be emerging:
+
+* Validation
+
+Architecture explains *why*.
+
+Operations explain *how*.
+
+Validation records *evidence that the architecture and operations actually
+work.*
+
+Repository organization itself should be treated as an architectural hypothesis
+subject to refinement through experience.
+
+== Repository Organization as Hypothesis
+
+The organization of the repository is itself provisional.
+
+Repository structure should emerge from repeated operational experience rather
+than from speculative design.
+
+Each new top-level documentation category should satisfy the same evidentiary
+requirements expected of every other architectural abstraction.
+
+Repository organization is therefore governed by the same methodology as the
+platform itself.
+
+== Operational Knowledge
+
+Operational procedures are first-class knowledge.
+
+They deserve:
+
+* version control
+* provenance
+* validation
+* review
+* continuous refinement
+
+Automation should encode validated operational knowledge rather than replace
+understanding.
+
+Architectural Principle::
+
+Automation should follow understanding—not replace it.
+
+== Future Orchestration
+
+The current platform intentionally relies upon manually executed Docker
+commands.
+
+Manual procedures expose architectural assumptions and simplify troubleshooting
+during bootstrap.
+
+Future work should investigate declarative orchestration including:
+
+* Docker Compose
+* Kubernetes
+* k3s
+* Helm
+* GitOps
+* ArgoCD
+* Flux
+
+The transition should occur only after operational procedures have been fully
+validated.
+
+== Emergent Repository Organization
+
+The repository itself is evolving through evidence.
+
+Knowledge categories should emerge naturally from repeated experience rather
+than being imposed prematurely.
+
+Current organization appears to be converging toward:
+
+[source,text]
+----
+Architecture
+    Why
+
+Operations
+    How
+
+Validation
+    Evidence
+
+Canon
+    What
+
+Provenance
+    Evolution
+----
+
+Future categories should be introduced only when repeated experience
+demonstrates that they represent genuinely distinct forms of knowledge.
+
+== Long-Term Vision
+
+The objective of KIOS is not merely to provide an AI platform.
+
+Its larger objective is to provide an evidence-based methodology for discovering
+and governing reusable architectural capabilities.
+
+The platform should mature through repeated operational experience across
+multiple independent knowledge domains.
+
+Research Principle::
+
+Architecture should be discovered rather than invented.
+
+Generalization should be earned through evidence rather than assumed through
+analogy.
+
+The burden of proof always rests upon the abstraction.
+
+The platform exists to faithfully serve knowledge domains.
+
+Knowledge domains do not exist to satisfy platform abstractions.
