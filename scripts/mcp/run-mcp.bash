@@ -108,9 +108,12 @@ run_container() {
         ${MCP_CONTAINER_WORKSPACE}
     set +x
 }
+main() {
+    validate_access_mode
+    validate_required_variables
+    set_derived_values
+    print_derived_values
+    run_container
+}
 
-validate_access_mode
-validate_required_variables
-set_derived_values
-print_derived_values
-run_container
+main "$@"
