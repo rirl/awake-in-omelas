@@ -72,6 +72,42 @@ validate_required_variables() {
     fi
 }
 
+validate_repository_state() {
+    local current_branch
+
+    if [[ ! -d "${MCP_PROJECT_PATH}" ]]; then
+        echo "ERROR: MCP_PROJECT_PATH does not exist: ${MCP_PROJECT_PATH}" >&2
+        exit 1
+    fi
+
+    if ! git -C "${MCP_PROJECT_PATH}" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        echo "ERROR: MCP_PROJECT_PATH is not a Git repository: ${MCP_PROJECT_PATH}" >&2
+        exit 1
+    fi
+
+    if ! current_branch="$(
+        git -C "${MCP_PROJECT_PATH}" symbolic-ref --quiet --short HEAD
+    )"; then
+        echo "ERROR: repository HEAD is detached: ${MCP_PROJECT_PATH}" >&2
+        exit 1
+    fi
+
+    if [[ "${ACCESS_MODE}" == "readwrite" ]]; then
+        if [[ "${current_branch}" != feature/* ]]; then
+            echo "ERROR: read-write access requires a feature/* branch." >&2
+            echo "Current branch: ${current_branch}" >&2
+            exit 1
+        fi
+
+        if [[ -n "$(git -C "${MCP_PROJECT_PATH}" status --porcelain)" ]]; then
+            echo "ERROR: read-write access requires a clean working tree." >&2
+            exit 1
+        fi
+    fi
+
+    printf '%-32s : %s\n' "MCP_PROJECT_BRANCH" "${current_branch}"
+}
+
 set_derived_values() {
     declare -gr MCP_EFFECTIVE_CONTAINER_NAME="${MCP_CONTAINER_NAME}${MCP_ACCESS_SUFFIX}"
 }
@@ -111,6 +147,7 @@ run_container() {
 main() {
     validate_access_mode
     validate_required_variables
+    validate_repository_state
     set_derived_values
     print_derived_values
     run_container
