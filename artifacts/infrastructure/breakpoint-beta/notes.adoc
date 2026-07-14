@@ -1,0 +1,133 @@
+= Breakpoint Beta Notes
+:toc:
+:toclevels: 3
+
+== Status
+
+*Research artifact only.*
+
+This directory preserves a prototype generated during Breakpoint Beta
+investigation.
+
+It is intentionally *not* part of the canonical implementation.
+
+== Engineering Decision
+
+During Breakpoint Beta, the project investigated introducing MCPO as a
+transport bridge while simultaneously considering refactoring the governed
+launcher into separate governance and runtime layers.
+
+Although the architectural direction appeared promising, it was determined that
+performing structural refactoring before proving successful end-to-end
+operation would introduce unnecessary engineering risk.
+
+The prototype has therefore been preserved as a research artifact while the
+canonical implementation continues to focus exclusively on demonstrating
+successful end-to-end integration.
+
+The engineering principle adopted for Breakpoint Beta is:
+
+----
+Make it work.
+
+Verify that it works.
+
+Checkpoint the working implementation.
+
+Then improve the architecture.
+----
+
+== Objective
+
+Demonstrate successful end-to-end operation of the governed MCP environment.
+
+Target architecture:
+
+----
+Open WebUI
+    ↓
+MCPO
+    ↓
+Filesystem MCP
+    ↓
+Governed Repository
+----
+
+Validation objectives include:
+
+* MCP transport connectivity
+* Tool discovery
+* Repository read operations
+* Repository write operations
+* Governance enforcement
+* Repeatable launcher behavior
+
+== Current Plan
+
+. Preserve the Breakpoint Alpha launcher.
+. Demonstrate successful end-to-end integration.
+. Validate:
++
+** tool discovery
+** repository read
+** repository write
+** governance enforcement
+. Create a Breakpoint Beta checkpoint.
+. Perform architectural refactoring only after a validated reference
+  implementation exists.
+
+== Artifact Contents
+
+This directory contains:
+
+* README.adoc
+* awake-in-omelas-breakpoint-beta-mcpo.zip
+
+These artifacts are retained for provenance, architectural evaluation, and
+future engineering reference.
+
+== Future Architectural Direction
+
+The archived prototype explores evolving the launcher toward a reusable
+governed runtime framework.
+
+Conceptually, future evolution may separate launcher responsibilities into:
+
+----
+Governance
+    ↓
+Project Profile
+    ↓
+Runtime
+----
+
+Such a refactoring is intentionally deferred until successful Breakpoint Beta
+validation establishes a known-good reference implementation.
+
+== Provenance
+
+Repository::
+awake-in-omelas
+
+Branch::
+feature/openwebui-mcp-filesystem
+
+Checkpoint::
+checkpoint-openwebui-breakpoint-alpha
+
+Breakpoint::
+Breakpoint Beta
+
+Purpose::
+Architectural evaluation and preservation of research findings.
+
+Authority::
+Non-canonical research artifact.
+
+Disposition::
+Archived pending successful end-to-end Breakpoint Beta validation.
+
+Relationship to Canonical Implementation::
+The production launcher remains the authoritative implementation.
+This artifact records an architectural investigation and should not be
+interpreted as the accepted design.

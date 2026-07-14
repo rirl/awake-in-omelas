@@ -1,0 +1,186 @@
+= Breakpoint Beta MCPO Reference Prototype
+:toc:
+:toclevels: 3
+
+== Purpose
+
+This artifact captures a reference implementation for integrating MCPO into the
+Awake in Omelas governed MCP launcher.
+
+It is intentionally preserved as a research artifact and has NOT been adopted
+as the canonical implementation.
+
+The prototype explores a runtime abstraction that separates launcher governance
+from runtime implementation while introducing MCPO as a bridge between Open
+WebUI and the official Filesystem MCP server.
+
+== Status
+
+[cols="1,3"]
+|===
+|Status
+|Research Prototype
+
+|Repository
+|awake-in-omelas
+
+|Branch
+|feature/openwebui-mcp-filesystem
+
+|Checkpoint
+|checkpoint-openwebui-breakpoint-alpha
+
+|Breakpoint
+|Beta (Research)
+
+|Disposition
+|Archived as reference implementation
+|===
+
+== Background
+
+Breakpoint Alpha established a governed launcher capable of:
+
+* validating repository state
+* enforcing feature-branch execution
+* enforcing a clean working tree
+* explicitly selecting read-only or read-write access
+* launching the official Filesystem MCP server inside Docker
+
+Breakpoint Beta investigates end-to-end integration with Open WebUI.
+
+During this investigation it became apparent that:
+
+* the Filesystem MCP server communicates over stdio
+* Open WebUI requires an MCP transport compatible with its integration model
+* MCPO is the preferred bridge for stdio-based MCP servers
+
+This prototype explores that architectural direction.
+
+== Contents
+
+----
+README.adoc
+
+docs/
+    BREAKPOINT-BETA-MCPO.adoc
+
+docker/
+    mcp/
+        Dockerfile.mcpo-filesystem
+
+scripts/
+    mcp/
+        run-mcp.bash
+        build-mcpo-filesystem.bash
+
+        lib/
+            governance.bash
+
+        runtimes/
+            filesystem.bash
+            mcpo.bash
+----
+
+== Architectural Direction
+
+The prototype proposes separating launcher responsibilities into:
+
+----
+Governance
+    ↓
+Runtime Selection
+    ↓
+Runtime Launch
+----
+
+where governance remains stable while runtime implementations evolve.
+
+Possible runtime implementations include:
+
+* Filesystem MCP
+* MCPO
+* Streamable HTTP
+* Future transport implementations
+
+This refactoring is intentionally deferred until end-to-end validation has been completed.
+
+== Current Engineering Decision
+
+This prototype is intentionally NOT merged into the repository.
+
+The current engineering plan is:
+
+. Preserve the governed Alpha launcher.
+. Demonstrate end-to-end operation:
++
+----
+Open WebUI
+    ↓
+MCPO
+    ↓
+Filesystem MCP
+    ↓
+Governed Repository
+----
+. Validate:
+** tool discovery
+** repository reads
+** repository writes
+** governance enforcement
+. Create a successful Breakpoint Beta checkpoint.
+. Perform architectural refactoring only after a working reference implementation exists.
+
+This follows the engineering principle:
+
+----
+Make it work.
+
+Verify that it works.
+
+Checkpoint the working implementation.
+
+Then improve the architecture.
+----
+
+== Why This Artifact Exists
+
+The prototype is retained for provenance.
+
+It documents an architectural direction considered during Breakpoint Beta before
+the final implementation strategy was selected.
+
+Preserving this work provides:
+
+* historical context
+* architectural rationale
+* future reference
+* regression comparison during later refactoring
+
+== Expected Future Evolution
+
+After successful Breakpoint Beta validation, the launcher may evolve toward a
+more general governed runtime framework supporting multiple projects such as:
+
+* Awake in Omelas
+* KIOS
+* Godfield
+
+with reusable governance and project profiles.
+
+This artifact should therefore be regarded as an architectural reference rather
+than production infrastructure.
+
+== Provenance
+
+Author:
+    ChatGPT (OpenAI) in collaboration with the repository maintainer.
+
+Purpose:
+    Research and architectural evaluation.
+
+Authority:
+    Non-canonical.
+
+Superseded By:
+    The first validated end-to-end Breakpoint Beta implementation (pending).
