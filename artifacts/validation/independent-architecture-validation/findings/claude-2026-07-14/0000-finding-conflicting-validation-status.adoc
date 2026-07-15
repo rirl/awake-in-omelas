@@ -1,0 +1,65 @@
+= Finding: Conflicting Breakpoint Beta Validation Status
+:toc:
+
+== Summary
+
+Three documents describe the same milestone — end-to-end operation of
+Open WebUI → MCPO → Filesystem MCP → Governed Repository — and give three
+different answers about whether it is done.
+
+== Evidence
+
+[cols="2,3,3",options="header"]
+|===
+|Document |Status Claimed |Key Quote
+
+|`docs/architecture/todo-federated-ai-platform.adoc`
+(last touched 2026-07-02)
+|Not started
+|Phase 2 checklist entirely unchecked: `[ ] Validate repository browsing`,
+`[ ] Validate repository search`, `[ ] Validate document retrieval`.
+
+|`docs/operations/openwebui-bootstrap-notes.adoc`
+(2026-07-03)
+|Done
+|"This validation demonstrates successful end-to-end repository-backed
+reasoning." Status fields throughout read "Validated."
+
+|`artifacts/infrastructure/breakpoint-beta/README.adoc` +
+`artifacts/infrastructure/breakpoint-beta/notes.adoc`
+(2026-07-14, same day as this checkpoint)
+|Pending
+|"Status: Research Prototype" / "Disposition: Archived as reference
+implementation" / "Superseded By: The first validated end-to-end
+Breakpoint Beta implementation (pending)."
+|===
+
+== Why It Matters
+
+None of the three documents references the other two. A reader who
+consults only one would form a materially different picture of project
+status than a reader who consults another. No mechanism in the repository
+(index, cross-link, validation record) currently surfaces the
+contradiction.
+
+== Likely Reconciliation
+
+`openwebui-bootstrap-notes.adoc`'s "Validated" most plausibly describes a
+manual, ad hoc proof-of-concept (`curl`, `pgrep`, one interactive Open
+WebUI session) — real evidence the pieces *can* connect, but not a
+repeatable or governed validation. `breakpoint-beta/README.adoc`, written
+later, appears to take the more considered position: that
+proof-of-concept does not constitute the accepted Breakpoint Beta
+implementation, hence its disposition as an archived research artifact
+rather than a merged result.
+
+== Recommendation
+
+. Update `openwebui-bootstrap-notes.adoc` to qualify its "Validated"
+claim as exploratory/manual, with an explicit pointer to the disposition
+recorded in `breakpoint-beta/README.adoc`.
+. Update the Phase 2 checklist in `todo-federated-ai-platform.adoc` to
+reflect that manual exploration has occurred, distinct from governed,
+repeatable validation.
+. Do not checkpoint Breakpoint Beta as complete until all three documents
+agree on a single status.
