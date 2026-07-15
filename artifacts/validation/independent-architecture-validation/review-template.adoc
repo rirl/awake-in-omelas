@@ -1,0 +1,126 @@
+= Independent Architecture Review
+:toc:
+:toclevels: 3
+
+== Review Identity
+
+Reviewer::
+
+Reviewer Type::
+AI / Human
+
+Model or Organization::
+
+Review Date::
+
+Repository::
+
+Branch::
+
+Commit::
+
+Checkpoint Tag::
+
+Repository Snapshot::
+
+Snapshot SHA-256::
+
+Prompt File::
+
+Prompt Version::
+
+== Executive Summary
+
+== Repository Evidence Reviewed
+
+== Strengths
+
+== Weaknesses
+
+== Architectural Risks
+
+== Security and Governance Risks
+
+== Technical Debt
+
+== Missing Validation
+
+== Recommendations
+
+== Immediate Next Steps
+
+== Long-Term Roadmap
+
+== Answers to Specific Questions
+
+== Scores
+
+[cols="2,1,5",options="header"]
+|===
+|Category
+|Score
+|Justification
+
+|Engineering Maturity
+|
+|
+
+|Architecture Quality
+|
+|
+
+|Governance Quality
+|
+|
+
+|Repository Maintainability
+|
+|
+
+|Checkpoint Strategy
+|
+|
+
+|Provenance Strategy
+|
+|
+
+|Validation Readiness
+|
+|
+
+|Confidence in Current Direction
+|
+|
+|===
+
+== Overall Assessment
+
+== Reasons to Continue
+
+. 
+. 
+. 
+
+== Reasons to Reconsider
+
+. 
+. 
+. 
+
+== Highest-Priority Next Action
+
+== Maintainer Response
+
+== Final Disposition
+
+Decision::
+Accept / Accept with Conditions / Defer / Reject
+
+Rationale::
+
+Required Follow-Up::
+
+Associated Commit::
+
+Associated Tag::

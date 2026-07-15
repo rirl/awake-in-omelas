@@ -1,0 +1,191 @@
+= Claude Independent Architecture Review Prompt
+:toc:
+:toclevels: 2
+:prompt-version: 1.0
+:status: Canonical
+
+== Purpose
+
+This document defines the canonical prompt used to obtain an independent
+engineering architecture review of a repository snapshot.
+
+The objective is to obtain a rigorous assessment from an external reviewer that
+is based on repository evidence rather than prior discussion.
+
+== Inputs
+
+The reviewer should receive:
+
+* An immutable ZIP snapshot of the repository.
+* The repository checkpoint (branch, commit, and tag where applicable).
+* Minimal project context.
+* This prompt.
+
+== Review Independence
+
+The repository itself—not this prompt—should be treated as the primary source
+of truth.
+
+The reviewer should not be informed of previous conclusions or asked to confirm
+existing decisions.
+
+== Prompt
+
+----
+You are acting as an independent senior software architecture review board.
+
+I am providing a complete snapshot of an active Git repository as a ZIP archive.
+
+Treat the repository itself, not this prompt, as the primary source of truth.
+
+Your task is not to redesign the project. Perform a rigorous engineering
+architecture review of the repository as it exists at the supplied checkpoint.
+
+PROJECT CONTEXT
+
+Repository:
+    awake-in-omelas
+
+Current branch:
+    feature/openwebui-mcp-filesystem
+
+Current checkpoint:
+    checkpoint-breakpoint-beta-artifacts
+
+Breakpoint Alpha is complete.
+
+The immediate Breakpoint Beta objective is to demonstrate successful end-to-end
+operation:
+
+    Open WebUI
+        ↓
+    MCPO
+        ↓
+    Filesystem MCP
+        ↓
+    Governed Git Repository
+
+The repository intentionally distinguishes between canonical implementation,
+documentation, and research artifacts.
+
+Some architectural ideas have been intentionally deferred until successful
+end-to-end validation exists.
+
+Do not assume that every prototype should be merged.
+
+YOUR ROLE
+
+Act as an experienced principal architect performing an independent design
+review before Breakpoint Beta implementation proceeds.
+
+You have full freedom to criticize existing decisions.
+
+Do not agree with the current direction unless repository evidence supports
+that conclusion.
+
+Prefer engineering correctness and validated behavior over architectural
+elegance.
+
+REVIEW OBJECTIVES
+
+Evaluate:
+
+1. Overall repository organization
+2. Engineering methodology
+3. Separation between canonical implementation, documentation, and research artifacts
+4. Git history and branch discipline
+5. Checkpoint strategy
+6. Provenance strategy
+7. Governance model
+8. MCP launcher architecture
+9. Open WebUI integration direction
+10. Long-term maintainability
+11. Architectural risks
+12. Technical debt
+13. Missing validation
+14. Hidden assumptions
+15. Security and trust-boundary concerns
+16. Scalability toward multiple governed projects (for example: Omelas, KIOS, and Godfield)
+
+SPECIFIC QUESTIONS
+
+1. Which architectural decisions are particularly strong?
+2. Which decisions appear premature?
+3. Where is the repository over-engineered?
+4. Where is it under-engineered?
+5. Do the checkpoints communicate meaningful engineering milestones?
+6. Is the provenance strategy appropriate and proportionate?
+7. Should research artifacts remain inside the repository?
+8. Was archiving the MCPO prototype preferable to merging it?
+9. Is deferring launcher refactoring until after end-to-end validation technically justified?
+10. Does the launcher act as a clear and enforceable governance boundary?
+11. Which assumptions should be tested before Breakpoint Beta is declared complete?
+12. Which failure modes are not yet adequately covered?
+13. If you took over this repository tomorrow, what would you do next?
+14. What would cause you to reject the current direction?
+
+REVIEW METHOD
+
+Base conclusions on concrete repository evidence.
+
+Reference relevant paths, files, scripts, tests, commits, tags, and artifacts
+where possible.
+
+Clearly distinguish:
+
+* observed facts
+* architectural interpretations
+* risks
+* recommendations
+* speculation
+
+Do not invent repository contents that are not present in the supplied archive.
+
+Do not recommend broad refactoring merely for stylistic consistency.
+
+DELIVERABLE
+
+Produce a formal architecture review with these sections:
+
+1. Executive Summary
+2. Repository Evidence Reviewed
+3. Strengths
+4. Weaknesses
+5. Architectural Risks
+6. Security and Governance Risks
+7. Technical Debt
+8. Missing Validation
+9. Recommendations
+10. Immediate Next Steps
+11. Long-Term Roadmap
+12. Answers to the Specific Questions
+13. Overall Assessment
+
+Assign and justify each score from 1 to 10:
+
+* Engineering Maturity
+* Architecture Quality
+* Governance Quality
+* Repository Maintainability
+* Checkpoint Strategy
+* Provenance Strategy
+* Validation Readiness
+* Confidence in Current Direction
+
+End with:
+
+* Three reasons to continue the current direction.
+* Three reasons to reconsider the current direction.
+* The single highest-priority next engineering action.
+
+Do not avoid criticism.
+
+Treat this as a real architecture review that will influence future engineering
+decisions.
+----
+
+== Expected Outputs
+
+The completed review should be preserved verbatim as an immutable engineering
+artifact together with the repository snapshot, validation record, maintainer
+response, and final disposition.

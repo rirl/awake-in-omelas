@@ -1,0 +1,89 @@
+= Independent Architecture Validation
+:toc:
+:toclevels: 3
+
+== Purpose
+
+This directory defines a repeatable process for obtaining independent
+architecture reviews of the `awake-in-omelas` repository.
+
+The process is intended to:
+
+* challenge architectural assumptions
+* identify blind spots and hidden risks
+* validate engineering direction
+* preserve review provenance
+* record the maintainer's response and final disposition
+
+The review process is independent of any one model or vendor.
+
+== Validation Workflow
+
+. Establish the repository checkpoint to be reviewed.
+. Create an immutable ZIP snapshot of the repository.
+. Record the branch, commit, tag, and snapshot checksum.
+. Provide the snapshot and review prompt to an independent reviewer.
+. Save the complete review without editing it.
+. Record the maintainer response separately.
+. Record the final engineering disposition.
+. Commit the complete validation package as a historical artifact.
+
+----
+Repository checkpoint
+    ↓
+Immutable repository snapshot
+    ↓
+Independent review
+    ↓
+Maintainer response
+    ↓
+Engineering disposition
+    ↓
+Git checkpoint
+----
+
+== Review Independence
+
+The reviewer should receive only the minimum project context necessary to
+understand the review objective.
+
+Do not provide previous reviewer conclusions or ask the reviewer to confirm an
+existing decision.
+
+The repository snapshot should be treated as the primary source of truth.
+
+== Directory Layout
+
+----
+independent-architecture-validation/
+├── README.adoc
+├── claude-architecture-review-prompt.txt
+├── review-template.adoc
+├── validation-record-template.adoc
+└── findings/
+    └── .gitkeep
+----
+
+== Recording a Review
+
+Create a subdirectory under `findings/`, for example:
+
+----
+findings/
+└── 2026-07-14-claude-breakpoint-beta/
+    ├── validation-record.adoc
+    ├── repository-snapshot.zip
+    ├── architecture-review.adoc
+    ├── maintainer-response.adoc
+    └── disposition.adoc
+----
+
+Completed reviewer output should not be rewritten. Corrections or clarifications
+should be stored as separate addenda.
+
+== Authority
+
+The review is advisory.
+
+The canonical repository implementation and explicit maintainer decisions remain
+authoritative.

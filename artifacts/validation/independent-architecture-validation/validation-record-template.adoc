@@ -1,0 +1,75 @@
+= Independent Architecture Validation Record
+
+== Repository Snapshot
+
+Repository::
+awake-in-omelas
+
+Branch::
+
+Commit::
+
+Checkpoint Tag::
+
+Working Tree State::
+Clean / Dirty
+
+Snapshot Filename::
+
+Snapshot Created At::
+
+Snapshot SHA-256::
+
+Snapshot Creation Command::
+
+== Review Prompt
+
+Prompt Filename::
+claude-architecture-review-prompt.txt
+
+Prompt Version::
+1.0
+
+Prompt SHA-256::
+
+== Reviewer
+
+Reviewer::
+
+Reviewer Type::
+AI / Human
+
+Model or Organization::
+
+Model Version::
+
+Review Started At::
+
+Review Completed At::
+
+== Review Output
+
+Review Filename::
+
+Review SHA-256::
+
+Output Preserved Verbatim::
+Yes / No
+
+== Maintainer Response
+
+Response Filename::
+
+Response SHA-256::
+
+== Final Disposition
+
+Disposition Filename::
+
+Disposition SHA-256::
+
+Associated Commit::
+
+Associated Tag::
+
+== Notes
