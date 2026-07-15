@@ -1,0 +1,21 @@
+= Validation Package
+
+Review::
+Claude Independent Architecture Review
+
+Repository::
+awake-in-omelas
+
+Checkpoint::
+checkpoint-breakpoint-beta-artifacts
+
+Contents::
+
+* architecture-review.adoc
+* maintainer-response.adoc
+* disposition.adoc
+* validation-record.adoc
+
+Purpose::
+
+Preserve the complete engineering validation record for this checkpoint.

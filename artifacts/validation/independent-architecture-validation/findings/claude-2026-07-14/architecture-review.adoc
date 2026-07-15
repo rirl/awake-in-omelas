@@ -1,0 +1,226 @@
+= Independent Architecture Review
+:toc:
+:toclevels: 3
+:sectnums:
+
+== Review Identity
+
+Reviewer:: Claude (Anthropic), acting as an independent senior software architecture review board, per the supplied prompt.
+
+Reviewer Type:: AI
+
+Model or Organization:: Anthropic / Claude (Sonnet, Cowork mode)
+
+Review Date:: 2026-07-14
+
+Repository:: awake-in-omelas
+
+Branch (as stated in prompt):: feature/openwebui-mcp-filesystem
+
+Commit:: Not independently verifiable — the supplied snapshot does not include a `.git` directory (see <<repository-evidence-reviewed>>).
+
+Checkpoint Tag:: checkpoint-breakpoint-beta-artifacts
+
+Repository Snapshot:: awake-in-omelas-checkpoint-breakpoint-beta-artifacts.zip
+
+Snapshot SHA-256:: Not computed by the reviewer; not supplied with the archive.
+
+Prompt File:: claude-architecture-review-prompt.adoc
+
+Prompt Version:: 1.0
+
+NOTE: This review was conducted against the repository snapshot only. No prior conversation, chat history, or maintainer conclusions were consulted, consistent with the review-independence requirement in the prompt and in `artifacts/validation/independent-architecture-validation/README.adoc`.
+
+== Executive Summary
+
+Awake in Omelas is two things at once: a Git-native canon-management system for a narrative fiction project ("KIOS"), and an infrastructure project to connect that repository to an AI workbench (Open WebUI) through the Model Context Protocol (MCP). Breakpoint Alpha produced a genuinely well-built, fail-closed governance launcher for the Filesystem MCP server. Breakpoint Beta's stated objective — proving out Open WebUI → MCPO → Filesystem MCP → Governed Repository end to end — has been *partially* exercised, but the repository's own documents currently disagree with each other about how much of it is actually done.
+
+The engineering methodology on display (`docs/research/architecture-methodology.adoc`) is unusually mature for a project at this stage: it explicitly warns against premature generalization, requires evidence before promoting an abstraction, and is followed in practice — the MCPO runtime-abstraction prototype was archived rather than merged, exactly as the methodology prescribes. The checkpoint and provenance schema, where populated, is excellent: `checkpoint-0000` and `checkpoint-0001` read like real engineering changelogs, and the Tziphora narrative thread is fully traceable from source fragment to provenance record to canon entry.
+
+Set against that, three concrete, evidence-based problems limit confidence that Breakpoint Beta is actually ready to be declared complete:
+
+. The one automated test artifact in the repository (`scripts/mcp/mcp-results.xml`) records **3 of 3 tests failing**, yet the architectural roadmap (`docs/architecture/todo-federated-ai-platform.adoc`) marks "Automated unit tests" complete the very next day, and nothing in the repository explains or resolves the discrepancy.
+. The MCP launch command that was actually used to validate the target architecture (documented in `docs/operations/openwebui-bootstrap-notes.adoc`) invokes `docker run` directly rather than through the governed `scripts/mcp/run-mcp.bash` launcher — meaning the one piece of code that enforces the project's git-branch and clean-tree governance rules was **not** in the path that was validated.
+. Three documents — the roadmap checklist, the operations notes, and the Breakpoint Beta artifact README — currently give three different answers to "is Breakpoint Beta's end-to-end objective validated?" (unchecked / "Validated." / "pending"), with no cross-reference reconciling them.
+
+None of these are fatal, and none require a redesign — they are fixable in hours, not weeks. But they are precisely the class of "hidden assumption" and "missing validation" this review was commissioned to surface, and they should be resolved before Breakpoint Beta is checkpointed as complete.
+
+[[repository-evidence-reviewed]]
+== Repository Evidence Reviewed
+
+This review is based entirely on the contents of the supplied ZIP snapshot (`awake-in-omelas-checkpoint-breakpoint-beta-artifacts.zip`). The following areas were read directly:
+
+* Top-level: `README.adoc`, `PROJECT.adoc`, `canon-management-framework-with-provenance.adoc`, `canon-management-framework-v2-recommendations.adoc`, `.gitattributes`, `.gitignore`.
+* `canon/` — all populated entries (`checkpoints/checkpoint-0000.adoc`, `checkpoints/checkpoint-0001.adoc`, `provenance/prov-0001` through `prov-0005`, `characters/character-tziphora-cohen.adoc`, `characters/character-teacher.adoc`, `artifacts/artifact-book-night.adoc`, `symbols/symbol-red-coat.adoc`, `mysteries/mystery-girl-in-red-coat.adoc`, `timeline/timeline-tziphora-discovers-night.adoc`, `timeline/timeline-show-and-tell.adoc`), plus confirmation that `indexes/`, `audits/`, `themes/`, `worldbuilding/`, `narrative-architecture/`, `revelation/`, `source-fragments/`, and `infrastructure/prompts/` currently contain only `.gitkeep` placeholders.
+* `docs/architecture/todo-federated-ai-platform.adoc`, `docs/research/architecture-methodology.adoc`, `docs/operations/README.adoc`, `docs/operations/openwebui-bootstrap-notes.adoc`, `docs/mcp-launch-scripts-checklist.adoc`, `docs/chatgpt-mcp-tunnel-setup.adoc`.
+* `scripts/README.adoc`, `scripts/mcp/README.adoc`, `scripts/mcp/run-mcp.bash`, `scripts/mcp/run-readonly.bash`, `scripts/mcp/run-readwrite.bash`, `scripts/mcp/unittest-mcp.bash`, `scripts/mcp/unittest-mcp.md`, `scripts/mcp/mcp-results.xml`.
+* `artifacts/infrastructure/breakpoint-beta/README.adoc` and `notes.adoc`; the presence (not the extracted contents) of `awake-in-omelas-breakpoint-beta-mcpo.zip`, `canon-management-framework-v2-bootstrap.zip`, `canon-management-framework-with-provenance.zip`, `chatgpt-mcp-tunnel-bundle-v1.zip`, `scripts-mcp.zip`.
+* `artifacts/validation/independent-architecture-validation/README.adoc`, `review-template.adoc`, `validation-record-template.adoc`, and confirmation that `findings/` is currently empty (only `.gitkeep`).
+* `templates/*.adoc` (12 templates, confirming the full canonical-entry ontology).
+* File-level metadata read directly from the ZIP's central directory (`zipfile.ZipInfo`), used to recover **Unix permission bits and per-file modification timestamps that a plain filesystem extraction does not reliably preserve** — this was necessary to confirm claims about executable bits (see <<strengths>>) and to establish a relative timeline between documents that do not all carry explicit dates.
+
+Notable absence: **the snapshot contains no `.git` directory.** All commit hashes, branch names, and "clean working tree" claims found in checkpoint and provenance documents (e.g., `afade01`, `7cd1902`, `fa59cfc`, `daab4a9`, `81f878d`, `b4f5b2b`, `0726ce0`) are therefore taken on the documents' word and could not be independently cross-checked against actual Git history, tags, or diffs. This is a limitation of the supplied evidence, not a criticism of the repository's design — but it does mean the "immutable, verifiable checkpoint" claim in `PROJECT.adoc` could not itself be verified in this review.
+
+[[strengths]]
+== Strengths
+
+The fail-closed MCP launcher (`scripts/mcp/run-mcp.bash`) is the strongest piece of engineering in the snapshot. It requires an explicit access-mode argument with no default, validates six required environment variables and prints their state before proceeding, and — critically — calls `git -C "${MCP_PROJECT_PATH}"` itself to confirm the target is a real repository, that HEAD is not detached, and, for read-write mode specifically, that the current branch matches `feature/*` and the working tree is clean. This is a real, machine-enforced governance boundary, not just a documented convention.
+
+That intent is actually reflected in the committed artifacts, not just asserted in prose: reading the ZIP's raw central directory (rather than the extracted filesystem, whose permission bits are not reliable) shows `run-mcp.bash` and `run-readonly.bash` stored as `0755` (executable) and `run-readwrite.bash` stored as `0644` (not executable) — exactly matching the stated design in `scripts/mcp/README.adoc` that "the read-write wrapper should not be marked executable." This is a small detail, but it is evidence that governance intent survives from documentation into the actual repository state, which is not something to take for granted.
+
+The decision to archive the MCPO runtime-refactor prototype (`artifacts/infrastructure/breakpoint-beta/`) rather than merge it is well-reasoned and well-documented. Both `README.adoc` and `notes.adoc` in that directory state plainly that the prototype is "NOT adopted as the canonical implementation," explain why (sequencing risk of refactoring before proving the simpler path works), and record the engineering principle driving the decision ("Make it work. Verify that it works. Checkpoint the working implementation. Then improve the architecture."). This is a textbook example of resisting premature abstraction, and it is consistent with the project's own stated research methodology.
+
+`docs/research/architecture-methodology.adoc` is an unusually rigorous document for a project at this stage. It explicitly frames "premature universality" as a named risk, states that "the burden of proof rests upon the abstraction," and lays out a three-hypothesis test (genuine capability / apparent similarity / incorrect abstraction) for any pattern that appears to recur across domains. Whether or not every part of the repository lives up to it yet, the presence of this document — and evidence that at least one major decision (archiving MCPO) followed it — is a genuine strength.
+
+The checkpoint and provenance system, where populated, works as designed. `checkpoint-0000.adoc` and `checkpoint-0001.adoc` both include commits included, decisions adopted, decisions deferred, risks, and a named next milestone — this is a real engineering changelog, applied with equal discipline to a narrative-fiction project as one would expect from production software. The Tziphora narrative thread (`character-tziphora-cohen.adoc` → `artifact-book-night.adoc` → `timeline-tziphora-discovers-night.adoc` → `prov-0002` through `prov-0005`) is fully cross-referenced and internally consistent, and correctly separates CANON status from the "Open Questions" the entries still carry (e.g., "Why does the girl in the photograph resemble the girl in the book?").
+
+== Weaknesses
+
+The most consequential weakness is that **the validated end-to-end path does not go through the governed launcher.** `docs/operations/openwebui-bootstrap-notes.adoc` documents the "Validated Launch Command" for the MCPO bridge as a direct `docker run --rm -i --name Omelas-MCP-RO --read-only ... mcp/filesystem:latest /workspace/omelas` invocation — it does not call `scripts/mcp/run-readonly.bash` or `scripts/mcp/run-mcp.bash readonly`. It reproduces the same flags by hand instead of invoking the actual governed script. That means the branch-name and clean-working-tree checks inside `run-mcp.bash` — the specific mechanism the review objectives ask about under "governance model" and "MCP launcher architecture" — were never exercised in the one integration path that has actually been tried against Open WebUI.
+
+The repository's own automated test evidence contradicts its own roadmap. `scripts/mcp/mcp-results.xml`, committed alongside `unittest-mcp.bash` and `unittest-mcp.md`, is a JUnit report showing `tests="3" failures="3"` — every test failed. The harness itself also appears structurally unable to succeed from this repository: it invokes `npx tsx src/index.ts` and `node dist/index.js`, but no `src/` or `dist/` directory exists anywhere in the snapshot, suggesting the script was written to run inside a checkout of the upstream Filesystem MCP server's own source tree, not from `awake-in-omelas`. It also sends `"jsonrpc": "2.2"` in its test payloads, which is not a valid JSON-RPC version (the MCP protocol uses `"2.0"`). Despite this, `docs/architecture/todo-federated-ai-platform.adoc`, dated the following day, marks "Automated unit tests" as `[x]` complete and validated under Phase 0. Nothing in the repository reconciles the checked-in failing result with the roadmap's claim of success.
+
+Three documents disagree about the same milestone. `docs/architecture/todo-federated-ai-platform.adoc` shows every checkbox under "Phase 2 — Read-Only Filesystem MCP Integration" unchecked, including "Validate repository browsing," "Validate repository search," and "Validate document retrieval." `docs/operations/openwebui-bootstrap-notes.adoc` declares those same capabilities "Validated," with observed Swagger UI output and a worked example of "multi-document architectural analysis grounded in repository artifacts." `artifacts/infrastructure/breakpoint-beta/README.adoc`, dated the same day as this checkpoint, calls the entire MCPO-based approach a "Research Prototype" with disposition "Archived as reference implementation," superseded by "the first validated end-to-end Breakpoint Beta implementation (pending)." A reader who only saw the operations notes would conclude Beta is essentially done; a reader who only saw the breakpoint-beta artifact would conclude it hasn't started. Both cannot be right, and the repository does not say which one is.
+
+Separately, `scripts/mcp/unittest-mcp.md` reads as an unedited paste of an AI assistant's chat reply rather than authored documentation: it ends with a rhetorical follow-up question ("Would you like to extend this script to test your Cloudflare Tunnels configuration...") and two footnote links pointing to `mail.google.com` sync-tracking redirect URLs. This is a minor but real repository-hygiene issue — raw AI output was committed as if it were curated documentation, complete with an external tracking link that has no business being in a version-controlled artifact repository.
+
+== Architectural Risks
+
+The largest architectural risk is that the project may declare Breakpoint Beta complete on the strength of the operations notes' "Validated." language without first resolving whether that validation actually exercised governance. If write access is ever enabled through the MCPO path using the same "invoke Docker directly, bypass the launcher" pattern documented for read-only access, the branch/clean-tree enforcement that makes the launcher trustworthy would not apply — silently. Nothing in the current documentation suggests this has happened, but nothing rules it out either, and the read-only precedent normalizes bypassing the governed script.
+
+The MCP integration surface is currently singular and hardcoded: `MCP_PROJECT_PATH`, `MCP_CONTAINER_WORKSPACE`, and container name `Omelas-MCP-` are all fixed to one project. This is explicitly and reasonably deferred (see `artifacts/infrastructure/breakpoint-beta/README.adoc`'s "Expected Future Evolution" and Phase 5 "Per-project MCP isolation" in the roadmap), but it means the "scalability toward multiple governed projects" objective in this review's brief (Omelas, KIOS, "The God Field" — note the roadmap methodology document uses "The God Field," while this review's own prompt says "Godfield"; the repository never itself resolves whether these are the same project) is currently unsupported by any code, only by intent.
+
+There is no automated consistency checking across canon entries. `scripts/README.adoc` documents a planned `canon-validate.bash`, but it does not exist yet. As a direct, concrete consequence, `canon/provenance/prov-0001-tziphora-opening-thread.adoc` — the parent provenance record cited by name in four other provenance entries and in `character-tziphora-cohen.adoc`'s front matter — is still the blank template, with every field (Origin, Adoption Date, Reason For Adoption, etc.) empty. Nothing caught this before this review.
+
+== Security and Governance Risks
+
+The launcher's security posture is genuinely good where it is actually used: `--security-opt no-new-privileges:true`, port binding to `127.0.0.1` only, `--read-only` plus a read-only volume mount for the default posture, and an explicit requirement that write access only be attempted on a `feature/*` branch with a clean working tree. `docs/operations/openwebui-bootstrap-notes.adoc` also states the correct discipline explicitly ("Never commit API keys into Git," "Review Git diffs before committing AI-assisted changes").
+
+The governance gap identified above under Weaknesses — the validated MCPO path bypassing `run-mcp.bash` — is also the primary governance risk: it means the one place that enforces "no write access outside an isolated feature branch" is not actually in the loop for the integration the project is trying to ship. This should be treated as a trust-boundary issue, not merely a code-cleanliness one, because Breakpoint Beta's explicit validation objectives include both "repository writes" and "governance enforcement" together, and there is currently no evidence they have been exercised jointly through the real integration path.
+
+No secrets-scanning or pre-commit hook is present in the snapshot; the safeguard against committed API keys is currently a documented reminder, not a mechanism. Given the project's own principle that "Automation should follow understanding — not replace it" (`docs/research/architecture-methodology.adoc`), this may be an intentional, appropriate sequencing choice at this stage rather than an oversight — but it is worth naming explicitly as something the project is currently trusting to human discipline alone.
+
+== Technical Debt
+
+`.gitattributes` declares Git LFS tracking with three patterns: `canon-management-framework-with-provenance.zip` (one exact filename), `*.png` (a correct glob, and it is doing real work — six visualization PNGs plus three screenshot PNGs, roughly 13 MB total, are all covered), and a bare `zip` (which, in gitattributes/gitignore pattern syntax, only matches a path component literally named `zip`, not files ending in `.zip`). As a result, four of the five zip archives under `artifacts/infrastructure/` are not LFS-tracked, including a roughly 5 MB `chatgpt-mcp-tunnel-bundle-v1.zip`. This is a small, concrete, easily-fixed piece of technical debt (the pattern should almost certainly read `*.zip`), but it undermines the apparent intent of the LFS rule and will compound as more infrastructure bundles are archived.
+
+`docs/chatgpt-mcp-tunnel-setup.adoc` documents a full alternate integration path (ChatGPT via OpenAI's Secure MCP Tunnel) that predates the Open WebUI/MCPO direction, but — unlike the MCPO prototype in `artifacts/infrastructure/breakpoint-beta/` — it carries no explicit status, archived marker, or "superseded by" note. It currently reads as live documentation sitting alongside the actively pursued direction, which risks confusing a future reader (or a future AI reasoning over the repository through the very MCP integration this project is building) about which integration path is current.
+
+The ontology defined in `templates/` (12 canonical entry types: character, timeline, artifact, symbol, theme, mystery, worldbuilding, narrative-architecture, provenance, revelation, source-fragment, checkpoint) is fully specified, but `canon/themes/`, `canon/worldbuilding/`, `canon/narrative-architecture/`, `canon/revelation/`, `canon/source-fragments/`, `canon/audits/`, and `canon/indexes/` all currently contain nothing but `.gitkeep`. This is acknowledged and expected — `checkpoint-0000.adoc` lists most of it under "Outstanding Work" — so it is debt the project already knows it owes, not a surprise finding, but it is worth naming as debt rather than as completed infrastructure.
+
+== Missing Validation
+
+No automated test in the snapshot currently passes. The only test harness present (`scripts/mcp/unittest-mcp.bash`) records 3/3 failures and appears to target the wrong working directory for this repository entirely (see Weaknesses). There is no CI configuration anywhere in the snapshot (no `.github/workflows`, no equivalent) to run it automatically even if it were fixed.
+
+Write-mode has no demonstrated validation through the actual Open WebUI-facing integration path. `docs/operations/openwebui-bootstrap-notes.adoc`'s validated operations list is entirely read-side (`read_file`, `read_multiple_files`, `list_directory`, `directory_tree`, `search_files`, `get_file_info`, `list_allowed_directories`). `write_file` only appears in the broken `unittest-mcp.bash`, which failed. Breakpoint Beta's stated validation objectives explicitly include "repository writes" and "governance enforcement" as joint requirements — as of this snapshot, neither has demonstrated evidence of having been exercised together, or through the governed launcher.
+
+There is no committed evidence of the governed launcher (`run-mcp.bash`) actually being invoked in the context of the MCPO/Open WebUI integration at all — only its standalone Docker validation is documented, using a hand-written equivalent command rather than the script itself.
+
+== Recommendations
+
+Reconcile the three conflicting status claims (roadmap checklist, operations notes, breakpoint-beta artifact) into one authoritative statement of what has and has not been validated, and cross-link the three documents so they cannot silently diverge again — this is cheap and directly serves the project's own "provenance over assumption" principle.
+
+Route the MCPO-bridged launch command through `scripts/mcp/run-readonly.bash` / `run-mcp.bash readonly` (and, when write mode is attempted, `run-mcp.bash readwrite`) instead of a hand-duplicated `docker run` invocation, so that the governance checks the project already built are actually in the path being validated.
+
+Fix or replace `scripts/mcp/unittest-mcp.bash` so it can run correctly against this repository (it currently references a `src/`/`dist/` layout that doesn't exist here), correct its `"jsonrpc": "2.2"` payload to `"2.0"`, and re-generate `mcp-results.xml` so the committed artifact reflects an actual, current, explainable result rather than an unexplained 3/3 failure.
+
+Fill in `canon/provenance/prov-0001-tziphora-opening-thread.adoc`, or explicitly retire/replace it, since it is the cited parent of four other provenance records and is currently blank.
+
+Correct the `.gitattributes` LFS pattern from a bare `zip` to `*.zip` so all archived infrastructure bundles are consistently tracked.
+
+Add an explicit status/disposition header to `docs/chatgpt-mcp-tunnel-setup.adoc` (active / superseded / archived) so it does not read as live guidance alongside the currently pursued MCPO direction.
+
+Remove or rewrite `scripts/mcp/unittest-mcp.md`, which currently contains what appears to be unedited AI-chat output, including external tracking links, committed as documentation.
+
+== Immediate Next Steps
+
+Before declaring Breakpoint Beta complete: (1) determine, with a single authoritative source of truth, whether read-only end-to-end operation through the *governed* launcher (not a hand-duplicated command) has actually been validated; (2) determine whether write-mode plus governance enforcement has been jointly validated through that same path — the evidence currently says no; (3) resolve the failing/mis-scoped `unittest-mcp.bash` artifact one way or the other (fix it, or remove it and say why); (4) fill in `prov-0001`. None of these require new design work — they are verification and cleanup tasks that directly determine whether the checkpoint about to be created describes reality.
+
+== Long-Term Roadmap
+
+The roadmap already documented in `docs/architecture/todo-federated-ai-platform.adoc` (Phase 3 controlled read/write, Phase 4 multi-provider federation, Phase 5 platform hardening including "per-project MCP isolation") is reasonable and appropriately sequenced, and this review does not recommend changing its shape. The one adjustment worth making explicit: Phase 5's "per-project MCP isolation" and the "Governance → Runtime Selection → Runtime Launch" layering sketched in the archived MCPO prototype are the correct eventual shape for supporting Omelas, KIOS, and other domains from one launcher family — but per the project's own research methodology, that generalization should wait until at least a second real domain has exercised the current single-project launcher, not be built from the Omelas case alone. The repository is currently following that discipline; the recommendation is simply to keep doing so, and to resist folding the archived prototype back in until a second domain provides real evidence for its shape.
+
+== Answers to the Specific Questions
+
+Which architectural decisions are particularly strong?:: The fail-closed launcher with git-state enforcement (`run-mcp.bash`); the decision to archive rather than merge the MCPO refactor prototype; the checkpoint/provenance schema as actually executed on the Tziphora thread; the explicit, evidence-driven anti-premature-generalization methodology.
+
+Which decisions appear premature?:: Standing up a full independent-review governance apparatus (`artifacts/validation/independent-architecture-validation/`, with review and validation-record templates) before a single Breakpoint Beta milestone has been consistently documented as complete — the `findings/` directory is empty; this is the first review conducted under that process. Also premature: naming "Validation" as a fifth first-class knowledge category in `docs/research/architecture-methodology.adoc` before any structured (non-prose) validation record exists in the repository.
+
+Where is the repository over-engineered?:: The full 12-type narrative canon ontology (`templates/`) is fully specified while seven of its categories (`themes/`, `worldbuilding/`, `narrative-architecture/`, `revelation/`, `source-fragments/`, `audits/`, `indexes/`) hold no content. The KIOS multi-domain platform vision is documented in more depth than the currently validated functionality (one project, one MCP server type, read-only manual validation) supports.
+
+Where is it under-engineered?:: There is no automated canon consistency checker (a blank `prov-0001` went unnoticed); no CI runs the existing test harness; no mechanism keeps the roadmap checklist, operations notes, and artifact dispositions in agreement with each other; the LFS pattern for zip archives does not actually match zip archives.
+
+Do the checkpoints communicate meaningful engineering milestones?:: Yes, clearly. `checkpoint-0000` and `checkpoint-0001` are the best-executed artifacts in the repository — concrete commits, explicit deferred work, named risks, named next milestone.
+
+Is the provenance strategy appropriate and proportionate?:: The design is appropriate and proportionate — small, per-entry provenance records with parent IDs and alternatives-considered are not overkill for a project whose stated purpose is reconstructing decisions independent of chat history. Execution is inconsistent: `prov-0001` is unfilled despite anchoring the entire populated thread.
+
+Should research artifacts remain inside the repository?:: Yes, on the evidence of how the MCPO prototype was handled — clearly labeled non-canonical, clearly disposed of, retained for provenance. The `chatgpt-mcp-tunnel-setup.adoc` document is the counter-example: it is a research/exploration artifact sitting undisambiguated among currently-active docs.
+
+Was archiving the MCPO prototype preferable to merging it?:: Yes — it avoids conflating a speculative runtime-abstraction refactor with a proven, single-path implementation, and it is directly supported by the project's own "burden of proof rests on the abstraction" principle.
+
+Is deferring launcher refactoring until after end-to-end validation technically justified?:: Justified in principle, but the gating condition ("end-to-end validation complete") is not currently well-defined in the repository — three documents disagree about whether it has happened.
+
+Does the launcher act as a clear and enforceable governance boundary?:: Partially. It is a clear and enforceable boundary for direct invocation. It is not currently in the path that was used to validate the target Open WebUI/MCPO architecture, which invoked Docker directly instead.
+
+Which assumptions should be tested before Breakpoint Beta is declared complete?:: That the MCPO path can be made to route through the governed launcher rather than around it; that write access plus governance enforcement can be jointly demonstrated through that path (currently untested); that the automated test harness can produce a meaningful, passing result for this repository.
+
+Which failure modes are not yet adequately covered?:: Governance bypass via direct Docker invocation under MCPO; container-name collision if the governed script and the MCPO bridge are both run against `Omelas-MCP-RO` concurrently; no rollback/incident procedure yet for an unwanted AI-driven write (appropriately deferred to Phase 3, but worth naming as not yet covered); no secrets-scanning mechanism beyond a documented reminder.
+
+If you took over this repository tomorrow, what would you do next?:: Fix `prov-0001` and the `.gitattributes` zip pattern (minutes); reconcile the three conflicting Breakpoint Beta status documents into one true statement; either fix `unittest-mcp.bash` or remove it and record why; re-run the MCPO validation through the actual governed scripts rather than a duplicated command; only then create the Breakpoint Beta checkpoint.
+
+What would cause you to reject the current direction?:: Not the architecture itself, which is sound — but if reconciliation revealed that write-mode governance enforcement has never been exercised end to end through the actual user-facing integration path, that would be a rejection-level finding, because it is the specific thing Breakpoint Beta was defined to prove.
+
+== Overall Assessment
+
+[cols="3,1,6",options="header"]
+|===
+|Category |Score (1-10) |Justification
+
+|Engineering Maturity
+|6
+|Real discipline (checkpoints, provenance schema, fail-closed scripts, permission bits that match documentation) coexists with unreconciled, contradictory status claims across three documents and a checked-in failing test artifact that was not investigated before the roadmap marked it complete.
+
+|Architecture Quality
+|7
+|Clean separation of governance/runtime and canon/docs/artifacts/validation; genuinely evidence-driven anti-premature-generalization stance. Docked for the MCPO path bypassing the one governance-enforcing script.
+
+|Governance Quality
+|5
+|The governance mechanism itself (`run-mcp.bash`) is well-built and correctly enforced at the filesystem level. But the actual validated end-to-end path does not invoke it, which is close to the central purpose of having it.
+
+|Repository Maintainability
+|6
+|Clear naming conventions and directory layout; undermined by empty index/audit directories (no discoverability tooling yet) and a non-functional LFS rule for most zip artifacts.
+
+|Checkpoint Strategy
+|8
+|`checkpoint-0000` and `checkpoint-0001` are excellent, concrete engineering artifacts — the best-executed part of the repository.
+
+|Provenance Strategy
+|6
+|Rigorous by design (parent IDs, alternatives considered, source fragments); inconsistently executed (`prov-0001` unfilled; checkpoint-cited commit hashes unverifiable from this snapshot).
+
+|Validation Readiness
+|3
+|The only automated harness fails 3/3 and appears mis-scoped for this repository; the only "Validated" claims are manual and ad hoc (`curl`, `pgrep`, reading Swagger UI by eye), and are directly contradicted by a sibling document calling the same milestone "pending."
+
+|Confidence in Current Direction
+|6
+|The direction (governed launcher, Docker-based MCP, eventual multi-domain platform) is sound and well-reasoned. Confidence is limited specifically by the validation and governance-path gaps above, not by the underlying architecture.
+|===
+
+=== Three Reasons to Continue the Current Direction
+
+. The engineering methodology (`docs/research/architecture-methodology.adoc`) is unusually disciplined for this project stage, is evidence-driven rather than theoretical, and is demonstrably being followed — the MCPO refactor was archived, not merged, exactly as the methodology prescribes.
+. The fail-closed launcher's governance rules are enforced at the filesystem level, not just documented — confirmed directly from the ZIP's permission bits, which match the stated design exactly.
+. Where the checkpoint/provenance system has actually been populated (the Tziphora thread), it fully delivers on the repository's stated purpose: reconstructing project state and decision rationale independent of chat history.
+
+=== Three Reasons to Reconsider the Current Direction
+
+. The one automated validation artifact in the repository shows complete failure (3/3), and the roadmap marked the same area complete the next day without explanation — the exact kind of unverified assumption this review exists to catch.
+. The only governance-enforcing script in the repository was not in the path used to validate the target architecture; the validated path duplicated the same Docker flags by hand instead.
+. Three documents currently give three different, uncross-referenced answers to whether Breakpoint Beta's core objective is done — for a repository whose founding principle is "provenance over assumption," this is a direct tension with its own stated purpose.
+
+=== Single Highest-Priority Next Engineering Action
+
+Reconcile and re-validate, in one sitting, the actual state of the Open WebUI → MCPO → Filesystem MCP → repository chain: confirm the validated launch path is routed through the governed `run-mcp.bash`/`run-readonly.bash` scripts rather than a parallel hand-written `docker run` command, confirm that write access plus governance enforcement (branch check, clean-tree check) has been exercised through that same path, and only then update `docs/architecture/todo-federated-ai-platform.adoc`, `docs/operations/openwebui-bootstrap-notes.adoc`, and `artifacts/infrastructure/breakpoint-beta/` to a single, consistent, cross-referenced status before checkpointing Breakpoint Beta as complete.
