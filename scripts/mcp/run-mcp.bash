@@ -66,7 +66,7 @@ validate_required_variables() {
 
     echo
 
-    if (( missing_count > 0 )); then
+    if ((missing_count > 0)); then
         echo "ERROR: ${missing_count} required environment variable(s) are missing." >&2
         exit 1
     fi
@@ -109,7 +109,26 @@ validate_repository_state() {
 }
 
 set_derived_values() {
+    local project_uid
+    local project_gid
+
+    project_uid="$(stat --format='%u' "${MCP_PROJECT_PATH}")"
+    project_gid="$(stat --format='%g' "${MCP_PROJECT_PATH}")"
+
+    if [[ ! "${project_uid}" =~ ^[0-9]+$ ]]; then
+        echo "ERROR: unable to determine numeric repository owner UID." >&2
+        exit 1
+    fi
+
+    if [[ ! "${project_gid}" =~ ^[0-9]+$ ]]; then
+        echo "ERROR: unable to determine numeric repository owner GID." >&2
+        exit 1
+    fi
+
     declare -gr MCP_EFFECTIVE_CONTAINER_NAME="${MCP_CONTAINER_NAME}${MCP_ACCESS_SUFFIX}"
+    declare -gr MCP_PROJECT_UID="${project_uid}"
+    declare -gr MCP_PROJECT_GID="${project_gid}"
+    declare -gr MCP_CONTAINER_USER="${MCP_PROJECT_UID}:${MCP_PROJECT_GID}"
 }
 
 print_derived_values() {
@@ -121,6 +140,7 @@ print_derived_values() {
     printf '%-32s : %s\n' "ACCESS_MODE" "${ACCESS_MODE}"
     printf '%-32s : %s\n' "MCP_ACCESS_SUFFIX" "${MCP_ACCESS_SUFFIX}"
     printf '%-32s : %s\n' "MCP_ACCESS_VOLUME" "${MCP_ACCESS_VOLUME}"
+    printf '%-32s : %s\n' "MCP_CONTAINER_USER" "${MCP_CONTAINER_USER}"
 
     if ((${#MCP_CONTAINER_OPTIONS[@]} == 0)); then
         printf '%-32s : %s\n' "MCP_CONTAINER_OPTIONS" "none"
@@ -136,14 +156,16 @@ run_container() {
     set -x
     docker run --rm -it \
         --name "${MCP_EFFECTIVE_CONTAINER_NAME}" \
+        --user "${MCP_CONTAINER_USER}" \
         "${MCP_CONTAINER_OPTIONS[@]}" \
         --security-opt no-new-privileges:true \
         -p "127.0.0.1:${MCP_HOST_PORT}:${MCP_CONTAINER_PORT}" \
         -v "${MCP_PROJECT_PATH}:${MCP_CONTAINER_WORKSPACE}:${MCP_ACCESS_VOLUME}" \
         "${MCP}" \
-        ${MCP_CONTAINER_WORKSPACE}
+        "${MCP_CONTAINER_WORKSPACE}"
     set +x
 }
+
 main() {
     validate_access_mode
     validate_required_variables
