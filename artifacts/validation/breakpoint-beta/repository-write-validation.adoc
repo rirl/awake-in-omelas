@@ -1,0 +1,135 @@
+= Repository Write Validation
+:toc:
+:toclevels: 2
+
+== Provenance
+
+Validation Name::
+Breakpoint Beta Repository Write Validation
+
+Repository::
+awake-in-omelas
+
+Branch::
+feature/openwebui-mcp-filesystem
+
+Validation Date::
+2026-07-18
+
+Validation Phase::
+Breakpoint Beta
+
+Validation Type::
+End-to-End Repository Write Validation
+
+== Purpose
+
+This validation records successful end-to-end write access from Open WebUI,
+through the governed MCP runtime, into the Git working repository.
+
+The purpose of this validation is to demonstrate that the governed runtime
+constructed during Breakpoint Beta can successfully perform repository
+operations using the canonical launcher infrastructure.
+
+== Validation Objective
+
+Demonstrate successful repository write capability through the complete
+governed execution path:
+
+----
+Open WebUI
+    |
+    v
+MCPO
+    |
+    v
+Filesystem MCP Server
+    |
+    v
+Governed Runtime
+    |
+    v
+Git Working Repository
+----
+
+== Validation Criteria
+
+[cols="3,1,4",options="header"]
+|===
+|Criterion
+|Result
+|Evidence
+
+|OpenAPI endpoint reachable
+|PASS
+|OpenAPI specification successfully served.
+
+|Filesystem MCP server operational
+|PASS
+|Filesystem server accepted repository operations.
+
+|Governed runtime operational
+|PASS
+|Canonical Breakpoint Beta launcher executed successfully.
+
+|Repository mounted read/write
+|PASS
+|Repository accepted write operations.
+
+|Repository file creation
+|PASS
+|Validation witness file successfully created.
+
+|Repository file read
+|PASS
+|Validation witness file successfully read.
+|===
+
+== Runtime Witness
+
+The following runtime witness was produced during validation:
+
+----
+validation/mcp/breakpoint-beta-write-test.txt
+----
+
+The runtime witness demonstrated successful repository write capability
+through the governed execution path.
+
+The runtime witness is transient. Its engineering significance is preserved
+by this validation record.
+
+== Validation Result
+
+Result::
+PASS
+
+Conclusion::
+
+Breakpoint Beta successfully demonstrated governed end-to-end repository
+write capability through Open WebUI, MCPO, the Filesystem MCP server, and
+the governed runtime into the Git working repository.
+
+This satisfies the primary repository-write objective for Breakpoint Beta.
+
+== Artifact Disposition
+
+This validation record is the durable engineering evidence resulting from
+the repository-write validation.
+
+The transient runtime witness may be removed after this validation record
+has been committed and verified.
+
+== Related Artifacts
+
+* Repository Promotion Ledger
+* Breakpoint Beta Finalization Preservation Package
+* `validation/mcp/breakpoint-beta-write-test.txt`
+
+== Status
+
+Validation Status::
+Accepted
+
+Repository Status::
+Pending commit
