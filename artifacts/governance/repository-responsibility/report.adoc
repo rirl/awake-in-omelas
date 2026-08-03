@@ -1,0 +1,968 @@
+= Repository Responsibility Assessment
+:doctype: book
+:toc:
+:toclevels: 3
+:sectnums:
+
+RRA-0001
+
+Status:: COMPLETED
+Repository:: awake-in-omelas
+Assessment Type:: Repository Responsibility Assessment
+Assessment Baseline:: Breakpoint Beta Complete
+Purpose:: Determine the continuing architectural responsibility of all repository artifacts following completion of Breakpoint Beta.
+Assessment Scope:: Repository responsibility only. This assessment does not validate implementation correctness or operational readiness.
+
+== Repository Identity
+
+The *awake-in-omelas* repository is the canonical governed repository for the
+Awake in Omelas project.
+
+Its long-term responsibility is to preserve and evolve the project's
+authoritative domain artifacts, governance artifacts, architectural decisions,
+validation evidence, and implementation that are intrinsic to the project
+itself.
+
+Following completion of Breakpoint Beta, portions of the repository are
+expected to have transitioned into reusable infrastructure whose continuing
+architectural ownership no longer belongs within the Awake in Omelas project.
+
+This Repository Responsibility Assessment (RRA-0001) establishes the
+authoritative repository boundary after completion of that transition.
+
+The assessment serves as the execution record supporting future repository
+promotion activities and defines which artifacts remain canonical
+responsibilities of the repository and which should instead become the
+responsibility of other repositories or external operator-managed state.
+
+== Purpose
+
+The purpose of this assessment is to determine whether every artifact currently
+contained within the repository continues to belong to the architectural
+responsibility of the Awake in Omelas project.
+
+Specifically, the assessment seeks to:
+
+* identify the continuing architectural owner of each repository artifact;
+* distinguish project-specific assets from reusable infrastructure;
+* identify operator-managed artifacts that should not be maintained in Git;
+* support repository promotion following Breakpoint Beta;
+* provide documented justification for future artifact migration or removal;
+* establish an auditable record of repository responsibility decisions.
+
+This assessment is intended to become the canonical responsibility evaluation
+for the repository following completion of Breakpoint Beta.
+
+== Scope
+
+This assessment applies only to the contents of the active
+`awake-in-omelas` repository.
+
+The assessment includes:
+
+* repository structure;
+* governance artifacts;
+* documentation;
+* implementation artifacts;
+* validation artifacts;
+* scripts;
+* templates;
+* canonical project knowledge.
+
+The assessment excludes:
+
+* confidential operator state;
+* local runtime configuration;
+* private deployment artifacts;
+* Docker runtime state;
+* externally managed infrastructure;
+* implementation correctness;
+* code quality;
+* software testing.
+
+No repository restructuring is performed by this assessment.
+
+The assessment records responsibility only.
+
+== Objectives
+
+The objectives of RRA-0001 are:
+
+. establish the authoritative architectural boundary of the repository;
+. determine continuing ownership for all major artifact classes;
+. identify reusable infrastructure suitable for extraction;
+. identify artifacts that should become operator-managed;
+. document repository promotion recommendations;
+. preserve complete assessment provenance;
+. support future repository governance activities.
+
+Success is achieved when every assessed artifact can be assigned an explicit
+continuing architectural responsibility.
+
+== Governing Principles
+
+This assessment is governed by the following principles.
+
+=== Architectural Responsibility
+
+Artifacts should reside within the repository whose long-term architectural
+mission they support.
+
+=== Single Continuing Owner
+
+Every governed artifact shall possess one continuing architectural owner.
+
+Repository boundaries shall reflect responsibility rather than historical
+origin.
+
+=== Canonical Knowledge Preservation
+
+Project-specific knowledge shall remain within the project repository even when
+supporting implementation is extracted elsewhere.
+
+=== Separation of Reusable Infrastructure
+
+Infrastructure intended for reuse across multiple repositories should migrate
+to a dedicated infrastructure repository once sufficient independence has been
+demonstrated.
+
+=== Separation of Operator State
+
+Operator-specific configuration, runtime state, secrets, deployment metadata,
+and similar operational artifacts shall remain outside the governed project
+repository unless intentionally preserved as governance evidence.
+
+=== Evidence-Based Assessment
+
+Repository responsibility decisions shall be supported by collected evidence
+rather than assumptions.
+
+== Assessment Method
+
+The assessment follows an evidence-driven architectural review.
+
+The methodology consists of:
+
+. inventory the repository;
+. collect objective repository evidence;
+. classify artifacts according to architectural role;
+. determine continuing ownership;
+. identify architectural boundary crossings;
+. recommend promotion, extraction, retention, or removal where appropriate;
+. record findings for future governance activities.
+
+The assessment intentionally distinguishes between:
+
+* historical implementation origin;
+* current repository location;
+* continuing architectural responsibility.
+
+Only continuing responsibility determines the recommended repository boundary.
+
+== Repository Responsibility Model
+
+The responsibility model classifies repository contents according to their
+continuing architectural ownership.
+
+Primary responsibility categories include:
+
+Project Responsibility::
+Artifacts intrinsic to the Awake in Omelas project and expected to remain
+within the repository.
+
+Reusable Infrastructure::
+Artifacts whose continuing value extends beyond the project and are candidates
+for extraction into shared infrastructure repositories.
+
+Governance Evidence::
+Artifacts preserved to document governance decisions, validation activities,
+architectural history, or assessment outcomes.
+
+Operator State::
+Artifacts whose ownership belongs to deployment or operational environments and
+therefore should remain external to the governed repository.
+
+Historical Preservation::
+Artifacts intentionally retained to preserve engineering provenance even after
+their operational role has concluded.
+
+This responsibility model provides the basis for all subsequent assessment
+findings.
+
+== Assessment Deliverables
+
+RRA-0001 produces the following assessment artifacts.
+
+* Repository inventory
+* Evidence summary
+* Responsibility matrix
+* Assessment findings
+* Recommended promotions
+* Recommended removals
+* Repository boundary analysis
+* Final assessment
+* Disposition summary
+
+Collectively, these deliverables establish the authoritative repository
+responsibility record following Breakpoint Beta.
+
+== Evidence Summary
+
+The assessment is supported by evidence collected directly from the repository.
+
+[cols="1,4",options="header"]
+|===
+|Evidence ID |Description
+
+|E-001
+|Top-level repository inventory.
+
+|E-002
+|Complete inventory of the `artifacts/` hierarchy.
+
+|E-003
+|Complete inventory of the `docs/` hierarchy.
+
+|E-004
+|Complete inventory of the `scripts/` hierarchy.
+
+|E-005
+|Inventory of canonical project content and repository knowledge.
+
+|E-006
+|Inventory of repository templates and reusable project assets.
+|===
+
+== Assessment Findings
+
+=== F-001 — Repository Identity and Boundary Integrity
+
+Identifier::
+F-001
+
+Observation::
+The repository possesses a clearly defined architectural identity centered on
+the Awake in Omelas project and has substantially completed the transition from
+experimental workspace to governed repository.
+
+Evidence::
+E-001 through E-006 demonstrate that the repository structure is organized
+around project documentation, governance artifacts, canonical source material,
+templates, and supporting automation.
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+These artifacts collectively define the architectural responsibility of the
+repository and directly support the project's governed lifecycle.
+
+'''
+
+=== F-002 — Governance Artifact Organization
+
+Identifier::
+F-002
+
+Observation::
+Governance documentation has evolved into a coherent body of records describing
+assessment methodology, validation evidence, architectural decisions, and
+repository management practices.
+
+Evidence::
+Governance artifacts identified within the inventory, together with the
+Repository Responsibility Assessment itself.
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+Governance documentation represents first-class project knowledge and forms an
+essential component of the repository's long-term maintenance responsibility.
+
+'''
+
+=== F-003 — Canonical Project Documentation
+
+Identifier::
+F-003
+
+Observation::
+Repository documentation consistently describes the Awake in Omelas project
+rather than generic runtime infrastructure.
+
+Evidence::
+Documentation inventory (E-003).
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+Documentation whose primary subject is the project itself belongs permanently
+within the repository regardless of implementation technology.
+
+'''
+
+=== F-004 — Canonical Narrative Assets
+
+Identifier::
+F-004
+
+Observation::
+Narrative content, research material, story canon, and project-specific
+reference information are intrinsic components of the Awake in Omelas project.
+
+Evidence::
+Canonical content inventory (E-005).
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+These materials define the intellectual and creative content of the project and
+cannot be delegated to reusable infrastructure repositories.
+
+'''
+
+=== F-005 — Repository Templates
+
+Identifier::
+F-005
+
+Observation::
+Template artifacts supporting project governance, documentation, validation,
+and engineering practices are present within the repository.
+
+Evidence::
+Template inventory (E-006).
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+Templates customized for project governance constitute reusable project assets
+and should remain under version control with the repository.
+
+'''
+
+=== F-006 — Runtime Infrastructure
+
+Identifier::
+F-006
+
+Observation::
+Portions of the repository contain reusable runtime infrastructure associated
+with governed execution, container launch, MCP integration, and execution
+framework support.
+
+Evidence::
+Scripts inventory (E-004) together with architectural review.
+
+Responsibility Determination::
+Promote.
+
+Rationale::
+Although these components originated within Awake in Omelas, their continuing
+architectural responsibility extends beyond this repository. They represent a
+general governed execution capability suitable for independent lifecycle
+management.
+
+Recommended Destination::
+`governed-mcp-runtime`
+
+'''
+
+=== F-007 — Project-Specific Automation
+
+Identifier::
+F-007
+
+Observation::
+Automation directly supporting project validation, documentation generation,
+repository management, and project-specific workflows remains closely coupled
+to repository responsibilities.
+
+Evidence::
+Scripts inventory (E-004).
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+Automation whose purpose is specific to Awake in Omelas should remain within
+the repository to preserve reproducibility and reduce external dependencies.
+
+'''
+
+=== F-008 — Validation Evidence
+
+Identifier::
+F-008
+
+Observation::
+Validation artifacts documenting repository behavior, governance verification,
+and project assessment remain valuable engineering evidence.
+
+Evidence::
+Artifacts inventory (E-002).
+
+Responsibility Determination::
+Retain.
+
+Rationale::
+Engineering validation evidence provides historical traceability and supports
+future governance assessments.
+
+'''
+
+=== F-009 — External Operational State
+
+Identifier::
+F-009
+
+Observation::
+Certain operational artifacts represent deployment state, runtime
+configuration, credentials, caches, generated runtime metadata, or other
+environment-specific information.
+
+Evidence::
+Architectural review together with preservation guidance established during
+Breakpoint Beta.
+
+Responsibility Determination::
+Relocate.
+
+Rationale::
+Operational state is not a permanent responsibility of the repository and
+should instead be preserved through designated operational repositories or
+deployment environments.
+
+Recommended Destination::
+Operational state repository, deployment environment, or preservation archive,
+as appropriate.
+
+'''
+
+=== F-010 — Repository Responsibility Alignment
+
+Identifier::
+F-010
+
+Observation::
+The repository has substantially achieved alignment between its architectural
+purpose and the artifacts presently retained under version control.
+
+Evidence::
+Combined analysis of E-001 through E-006.
+
+Responsibility Determination::
+Retain, with targeted promotions and relocations.
+
+Rationale::
+Only a limited number of reusable infrastructure components remain candidates
+for promotion into separate repositories. The repository otherwise reflects a
+well-defined architectural boundary consistent with its intended long-term
+responsibility.
+
+== Repository Responsibility Matrix
+
+[cols="3,2,2,5",options="header"]
+|===
+|Repository Area
+|Disposition
+|Primary Responsibility
+|Rationale
+
+|Project narrative and canon
+|Retain
+|Awake in Omelas
+|Defines the project's canonical intellectual content.
+
+|Project documentation
+|Retain
+|Awake in Omelas
+|Documents repository-specific architecture and governance.
+
+|Governance artifacts
+|Retain
+|Awake in Omelas
+|Required for long-term governance and traceability.
+
+|Validation evidence
+|Retain
+|Awake in Omelas
+|Provides reproducible engineering evidence.
+
+|Repository templates
+|Retain
+|Awake in Omelas
+|Supports continuing repository governance.
+
+|Project-specific automation
+|Retain
+|Awake in Omelas
+|Implements repository-specific workflows.
+
+|Reusable MCP runtime
+|Promote
+|governed-mcp-runtime
+|Represents reusable execution infrastructure independent of the project.
+
+|Reusable launcher framework
+|Promote
+|governed-mcp-runtime
+|Applicable across multiple governed repositories.
+
+|MCPO integration components
+|Promote
+|governed-mcp-runtime
+|Infrastructure responsibility extends beyond a single repository.
+
+|Container runtime support
+|Promote
+|governed-mcp-runtime
+|Reusable execution environment.
+
+|Deployment-specific configuration
+|Relocate
+|Deployment environment
+|Represents operational rather than repository state.
+
+|Generated runtime artifacts
+|Remove
+|Generated on demand
+|Derived artifacts should not become permanent repository contents.
+|===
+== Promotion Recommendations
+
+The following repository components are recommended for promotion into
+independently governed repositories where their architectural
+responsibility extends beyond the Awake in Omelas project.
+
+=== PR-001 — Governed MCP Runtime
+
+Components implementing reusable governed execution infrastructure,
+including launcher mechanisms, runtime policy enforcement,
+MCPO integration, Filesystem MCP support, container runtime
+management, and reusable execution libraries, should be maintained
+within the `governed-mcp-runtime` repository.
+
+Benefits include:
+
+* Independent lifecycle management.
+* Reuse across multiple governed repositories.
+* Reduced coupling between project content and execution framework.
+* Clear architectural ownership.
+
+=== PR-002 — Reusable Governance Mechanisms
+
+Generic governance mechanisms developed during repository evolution
+should be evaluated for future extraction into technology-independent
+governance repositories where appropriate.
+
+Examples include:
+
+* repository assessment methodology;
+* generalized evidence collection patterns;
+* reusable governance templates; and
+* repository lifecycle guidance.
+
+Extraction should occur only after individual mechanisms have
+demonstrated stability through practical application.
+
+=== PR-003 — Preservation Artifacts
+
+Immutable engineering evidence generated during major architectural
+milestones should remain preserved within dedicated preservation
+repositories rather than duplicated inside the active project
+repository.
+
+The active repository should instead reference those preservation
+packages where historical traceability is required.
+
+== Removal / Relocation Recommendations
+
+The assessment identified several categories of artifacts whose
+continuing responsibility lies outside the Awake in Omelas repository.
+
+=== RR-001 — Operator State
+
+Operational state, credentials, deployment secrets, runtime caches,
+generated configuration, local deployment metadata, and similar
+environment-specific information should remain outside version control
+and be managed through designated operational repositories or runtime
+management systems.
+
+=== RR-002 — Generated Runtime Artifacts
+
+Files generated automatically during execution should not be retained
+as permanent repository contents unless they represent canonical
+engineering evidence approved for long-term preservation.
+
+Examples include:
+
+* temporary execution logs;
+* generated cache contents;
+* intermediate build outputs;
+* transient container state; and
+* disposable validation outputs.
+
+=== RR-003 — Deployment Configuration
+
+Machine-specific deployment configuration should remain external to the
+repository wherever practical.
+
+Repository documentation may describe deployment expectations, but
+environment-specific implementation details should remain under
+deployment management.
+
+=== RR-004 — Reusable Runtime Infrastructure
+
+Reusable execution infrastructure should continue migrating toward the
+dedicated governed runtime repository, allowing Awake in Omelas to
+focus exclusively upon project knowledge, governance, validation, and
+canonical content.
+
+== Deferred Decisions
+
+The following decisions were intentionally deferred beyond the scope of
+Repository Responsibility Assessment RRA-0001. Their deferral does not
+affect the validity of this assessment but instead reflects the
+governance principle that structural evolution should proceed only after
+repository responsibilities have been clearly established.
+
+=== DD-001 — Repository Artifact Taxonomy
+
+A comprehensive taxonomy defining the canonical organization of all
+repository artifacts should be developed following completion of the
+current assessment.
+
+Rationale::
+
+The present assessment establishes repository responsibility rather than
+prescribing the long-term organizational structure of every retained
+artifact.
+
+Disposition::
+
+Deferred to a future repository governance initiative.
+
+'''
+
+=== DD-002 — Runtime Repository Evolution
+
+The long-term organization and lifecycle management of the
+`governed-mcp-runtime` repository should be addressed through an
+independent architectural assessment following completion of the
+promotion activities recommended by this report.
+
+Rationale::
+
+RRA-0001 identifies architectural ownership but does not prescribe the
+future governance model of promoted repositories.
+
+Disposition::
+
+Deferred until promotion activities have been completed.
+
+'''
+
+=== DD-003 — Repository Automation
+
+Additional repository automation, including AI-assisted editing,
+repository maintenance, evidence generation, validation workflows, and
+governed execution tooling, should be expanded following stabilization
+of repository boundaries.
+
+Rationale::
+
+Automation should evolve against stable governance rather than influence
+repository responsibility decisions during assessment.
+
+Disposition::
+
+Deferred to a future engineering phase.
+
+'''
+
+=== DD-004 — MCP-Based Repository Operations
+
+Routine repository maintenance through Filesystem MCP and governed
+execution workflows should become the preferred operational model after
+completion of RRA-0001.
+
+Rationale::
+
+Breakpoint Beta demonstrated the technical feasibility of governed
+repository interaction through MCP. The present assessment intentionally
+focuses upon repository responsibility rather than operational
+mechanisms.
+
+Disposition::
+
+Deferred until completion and approval of this assessment.
+
+'''
+
+=== DD-005 — Governance Generalization
+
+Governance patterns demonstrated during the Repository Responsibility
+Assessment should be reviewed for extraction into technology-independent
+governance guidance where they demonstrate applicability beyond the
+Awake in Omelas repository.
+
+Potential candidates include:
+
+* repository responsibility assessments;
+* evidence collection methodology;
+* repository promotion guidance;
+* preservation practices;
+* governance review procedures; and
+* repository lifecycle management.
+
+Disposition::
+
+Deferred pending broader architectural review.
+
+'''
+== Responsibility Matrix
+
+[cols="2,3,2,2,3",options="header"]
+|===
+|Repository Area
+|Primary Responsibility
+|Disposition
+|Priority
+|Notes
+
+|artifacts/
+|Governance records, assessments, validation evidence
+|Retain
+|High
+|Core governed repository content.
+
+|docs/
+|Project architecture, governance, and documentation
+|Retain
+|High
+|Canonical project documentation.
+
+|scripts/
+|Project-specific operational scripts
+|Retain
+|High
+|Limited to functionality owned by Awake in Omelas.
+
+|templates/
+|Project templates and document skeletons
+|Retain
+|Medium
+|Support repository governance activities.
+
+|canon/
+|Narrative canon and project knowledge
+|Retain
+|High
+|Primary intellectual content of the repository.
+
+|validation/
+|Project validation evidence
+|Retain
+|High
+|Repository-specific validation artifacts.
+
+|Generic MCP runtime implementation
+|Reusable runtime infrastructure
+|Promote
+|High
+|Belongs within governed-mcp-runtime.
+
+|Open WebUI deployment artifacts
+|Deployment configuration
+|Promote
+|Medium
+|Belongs within dedicated deployment repository.
+
+|Historical breakpoint preservation packages
+|Engineering preservation
+|Externalize
+|Medium
+|Maintain within preservation repository.
+
+|Legacy unit test artifacts
+|Obsolete validation remnants
+|Remove
+|High
+|Identified during assessment as no longer serving a repository responsibility.
+|===
+
+== Dependency Assessment
+
+The repository demonstrates a clear architectural dependency hierarchy.
+
+Awake in Omelas remains the authoritative source for project-specific
+governance, documentation, validation, and narrative content.
+
+Reusable execution infrastructure has been intentionally separated into the
+governed-mcp-runtime repository. This establishes a reusable implementation
+boundary that can support multiple governed projects without introducing
+cross-project coupling.
+
+Engineering preservation artifacts similarly form an independent concern and
+belong within the preservation repository, ensuring that historical evidence
+remains immutable while operational repositories remain focused on current
+development.
+
+The assessment found no architectural dependency that requires the Awake in
+Omelas repository to permanently retain reusable runtime infrastructure or
+historical preservation packages.
+
+== Architectural Risks
+
+[cols="1,4,2",options="header"]
+|===
+|Risk ID
+|Description
+|Assessment
+
+|RRA-R-0001
+|Reintroduction of reusable runtime components into the project repository could blur architectural boundaries.
+|Medium
+
+|RRA-R-0002
+|Retention of historical preservation packages could increase repository complexity and duplicate evidence.
+|Low
+
+|RRA-R-0003
+|Future operational artifacts may accumulate without periodic repository responsibility reviews.
+|Medium
+
+|RRA-R-0004
+|Residual obsolete validation artifacts may reduce confidence in repository hygiene.
+|Low
+|===
+
+Overall architectural risk is considered low provided repository responsibility
+continues to be governed through periodic assessment.
+
+== Recommended Promotions
+
+The following artifact categories should continue to be promoted into their
+long-term architectural homes.
+
+[cols="2,4",options="header"]
+|===
+|Destination Repository
+|Artifact Classes
+
+|governed-mcp-runtime
+|Reusable governed launcher components, Filesystem MCP integration, MCPO bridge, runtime policy, reusable execution tooling.
+
+|omelas-breakpoint-beta-preservation
+|Immutable engineering evidence, promotion records, historical validation artifacts, ADR snapshots, preservation manifests.
+
+|Future Open WebUI deployment repository
+|Deployment configuration, exported application configuration, runtime deployment metadata, installation documentation.
+|===
+
+These promotions strengthen repository boundaries while improving long-term
+maintainability and reuse.
+
+== Recommended Removals
+
+The assessment identified obsolete artifacts that no longer possess a valid
+architectural responsibility within the repository.
+
+[cols="1,3,2",options="header"]
+|===
+|Finding
+|Artifact
+|Disposition
+
+|RRA-F-0001
+|Legacy unittest artifact retained from earlier validation work.
+|Remove
+
+|RRA-F-0002
+|Second obsolete unittest artifact retained from earlier validation work.
+|Remove
+|===
+
+Removal of these artifacts improves repository hygiene without affecting the
+governed project baseline or historical engineering evidence.
+
+== Repository Boundary Assessment
+
+The repository now demonstrates a substantially improved architectural
+boundary.
+
+Project-specific responsibilities remain within Awake in Omelas, while reusable
+runtime capabilities and preservation concerns have been intentionally
+separated into independent repositories.
+
+This separation supports:
+
+* clearer ownership,
+* improved maintainability,
+* reduced architectural coupling,
+* reusable governed execution infrastructure,
+* independent preservation of engineering evidence,
+* cleaner long-term governance.
+
+The repository therefore aligns with the intended Repository Responsibility
+Model defined earlier in this assessment.
+
+== Final Repository Responsibility Assessment
+
+Assessment ID:: RRA-0001
+
+Repository:: awake-in-omelas
+
+Assessment Result:: PASS
+
+Overall Status:: ACCEPTABLE
+
+Summary::
+
+The repository contains artifacts whose continuing responsibility primarily
+belongs to the Awake in Omelas project.
+
+Where reusable infrastructure or preservation responsibilities were
+identified, clear architectural destinations have been established.
+
+The assessment confirms that the repository boundary is well-defined,
+architecturally coherent, and suitable for continued governed development.
+
+Minor cleanup activities remain, consisting primarily of removing obsolete
+legacy validation artifacts identified during this assessment.
+
+== Completion Criteria
+
+The Repository Responsibility Assessment shall be considered complete when the
+following conditions have been satisfied:
+
+* Repository inventory completed.
+* Evidence collection completed.
+* Repository responsibilities documented.
+* Responsibility Matrix approved.
+* Architectural risks documented.
+* Promotion recommendations documented.
+* Removal recommendations documented.
+* Repository boundary validated.
+* Final assessment approved.
+* Assessment committed as the canonical RRA-0001 record.
+
+== Closing Statement
+
+Repository Responsibility Assessment RRA-0001 establishes the authoritative
+architectural boundary for the Awake in Omelas repository following completion
+of Breakpoint Beta.
+
+The assessment confirms that the repository has reached a governance state in
+which project-specific responsibilities are clearly distinguished from reusable
+runtime infrastructure and preservation concerns. This boundary provides a
+stable foundation for future governed engineering activities while supporting
+the continued evolution of the broader repository ecosystem.
+
+Accordingly, Repository Responsibility Assessment RRA-0001 is concluded with a
+final disposition of *PASS*.
