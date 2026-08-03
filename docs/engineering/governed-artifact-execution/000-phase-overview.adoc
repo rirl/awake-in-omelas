@@ -1,0 +1,209 @@
+= Governed Artifact Execution — Phase Initiation
+:toc:
+:sectnums:
+
+== Purpose
+
+The Repository Responsibility Assessment (RRA-0001) marks the completion of
+the repository governance phase for the Awake in Omelas repository.
+
+The repository now contains its canonical governance artifacts, repository
+boundaries have been established, and Git remains the authoritative system of
+record.
+
+The purpose of the next engineering phase is not to create additional
+governance, but to demonstrate that the established governance enables normal
+engineering work.
+
+The primary objective is to replace the remaining manual
+"generate → copy/paste → commit" workflow with governed repository execution
+wherever practical.
+
+== Architectural Transition
+
+The governing question changes.
+
+Previous phases asked:
+
+* What governance is required?
+* What artifacts belong in the repository?
+* How is repository responsibility established?
+* How is provenance preserved?
+* How is engineering evidence recorded?
+
+These questions establish the governance foundation.
+
+The next phase asks a different question:
+
+[quote]
+____
+How is engineering performed under the governance that has now been
+established?
+____
+
+Governance transitions from being primarily descriptive to becoming
+operational.
+
+Engineering activities are expected to execute within the governance model
+rather than alongside it.
+
+== Existing Foundation
+
+The following capabilities have already been validated.
+
+* Governed launcher
+* Filesystem MCP server
+* MCPO bridge
+* Open WebUI integration
+* Read-only repository access
+* Read-write repository access
+* Repository write validation
+* Git review workflow
+* Repository governance
+* Repository responsibility
+
+The execution infrastructure therefore already exists.
+
+The remaining objective is to demonstrate practical engineering execution
+through that infrastructure.
+
+== Engineering Objective
+
+The smallest useful engineering objective is not the generation of large
+documents.
+
+Instead, it is demonstrating that ordinary repository changes can be performed
+through the governed execution path.
+
+Success is measured by replacing manual repository editing with governed
+repository modification while preserving normal Git review.
+
+== Execution Philosophy
+
+Execution should proceed incrementally.
+
+Each validation milestone should introduce exactly one additional capability.
+
+Failures should be treated as engineering evidence rather than reasons to
+redesign the overall architecture.
+
+Repository history should remain small, understandable, and reviewable.
+
+== Proposed Validation Sequence
+
+=== GAE-0001 — Governed Artifact Creation
+
+Objective::
+
+Create a single new repository artifact entirely through the governed MCP
+execution path.
+
+Validation::
+
+* Artifact successfully created.
+* Artifact located in the expected repository location.
+* Git detects the new file.
+* Human review completed.
+* Change committed using the existing governance process.
+
+=== GAE-0002 — Governed Artifact Update
+
+Objective::
+
+Modify an existing repository artifact through the governed execution path.
+
+Validation::
+
+* Existing artifact updated.
+* Git detects the modification.
+* Human review completed.
+* Change committed.
+
+=== GAE-0003 — Multi-Artifact Generation
+
+Objective::
+
+Generate two related repository artifacts during a single governed execution.
+
+Validation::
+
+* Both artifacts created correctly.
+* Git presents both changes for review.
+* Human review completed.
+* Change committed.
+
+=== GAE-0004 — Multi-Artifact Update
+
+Objective::
+
+Modify multiple existing repository artifacts as a single governed engineering
+operation.
+
+Validation::
+
+* All expected modifications are present.
+* Repository remains internally consistent.
+* Git review completed.
+* Change committed.
+
+=== GAE-0005 — Repository-Aware Engineering
+
+Objective::
+
+Perform governed repository analysis, derive engineering results from existing
+repository content, and update one or more canonical artifacts accordingly.
+
+Validation::
+
+* Repository search succeeds.
+* Derived changes are correct.
+* Updates are applied through the governed execution path.
+* Git review completed.
+* Change committed.
+
+== Engineering Workflow
+
+The engineering lifecycle becomes:
+
+....
+Engineering Intent
+        │
+        ▼
+Execution Request
+        │
+        ▼
+Governed MCP Execution
+        │
+        ▼
+Repository Modification
+        │
+        ▼
+Git Review
+        │
+        ▼
+Commit
+....
+
+Git remains the canonical system of record.
+
+The governed execution path replaces only the manual editing workflow while
+preserving human review and repository history.
+
+== Long-Term Direction
+
+The long-term objective is not autonomous engineering.
+
+The objective is governed engineering.
+
+Repository artifacts should ultimately be created and maintained directly
+through the governed execution path while remaining subject to:
+
+* human admission
+* policy enforcement
+* Git review
+* version control
+* engineering validation
+
+The success of this phase will be measured by demonstrating that ordinary
+engineering work can be performed through the existing governance and MCP
+execution infrastructure without requiring manual copy-and-paste operations.
