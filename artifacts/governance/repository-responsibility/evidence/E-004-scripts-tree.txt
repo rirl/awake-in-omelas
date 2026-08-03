@@ -1,0 +1,34 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-004-scripts-tree.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Scripts directory inventory
+
+Command:
+  find scripts -print | sort
+
+------------------------------------------------------------
+
+scripts
+scripts/README.adoc
+scripts/canon-bootstrap-canon-entries-tziphora.bash
+scripts/canon-bootstrap-indexes.bash
+scripts/canon-bootstrap-provenance-tziphora.bash
+scripts/canon-bootstrap-templates.bash
+scripts/canon-bootstrap.bash
+scripts/cd
+scripts/mcp
+scripts/mcp/README.adoc
+scripts/mcp/mcp-results.xml
+scripts/mcp/run-mcp.bash
+scripts/mcp/run-readonly.bash
+scripts/mcp/run-readwrite.bash
+scripts/mcp/unittest-mcp.bash
+scripts/mcp/unittest-mcp.md
+scripts/scripts
+scripts/scripts/governance
+scripts/scripts/governance/bootstrap-repository-responsibility-evidence.bash

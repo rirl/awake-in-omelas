@@ -1,0 +1,171 @@
+= Repository Responsibility Assessment
+:doctype: book
+:toc:
+:toclevels: 3
+:sectnums:
+
+== Repository Identity
+
+Assessment ID::
+RRA-0001
+
+Status::
+IN PROGRESS
+
+Phase::
+Inventory
+
+Repository::
+awake-in-omelas
+
+Assessment Baseline::
+Breakpoint Beta Complete
+
+Current Branch::
+feature/openwebui-mcp-filesystem
+
+Purpose::
+
+Verify that the repository contains only artifacts whose continuing
+architectural responsibility belongs to the Awake in Omelas project
+following successful completion of Breakpoint Beta.
+
+Related Repositories::
+
+* governed-mcp-runtime
+* omelas-breakpoint-beta-preservation
+
+Excluded::
+
+* confidential operator-state
+
+== Scope
+
+This assessment applies only to the active
+`awake-in-omelas` repository.
+
+The assessment excludes the confidential operator-state archive
+and does not modify any repository structure.
+
+== Objectives
+
+The objectives of this assessment are:
+
+* inventory the repository
+* classify repository responsibilities
+* determine authoritative ownership
+* identify architectural dependencies
+* identify repository boundary risks
+* recommend governed promotions
+* recommend governed removals
+* determine whether the repository refactor following Breakpoint Beta is complete
+
+== Governing Principles
+
+This assessment shall be conducted according to the following principles:
+
+. Inventory before classification.
+. Classification before recommendations.
+. Recommendations only after the complete inventory has been assessed.
+. Repository responsibility shall be determined by long-term architectural ownership rather than current location.
+. Historical evidence shall not be relocated without preserving provenance.
+. Reusable implementation shall be distinguished from project-specific implementation.
+. Confidential operator-state shall remain outside Git-managed repositories.
+. Uncertainty shall be explicitly recorded rather than resolved through assumption.
+
+== Assessment Method
+
+The assessment shall proceed in the following order:
+
+. Repository inventory
+. Responsibility classification
+. Dependency analysis
+. Risk assessment
+. Repository boundary assessment
+. Promotion recommendations
+. Removal recommendations
+. Final architectural assessment
+
+== Repository Responsibility Model
+
+Each significant artifact shall be assigned one primary responsibility.
+
+[cols="1,4"]
+|===
+|Classification |Meaning
+
+|Awake in Omelas
+|The artifact's continuing responsibility belongs to the Omelas project.
+
+|Governed MCP Runtime
+|The artifact represents reusable governed execution capabilities.
+
+|Breakpoint Preservation
+|The artifact primarily preserves historical engineering evidence.
+
+|Operator State
+|The artifact represents confidential or mutable operational state and shall not reside in Git.
+
+|Obsolete
+|The artifact no longer has an architectural responsibility.
+
+|Uncertain
+|Insufficient evidence exists to determine authoritative responsibility.
+|===
+
+== Assessment Deliverables
+
+The completed assessment shall produce:
+
+* Repository Responsibility Report
+* Responsibility Matrix
+* Recommended Promotions
+* Recommended Removals
+* Repository Boundary Diagram
+* Final Repository Responsibility Assessment
+
+== Top-Level Repository Inventory
+
+== Top-Level Repository Inventory
+
+=== Evidence E-001
+
+Title::
+Top-Level Repository Inventory
+
+Location::
+artifacts/governance/repository-responsibility/evidence/E-001-top-level-inventory.txt
+
+Purpose::
+Capture the repository contents prior to responsibility assessment.
+
+Status::
+Accepted
+
+== Responsibility Matrix
+
+_To be completed after repository inventory._
+
+== Dependency Assessment
+
+_To be completed after repository inventory._
+
+== Architectural Risks
+
+_To be completed after dependency assessment._
+
+== Recommended Promotions
+
+_Not yet assessed._
+
+== Recommended Removals
+
+_Not yet assessed._
+
+== Repository Boundary Assessment
+
+_Not yet assessed._
+
+== Final Repository Responsibility Assessment
+
+_Not yet assessed._

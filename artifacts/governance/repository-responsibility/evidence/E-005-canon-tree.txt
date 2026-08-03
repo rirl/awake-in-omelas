@@ -1,0 +1,63 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-005-canon-tree.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Canon directory inventory
+
+Command:
+  find canon -print | sort
+
+------------------------------------------------------------
+
+canon
+canon/.gitkeep
+canon/artifacts
+canon/artifacts/.gitkeep
+canon/artifacts/artifact-book-night.adoc
+canon/audits
+canon/audits/.gitkeep
+canon/characters
+canon/characters/.gitkeep
+canon/characters/character-teacher.adoc
+canon/characters/character-tziphora-cohen.adoc
+canon/checkpoints
+canon/checkpoints/.gitkeep
+canon/checkpoints/checkpoint-0000.adoc
+canon/checkpoints/checkpoint-0001.adoc
+canon/indexes
+canon/indexes/.gitkeep
+canon/infrastructure
+canon/infrastructure/.gitkeep
+canon/infrastructure/prompts
+canon/infrastructure/prompts/.gitkeep
+canon/mysteries
+canon/mysteries/.gitkeep
+canon/mysteries/mystery-girl-in-red-coat.adoc
+canon/narrative-architecture
+canon/narrative-architecture/.gitkeep
+canon/provenance
+canon/provenance/.gitkeep
+canon/provenance/prov-0001-tziphora-opening-thread.adoc
+canon/provenance/prov-0002-tziphora-character-entry.adoc
+canon/provenance/prov-0003-book-night-artifact.adoc
+canon/provenance/prov-0004-tziphora-discovery-timeline.adoc
+canon/provenance/prov-0005-tziphora-discovery-checkpoint.adoc
+canon/revelation
+canon/revelation/.gitkeep
+canon/source-fragments
+canon/source-fragments/.gitkeep
+canon/symbols
+canon/symbols/.gitkeep
+canon/symbols/symbol-red-coat.adoc
+canon/themes
+canon/themes/.gitkeep
+canon/timeline
+canon/timeline/.gitkeep
+canon/timeline/timeline-show-and-tell.adoc
+canon/timeline/timeline-tziphora-discovers-night.adoc
+canon/worldbuilding
+canon/worldbuilding/.gitkeep

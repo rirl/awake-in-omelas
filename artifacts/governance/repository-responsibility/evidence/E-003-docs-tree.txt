@@ -1,0 +1,25 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-003-docs-tree.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Documentation directory inventory
+
+Command:
+  find docs -print | sort
+
+------------------------------------------------------------
+
+docs
+docs/architecture
+docs/architecture/todo-federated-ai-platform.adoc
+docs/chatgpt-mcp-tunnel-setup.adoc
+docs/mcp-launch-scripts-checklist.adoc
+docs/operations
+docs/operations/README.adoc
+docs/operations/openwebui-bootstrap-notes.adoc
+docs/research
+docs/research/architecture-methodology.adoc

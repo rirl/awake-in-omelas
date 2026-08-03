@@ -1,0 +1,8 @@
+= Repository Responsibility Report Prompt Set
+
+Execute sequentially:
+1. Part 1
+2. Part 2
+3. Part 3
+
+Concatenate the generated AsciiDoc into repository-responsibility-report.adoc.

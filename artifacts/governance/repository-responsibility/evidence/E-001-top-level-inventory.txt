@@ -1,0 +1,26 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-001-top-level-inventory.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Top-level repository inventory
+
+Command:
+  find . -mindepth 1 -maxdepth 1 ! -name '.git' -print | sort
+
+------------------------------------------------------------
+
+./.gitattributes
+./.gitignore
+./PROJECT.adoc
+./README.adoc
+./artifacts
+./canon
+./canon-management-framework-v2-recommendations.adoc
+./canon-management-framework-with-provenance.adoc
+./docs
+./scripts
+./templates

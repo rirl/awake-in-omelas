@@ -1,0 +1,58 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-002-artifacts-tree.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Artifacts directory inventory excluding generated assessment evidence
+
+Command:
+  find artifacts -path 'artifacts/governance/repository-responsibility/evidence' -prune -o -print | sort
+
+------------------------------------------------------------
+
+artifacts
+artifacts/chatgpt-mcp-older-checklist.png
+artifacts/chatgpt-mcp-tunnel-setup.png
+artifacts/governance
+artifacts/governance/repository-responsibility
+artifacts/governance/repository-responsibility/repository-responsibility-report.adoc
+artifacts/infrastructure
+artifacts/infrastructure/breakpoint-beta
+artifacts/infrastructure/breakpoint-beta/README.adoc
+artifacts/infrastructure/breakpoint-beta/awake-in-omelas-breakpoint-beta-mcpo.zip
+artifacts/infrastructure/breakpoint-beta/notes.adoc
+artifacts/infrastructure/canon-management-framework-v2-bootstrap.zip
+artifacts/infrastructure/canon-management-framework-with-provenance.zip
+artifacts/infrastructure/chat-mcp-tunnel-bundle-v1.adoc
+artifacts/infrastructure/chatgpt-mcp-tunnel-bundle-v1.zip
+artifacts/infrastructure/scripts-mcp.zip
+artifacts/mcp-launch-scripts-checklist.png
+artifacts/operations
+artifacts/operations/2026-07-15-tonight.adoc
+artifacts/validation
+artifacts/validation/breakpoint-beta
+artifacts/validation/breakpoint-beta/repository-write-validation.adoc
+artifacts/validation/independent-architecture-validation
+artifacts/validation/independent-architecture-validation/README.adoc
+artifacts/validation/independent-architecture-validation/claude-architecture-review-prompt.adoc
+artifacts/validation/independent-architecture-validation/findings
+artifacts/validation/independent-architecture-validation/findings/.gitkeep
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14/0000-finding-conflicting-validation-status.adoc
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14/README.adoc
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14/architecture-review.adoc
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14/disposition.adoc
+artifacts/validation/independent-architecture-validation/findings/claude-2026-07-14/maintainer-response.adoc
+artifacts/validation/independent-architecture-validation/review-template.adoc
+artifacts/validation/independent-architecture-validation/validation-record-template.adoc
+artifacts/visualizations
+artifacts/visualizations/2026
+artifacts/visualizations/2026/ai-data-model-relationships.png
+artifacts/visualizations/2026/api-git-native-architecture.png
+artifacts/visualizations/2026/fiction-nonfiction-mapping.png
+artifacts/visualizations/2026/kios-converged-model.png
+artifacts/visualizations/2026/kios-data-model.png
+artifacts/visualizations/2026/kios-system-light-theme.png

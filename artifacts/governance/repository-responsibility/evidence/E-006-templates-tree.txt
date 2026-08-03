@@ -1,0 +1,29 @@
+Repository Responsibility Assessment (RRA-0001)
+Evidence   : E-006-templates-tree.txt
+Repository : awake-in-omelas
+Branch     : feature/openwebui-mcp-filesystem
+Commit     : 9faf98bddaf46b1b69d3b053751ef91bcbb28a80
+Generated  : 2026-07-23T15:13:35Z
+
+Description:
+  Templates directory inventory
+
+Command:
+  find templates -print | sort
+
+------------------------------------------------------------
+
+templates
+templates/.gitkeep
+templates/artifact-template.adoc
+templates/character-template.adoc
+templates/checkpoint-template.adoc
+templates/mystery-template.adoc
+templates/narrative-architecture-template.adoc
+templates/provenance-template.adoc
+templates/revelation-template.adoc
+templates/source-fragment-template.adoc
+templates/symbol-template.adoc
+templates/theme-template.adoc
+templates/timeline-template.adoc
+templates/worldbuilding-template.adoc
