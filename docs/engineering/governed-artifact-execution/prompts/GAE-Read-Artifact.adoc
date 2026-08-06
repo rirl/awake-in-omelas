@@ -1,0 +1,12 @@
+= GAE-Read-Artifact
+== Purpose
+Read one or more repository artifacts without modifying them.
+== Required Inputs
+* Repository path(s)
+== Constraints
+* Read only.
+* Do not create, modify, move, or delete files.
+== Verification
+* Report every file successfully read.
+* Summarize the contents requested by the user.
+* State whether any requested file could not be found.

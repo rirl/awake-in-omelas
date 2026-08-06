@@ -1,0 +1,15 @@
+= GAE-Create-Artifact
+== Purpose
+Create one or more new repository artifacts without modifying existing files.
+== Required Inputs
+* Target directory
+* Target filename(s)
+* Desired content
+== Constraints
+* Create only explicitly requested files.
+* Do not modify existing files.
+* Create parent directories only when necessary.
+== Verification
+* Read every created file.
+* Confirm that persisted contents match the requested contents.
+* Report every created path.
