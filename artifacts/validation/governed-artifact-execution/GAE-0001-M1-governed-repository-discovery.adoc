@@ -1,0 +1,53 @@
+= GAE-0001 Validation Record
+:doctype: article
+:toc:
+:sectnums:
+
+== Validation Identity
+
+Validation ID:: GAE-0001-M1
+Title:: Governed Repository Discovery
+Status:: COMPLETE
+Date:: 2026-08-06
+
+== Objective
+
+Validate that Open WebUI can successfully access the governed
+Awake in Omelas repository through the MCPO OpenAPI Proxy and
+Filesystem MCP runtime.
+
+== Validated Execution Path
+
+[source,text]
+----
+Open WebUI
+    ↓
+MCPO OpenAPI Proxy
+    ↓
+Filesystem MCP
+    ↓
+Governed Repository
+----
+
+== Validation Results
+
+The Filesystem MCP tool successfully:
+
+* Enumerated the allowed repository root.
+* Listed the repository contents.
+* Confirmed the presence of the Git repository.
+* Located the canonical README document.
+
+No repository content was modified during this validation.
+
+== Evidence
+
+Repository Root:: /workspace/omelas
+Repository Identified:: awake-in-omelas
+Git Repository:: Confirmed
+README:: /workspace/omelas/README.adoc
+
+== Conclusion
+
+This validation demonstrates successful governed repository discovery
+through the complete Open WebUI → MCPO → Filesystem MCP execution path.
