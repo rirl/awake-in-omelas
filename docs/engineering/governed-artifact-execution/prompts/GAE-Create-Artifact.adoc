@@ -13,3 +13,9 @@ Create one or more new repository artifacts without modifying existing files.
 * Read every created file.
 * Confirm that persisted contents match the requested contents.
 * Report every created path.
+=== Verification Checklist
+Before reporting completion, verify:
+* The requested artifact exists.
+* The artifact contents match the requested contents.
+* No additional files were modified.
+* The updated file can be read successfully.
