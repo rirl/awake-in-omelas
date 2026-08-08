@@ -1,0 +1,22 @@
+= GAE-Update-Artifact
+== Purpose
+Update one or more existing repository artifacts without creating unrelated files.
+== Required Inputs
+* Repository path(s)
+* Requested modification
+== Constraints
+* Read each target artifact before modifying it.
+* Modify only explicitly identified files.
+* Do not create additional files unless explicitly requested.
+* Preserve unrelated content.
+== Verification
+* Read back every modified artifact.
+* Confirm that persisted contents match the requested modification.
+* Report every modified path.
+=== Verification Checklist
+Before reporting completion, verify:
+* Every requested artifact was updated.
+* The requested modification is present.
+* Unrelated content was preserved.
+* No additional files were modified.
+* Every updated file can be read successfully.
