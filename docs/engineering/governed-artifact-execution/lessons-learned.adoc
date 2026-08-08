@@ -1,0 +1,46 @@
+= Governed Artifact Execution — Lessons Learned
+:doctype: article
+:toc:
+:sectnums:
+== Purpose
+This document captures engineering observations discovered while validating
+the Governed Artifact Execution workflow.
+Its purpose is to preserve practical engineering knowledge so that future
+phases can build upon proven practices rather than rediscovering them.
+== Lessons
+=== Prompt Specificity
+Explicit, narrowly scoped prompts consistently produced smaller, cleaner Git
+diffs and reduced unintended modifications.
+=== Read Before Write
+Reading repository artifacts before modification allowed the requested update
+to be applied with greater precision and reduced the likelihood of disturbing
+unrelated content.
+=== Read-Back Verification
+Reading artifacts immediately after writing provided an independent
+confirmation that persisted repository contents matched the requested
+operation.
+=== Git as Final Admission Authority
+Filesystem operations successfully performed repository updates, but Git
+review remained the authoritative mechanism for determining exactly what
+changed before admission into repository history.
+=== Open WebUI as an Engineering Console
+Open WebUI conversations functioned as engineering execution journals by
+recording prompts, tool invocations, verification activities, and execution
+results alongside repository history.
+=== Explicit Runtime Authentication
+The MCP runtime demonstrated that authentication behaviour should be
+explicitly configured rather than implicitly inherited from shell
+environments. Discovery of MCP_API_KEY inheritance during runtime validation
+reinforced the importance of explicit runtime configuration.
+=== Governed Prompt Library
+The prompt library itself is maintained using the same governed repository
+workflow that it documents. This provides both practical validation of the
+workflow and provenance for the engineering procedures themselves.
+== Future Direction
+Future Governed Artifact Execution phases should continue expanding capability
+through small, independently validated engineering increments while preserving
+bounded scope, explicit verification, and Git-based review.
+== Conclusion
+GAE-0001 and GAE-0002 established a repeatable engineering workflow in which
+repository operations are performed through governed tooling, independently
+verified, and admitted into repository history only after human review.

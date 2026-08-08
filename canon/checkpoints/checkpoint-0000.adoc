@@ -1,8 +1,8 @@
 = Checkpoint 0000: Canon Infrastructure Established
-
-Status: Stable
-
-Date: 2026-06-15
+:entry-type: CHECKPOINT
+:status: STABLE
+:created: 2026-06-15
+:version: 0.2
 
 == Purpose
 
@@ -12,11 +12,9 @@ chat history.
 
 == Repository State
 
-Version: 0.2
+Name:: Canon Infrastructure Established
 
-Name: Canon Infrastructure Established
-
-Ready For:
+Ready For::
 
 * Canon Schema Development
 * Canon Entry Templates
