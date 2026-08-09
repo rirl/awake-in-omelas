@@ -1,0 +1,27 @@
+= GAE-Update-Multiple-Artifacts
+== Purpose
+Update multiple explicitly named existing repository artifacts in one bounded operation without creating unrelated files.
+== Required Inputs
+* Repository paths
+* Requested modification for each artifact
+* Relationship between the requested modifications
+== Constraints
+* Read each target artifact before modifying it.
+* Modify only explicitly identified files.
+* Do not create additional files unless explicitly requested.
+* Preserve unrelated content in every affected artifact.
+* Keep the operation limited to the named artifacts and their requested modifications.
+* Keep Git diff review, human admission, and commit outside the execution boundary.
+== Verification
+* Read back every modified artifact.
+* Confirm that persisted contents match the requested modification for each artifact.
+* Confirm that related updates are mutually consistent as requested.
+* Report every modified path.
+=== Verification Checklist
+Before reporting completion, verify:
+* Every requested artifact was updated.
+* Every updated artifact can be read successfully.
+* The requested modification is present in each artifact.
+* Unrelated content was preserved in every affected artifact.
+* No additional files were created unless explicitly requested.
+* No unintended files were modified.

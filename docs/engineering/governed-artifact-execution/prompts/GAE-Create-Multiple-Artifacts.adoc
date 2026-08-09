@@ -1,0 +1,27 @@
+= GAE-Create-Multiple-Artifacts
+== Purpose
+Create multiple related new repository artifacts in one bounded operation without modifying existing files.
+== Required Inputs
+* Target directory or directories
+* Target filenames
+* Relationship between artifacts
+* Desired content for each artifact
+== Constraints
+* Create only explicitly requested files.
+* Do not modify existing files.
+* Create parent directories only when necessary.
+* Keep the operation limited to the named artifacts and their requested contents.
+* Keep Git diff review, human admission, and commit outside the execution boundary.
+== Verification
+* Read every created artifact.
+* Confirm that persisted contents match the requested contents for each artifact.
+* Confirm that the related artifacts are mutually consistent as requested.
+* Report every created path.
+=== Verification Checklist
+Before reporting completion, verify:
+* Every requested artifact exists.
+* Every artifact can be read successfully.
+* The artifact contents match the requested contents.
+* The requested relationships between artifacts are represented.
+* No unrelated content was changed.
+* No unintended files were modified.
