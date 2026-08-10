@@ -44,3 +44,24 @@ bounded scope, explicit verification, and Git-based review.
 GAE-0001 and GAE-0002 established a repeatable engineering workflow in which
 repository operations are performed through governed tooling, independently
 verified, and admitted into repository history only after human review.
+== Explicit Runtime Selection and Restart Recovery
+The repository-local launcher in awake-in-omelas starts the raw Filesystem MCP
+stdio server and does not implement MCP_RUNTIME selection. MCP_RUNTIME=mcpo
+and the MCPO runtime implementation belong to the separate
+governed-mcp-runtime repository.
+
+Publishing the raw stdio server on host port 8765 caused TCP connections to be
+accepted and then reset because the process did not speak HTTP. Open WebUI's
+configured URL, http://host.docker.internal:8765, was correct and was not the
+cause.
+
+Recovery required verifying the running container's command, launching
+governed-mcp-runtime with MCP_RUNTIME=mcpo and readwrite access, confirming
+/openapi.json returned HTTP 200, refreshing Open WebUI, starting a new chat,
+and enabling only Filesystem MCP.
+
+Restart recovery took more than two hours, demonstrating the need for a single
+validated resume procedure with explicit pass/fail checks for repository
+selection, runtime selection, access mode, HTTP health, authentication, and
+Open WebUI tool discovery. The failures were valuable operational evidence for
+improving the reusable governed runtime.
