@@ -1,0 +1,54 @@
+= GAE-0003 — Multi-Artifact Execution
+
+:status: Verified
+:date: 2026-08-11
+
+== Purpose
+
+Record the observed behavior and verification results from GAE-0003 multi-artifact execution.
+
+== Initial Execution
+
+The initial multi-artifact creation attempt used GPT-4.1-mini.
+
+The model selected `write_note` rather than the Filesystem MCP `write_file` operation. The note operations reported success, but subsequent filesystem read-back could not locate the requested repository artifacts.
+
+Independent Git inspection confirmed that the repository remained clean.
+
+The required read-back verification therefore prevented the operation from being treated as successfully completed.
+
+== Successful Execution
+
+A subsequent execution used GPT-5.5 with explicit Filesystem MCP execution requirements.
+
+The observed Filesystem MCP tool sequence included:
+
+. `list_allowed_directories`
+. `list_directory`
+. `list_directory`
+. `create_directory`
+. `write_file` for artifact A
+. `write_file` for artifact B
+. `read_text_file` for artifact A
+. `read_text_file` for artifact B
+
+Both requested artifacts were successfully created and read back.
+
+Independent shell and Git inspection confirmed that exactly the two requested files existed and that their contents matched the requested contents.
+
+The temporary test artifacts were subsequently removed, returning the repository to a clean state.
+
+== Observations
+
+* GAE prompts define execution intent and verification requirements; they do not themselves select or execute MCP capabilities.
+* Tool selection is mediated by the model and may differ between models or prompt formulations.
+* MCP exposes concrete capabilities while the governed runtime constrains where those capabilities can operate.
+* Read-back verification detected the initial incorrect tool selection before false success could be admitted.
+* Git provided an independent system-of-record check on whether repository mutation actually occurred.
+* Human admission remained the final authority over whether the resulting change became canonical.
+
+== Governance Implication
+
+GAE should prefer positive execution contracts that identify the required governed capability and verification mechanism.
+
+Model reasoning may determine safe intermediate steps, but consequential repository operations should remain bounded by explicit capabilities, runtime constraints, verification, Git visibility, and human admission.
