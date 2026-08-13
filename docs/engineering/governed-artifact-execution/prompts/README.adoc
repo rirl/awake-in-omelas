@@ -1,25 +1,33 @@
 = Governed Artifact Execution Prompt Library
 :toc:
 :sectnums:
+
 == Purpose
+
 This directory contains reusable prompts for governed repository engineering
 through the Open WebUI → MCPO → Filesystem MCP workflow.
 The prompts are intended to provide consistent, reviewable, and repeatable
 engineering operations.
+
 == Principles
+
 * Keep operations bounded.
 * Modify only explicitly identified files.
 * Read back every written artifact.
 * Verify results with Git before committing.
 * Treat Git as the authoritative system of record.
+
 == Prompt Categories
+
 * Artifact Creation
 * Artifact Reading
 * Artifact Update
 * Validation
 * Repository Inspection
 * Engineering Review
+
 == Workflow
+
 [source,text]
 ----
 Request
