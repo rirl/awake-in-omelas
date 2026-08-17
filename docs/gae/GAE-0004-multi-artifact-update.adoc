@@ -1,0 +1,42 @@
+= GAE-0004 — Multi-Artifact Update Verification and Admission
+
+== Objective
+
+Exercise a governed multi-artifact update through the Open WebUI to governed RW Filesystem MCP path.
+
+== Target Artifacts
+
+* `docs/engineering/governed-artifact-execution/lessons-learned.adoc`
+* `docs/engineering/governed-artifact-execution/prompts/README.adoc`
+
+== Permitted-Change Contract
+
+* AsciiDoc structural/rendering cleanup only.
+* No substantive prose, factual, ordering, list-content, workflow-content, or meaning changes.
+* Convert the Markdown-style Open WebUI URL in `lessons-learned.adoc` to equivalent AsciiDoc link syntax.
+* Correct the missing final newline in `prompts/README.adoc`.
+
+== Governed Execution
+
+Open WebUI performed read, modify, and read-back through the governed RW Filesystem MCP path.
+
+Creation of this verification artifact is a *separate governed operation* from the original GAE-0004 update.
+
+== Independent Verification
+
+* `git diff --check` passed.
+* Human Git diff review completed.
+* WinMerge visual review completed.
+* `scripts/engineering/detect-adoc-section-spacing.bash` showed findings before the cleanup and no findings for the two target artifacts afterward.
+* Both target artifacts rendered successfully with core `asciidoctor`.
+* The resulting GAE-0004 changes were judged conformant with the bounded permitted-change contract.
+
+== Admission
+
+* `f8c2463 docs(gae): clean up asciidoc structure`
+
+== Final State
+
+* Branch: `feature/openwebui-mcp-filesystem`
+* Branch pushed and synchronized with origin.
+* Working tree clean after admission.
