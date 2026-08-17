@@ -1,0 +1,92 @@
+= GAE-0005 — Mixed Multi-Artifact Execution
+:doctype: article
+:toc:
+:sectnums:
+
+== Purpose
+
+This artifact records the completed verification and admission of GAE-0005 —
+Mixed Multi-Artifact Execution.
+
+Creation of this verification artifact is a separate governed operation from
+the GAE-0005 mixed create/update execution.
+
+== Objective
+
+GAE-0005 exercised one bounded governed operation containing two different
+artifact operations:
+
+* update one existing artifact;
+* create one new artifact.
+
+The test evaluated whether mixed create/update behavior could remain bounded
+by artifact-specific contracts while preserving independent human admission.
+
+== Target Artifacts
+
+The governed operation affected these target artifacts:
+
+* Existing artifact updated:
+  `docs/engineering/governed-artifact-execution/lessons-learned.adoc`
+* New artifact created:
+  `docs/engineering/governed-artifact-execution/verification-observations.adoc`
+
+== Permitted-Change Contract
+
+The operation was bounded by the following contract:
+
+* Modify only the two named paths.
+* In `lessons-learned.adoc`, add exactly one subsection:
+  `=== Execution Success Does Not Establish Conformance`
+* Insert that subsection immediately after `=== Read-Back Verification` and
+  before `=== Git as Final Admission Authority`.
+* Preserve all other existing lesson text, headings, ordering, and content.
+* Create `verification-observations.adoc` as a concise empirical record of the
+  GAE-0004 verification-artifact observation.
+* Do not promote the observation into a canonical governance model.
+* Do not create or promote an ECR.
+* Do not introduce future design or automation proposals.
+* Use proper AsciiDoc syntax.
+* Do not stage or commit from Open WebUI.
+
+== Governed Execution Evidence
+
+Open WebUI performed the operation through the governed RW Filesystem MCP path.
+The existing lesson artifact was read before modification. The new observation
+artifact was created as part of the same bounded governed operation. Both
+resulting artifacts were read back after writing.
+
+== Independent Verification Evidence
+
+Independent verification found that Git showed exactly one modified existing
+artifact and one newly created artifact. `git diff --check` passed.
+Independent Git diff review confirmed that the changes matched the
+permitted-change contract.
+
+`scripts/engineering/detect-adoc-section-spacing.bash` produced no findings for
+either resulting artifact. Both resulting artifacts rendered successfully with
+core `asciidoctor`. The staged diff was independently reviewed before
+admission.
+
+== Conformance Determination
+
+GAE-0005 conformed to its objective and permitted-change contract. The mixed
+create/update operation remained bounded to the named artifacts, preserved the
+artifact-specific constraints, and left independent Git diff review, human
+admission, and commit outside the Open WebUI execution boundary.
+
+== Admission
+
+The admitted GAE-0005 execution commit is:
+
+`853df60 docs(gae): record GAE-0005 mixed artifact execution`
+
+== Final Canonical State After Admission
+
+After admission, the canonical state was:
+
+* Branch: `feature/openwebui-mcp-filesystem`
+* The branch was pushed successfully.
+* The local branch was synchronized with
+  `origin/feature/openwebui-mcp-filesystem`.
+* The working tree was clean.
