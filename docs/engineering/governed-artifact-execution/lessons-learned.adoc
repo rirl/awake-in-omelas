@@ -29,6 +29,13 @@ Reading artifacts immediately after writing provided an independent
 confirmation that persisted repository contents matched the requested
 operation.
 
+=== Execution Success Does Not Establish Conformance
+
+GAE-0004 showed that successful governed execution and read-back verification
+confirmed repository contents were persisted, but independent review still
+identified artifact defects. Execution success and read-back verification do
+not by themselves establish artifact conformance or admission.
+
 === Git as Final Admission Authority
 
 Filesystem operations successfully performed repository updates, but Git

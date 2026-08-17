@@ -1,0 +1,21 @@
+= Governed Artifact Execution — Verification Observations
+:doctype: article
+
+== Purpose
+
+This artifact records an empirical GAE-0004 verification-artifact observation.
+It is not a canonical governance model.
+
+== Observation
+
+The verification artifact was successfully created through the governed Open
+WebUI -> RW Filesystem MCP path, and read-back confirmed that the artifact
+persisted.
+
+Independent review found escaped `\*` list markers and also found that the
+explicit conformance determination was missing. The initial artifact was not
+admitted as-is.
+
+A separate bounded governed update corrected those issues. The corrected
+artifact passed independent Git/content review and core `asciidoctor` rendering
+before admission.
