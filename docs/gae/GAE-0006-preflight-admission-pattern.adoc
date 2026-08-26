@@ -1,0 +1,101 @@
+= GAE-0006 — Preflight and Admission Pattern
+:status: Verified
+:date: 2026-08-26
+
+== Purpose
+
+GAE-0006 empirically tested the emerging reusable preflight and admission
+pattern by deliberately applying it to another governed artifact execution.
+
+The experiment was not intended to canonize or automate the pattern. Its
+purpose was to observe which checks repeated unchanged enough to justify
+future extraction into reusable validation tooling.
+
+== Working Question
+
+Deliberately apply the emerging reusable preflight/admission pattern to the
+next governed execution and observe which parts repeat unchanged enough to
+justify extraction into reusable validation tooling.
+
+Do not canonize or automate the pattern yet. Treat GAE-0006 as another
+empirical test.
+
+== Preflight Evidence
+
+Before governed RW execution, preflight verified:
+
+* repository identity and Git state;
+* governed runtime identity and active capability;
+* the repository-to-container workspace boundary.
+
+The checks repeated without materially changing from earlier governed
+execution work.
+
+== Governed Execution
+
+The governed RW execution updated:
+
+`docs/engineering/governed-artifact-execution/verification-observations.adoc`
+
+The change recorded the repeated preflight observations while explicitly
+preserving their empirical and non-canonical status.
+
+== Admission Evidence
+
+Independent admission review included:
+
+* intended-scope verification;
+* `git diff --check`;
+* semantic inspection of the candidate diff;
+* uniqueness verification for the new section;
+* successful Asciidoctor rendering;
+* final staged-diff review.
+
+During staged review, a paragraph-to-list spacing concern was identified from
+general reviewer AsciiDoc knowledge.
+
+Inspection of
+`scripts/engineering/detect-adoc-section-spacing.bash`
+confirmed that the repository-local detector checks spacing before section
+headings but does not encode paragraph-to-list spacing.
+
+The candidate was manually corrected before admission.
+
+A subsequent staged review also identified and corrected a missing newline at
+end of file.
+
+== Context-Preservation Observation
+
+GAE-0006 demonstrated that useful conformance knowledge may originate outside
+repository-local executable validation, including from human or model reviewer
+knowledge.
+
+The discovery was preserved without automatically promoting it to canon or
+tooling.
+
+The emerging candidate flow is:
+
+`Latent reviewer knowledge -> Observation -> Evidence capture -> Candidate rule -> Triage -> Possible repository encoding`
+
+Reviewer knowledge is treated as candidate knowledge and evidence, not as
+automatic authority.
+
+== Outcome
+
+GAE-0006 verified that both preflight and admission checks are recurring in a
+stable enough form to justify continued investigation as reusable validation
+tooling.
+
+The experiment also demonstrated the value of preserving reviewer-discovered
+knowledge before deciding whether it should become an executable repository
+rule.
+
+No new validation rule was canonized or automated as part of GAE-0006.
+
+The related evidence was admitted in commit:
+
+`2ee79ea docs(gae): record GAE-0006 preflight and admission observations`
+
+== Status
+
+Verified and complete.
