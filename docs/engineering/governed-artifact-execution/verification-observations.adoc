@@ -19,3 +19,37 @@ admitted as-is.
 A separate bounded governed update corrected those issues. The corrected
 artifact passed independent Git/content review and core `asciidoctor` rendering
 before admission.
+
+== GAE-0006 Preflight Observation
+
+Before governed RW execution, preflight again verified three distinct areas:
+
+* repository identity and Git state;
+* governed runtime identity and active capability;
+* the repository-to-container workspace boundary.
+
+These checks repeated without materially changing from earlier governed
+execution work.
+
+This repetition is evidence that a reusable preflight pattern may be emerging.
+GAE-0006 does not canonize or automate that pattern. The observation is being
+preserved for comparison with the corresponding post-execution admission
+checks.
+
+== GAE-0006 Context-Preservation Observation
+
+During independent admission review, a paragraph-to-list spacing concern was
+identified from reviewer AsciiDoc knowledge rather than from an existing
+repository-local validation rule.
+
+Inspection of `scripts/engineering/detect-adoc-section-spacing.bash` confirmed
+that the current detector checks spacing before section headings only. It does
+not check paragraph-to-list transitions.
+
+The candidate was manually corrected before admission by inserting the missing
+blank line between the introductory paragraph and the list.
+
+This observation is preserved as a provisional candidate for future validation
+tooling. GAE-0006 does not establish that such a rule should be implemented,
+canonized, or admitted. The candidate remains subject to further empirical
+verification and triage.
