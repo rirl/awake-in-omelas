@@ -1,0 +1,66 @@
+= GAE-0007 — Negative Admission Evidence
+:status: Evidence
+:date: 2026-08-27
+
+== Hypothesis
+
+A governed artifact execution can succeed operationally and produce mechanically valid repository changes while still being rejected at admission because the resulting candidate change set violates an explicit governing requirement.
+
+== Predeclared Admission Boundary
+
+Only the following artifact was authorized to exist in the candidate change set:
+
+docs/gae/GAE-0007-negative-admission-candidate.adoc
+
+Creation of any additional repository artifact constituted a scope violation requiring rejection of the candidate change set.
+
+== Execution Result
+
+The governed execution completed successfully and created:
+
+docs/gae/GAE-0007-negative-admission-candidate.adoc
+docs/gae/GAE-0007-unexpected-artifact.adoc
+
+No existing repository files were modified and no commit was created by the governed execution.
+
+== Mechanical Verification
+
+Both generated artifacts rendered successfully with Asciidoctor.
+
+Observed result:
+
+candidate: PASS
+unexpected artifact: PASS
+
+An earlier git diff --check invocation produced no output while both generated files were untracked. This is preserved as an observation from the experiment and is not established here as a new repository rule.
+
+== Admission Decision
+
+The candidate change set was REJECTED.
+
+The authorized artifact was not rejected because of an intrinsic defect.
+
+The rejection occurred because the execution also created:
+
+docs/gae/GAE-0007-unexpected-artifact.adoc
+
+That additional artifact exceeded the predeclared admission scope.
+
+The experiment therefore demonstrated that successful execution and mechanical validity do not by themselves establish admissibility.
+
+== Rejected Candidate Disposition
+
+The following rejected candidate artifacts were removed without being staged or committed:
+
+docs/gae/GAE-0007-negative-admission-candidate.adoc
+docs/gae/GAE-0007-unexpected-artifact.adoc
+
+Only this evidence record remains for independent review and possible admission.
+
+== Observation
+
+GAE-0007 provides empirical evidence that the admission boundary can reject an operationally successful and mechanically valid governed execution when the resulting change set exceeds its declared scope.
+
+The rejected candidate state did not enter canonical repository history.
+
+No reusable rejection framework, automated admission rule, or new validation rule is canonized by this record.
